@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Francisca Celestino — Fractional CMO · Marketing para startups B2B</title>
+<meta name="description" content="Fractional CMO y consultora de marketing para startups B2B. Estrategia, equipo, procesos y resultados medibles." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* =====================================================
+     PALETTE — "MORE" series · worn paper + cut-paper shapes
+     ===================================================== */
+  :root {
+    /* the 12 MORE swatches */
+    --growth:   #CFCEB1;
+    --sun:      #C89730;
+    --peace:    #C7D2D8;
+    --cozy:     #B5662A;
+    --joy:      #D2A4BD;
+    --dancing:  #8C8C2F;
+    --calm:     #4B3E20;
+    --love:     #3C1B23;
+    --flowers:  #A6ADBE;
+    --healthy:  #D8DDB6;
+    --rest:     #BD5F2F;
+    --art:      #C4A8A0;
+
+    /* base canvas */
+    --paper:        #E0DFB9;       /* aged cream-sage page */
+    --paper-soft:   #E6E4C0;
+    --paper-deep:   #C8C69A;
+    --cream:        #F0EDC9;       /* light type-on-dark */
+
+    /* text */
+    --ink:          var(--calm);   /* warm deep brown */
+    --ink-soft:     rgba(75,62,32,0.82);
+    --ink-mute:     rgba(75,62,32,0.58);
+    --ink-faint:    rgba(75,62,32,0.30);
+
+    /* fonts */
+    --font-display: "Bricolage Grotesque","Helvetica Neue",system-ui,sans-serif;
+    --font-text:    "DM Sans","Helvetica Neue",system-ui,sans-serif;
+    --font-mono:    "JetBrains Mono",ui-monospace,Menlo,monospace;
+
+    --container: 1180px;
+    --ease: cubic-bezier(0.2,0.6,0.2,1);
+  }
+
+  *,*::before,*::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-text);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--rest); color: var(--cream); }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  button { font: inherit; cursor: pointer; }
+
+  /* ============ WORN PAPER TEXTURE ============
+     Three layers: large faded patches + medium age spots + fine grain.
+     Multiply over every section. */
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    opacity: 0.78;
+    mix-blend-mode: multiply;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'><filter id='a'><feTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='4' seed='7'/><feColorMatrix values='0 0 0 0 0.28  0 0 0 0 0.22  0 0 0 0 0.11  0 0 0 0.26 0'/></filter><rect width='100%' height='100%' filter='url(%23a)'/></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><filter id='b'><feTurbulence type='fractalNoise' baseFrequency='0.06' numOctaves='1' seed='3'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.07  0 0 0 0.20 0'/></filter><rect width='100%' height='100%' filter='url(%23b)'/></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.07  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>");
+    background-size: 1600px 1600px, 600px 600px, 220px 220px;
+  }
+  /* subtle vignette */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 99;
+    background:
+      radial-gradient(ellipse 90% 70% at 50% 50%, transparent 60%, rgba(75,62,32,0.18) 100%);
+  }
+
+  /* =====================================================
+     TYPE
+     ===================================================== */
+  .display, h1, h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 80%;
+    letter-spacing: -0.032em;
+    line-height: 0.96;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .h-section {
+    font-size: clamp(40px, 5.4vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+  .lede {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: clamp(19px, 2.1vw, 24px);
+    line-height: 1.5;
+    text-wrap: pretty;
+    max-width: 60ch;
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: ""; width: 20px; height: 1px; background: currentColor; opacity: 0.7;
+  }
+
+  /* =====================================================
+     LAYOUT
+     ===================================================== */
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+  section { padding: clamp(80px, 12vw, 140px) 0; position: relative; isolation: isolate; overflow: hidden; }
+  @media (max-width: 720px) { .container { padding: 0 22px; } }
+
+  /* section color blocks */
+  .sec-dancing { background: var(--dancing); color: var(--cream); }
+  .sec-love    { background: var(--love);    color: var(--joy); }
+  .sec-rest    { background: var(--rest);    color: var(--cream); }
+  .sec-peace   { background: var(--peace);   color: var(--ink); }
+
+  /* =====================================================
+     NAV
+     ===================================================== */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: color-mix(in srgb, var(--paper) 78%, transparent);
+    border-bottom: 1px solid rgba(75,62,32,0.12);
+  }
+  nav.top .inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 80%;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+  }
+  .brand .dot {
+    width: 14px; height: 14px; background: var(--rest); border-radius: 999px;
+    box-shadow: 0 0 0 3px var(--joy);
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+  .nav-links a { color: var(--ink-soft); transition: color 180ms var(--ease); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links .cta {
+    color: var(--cream); background: var(--rest);
+    padding: 9px 18px; border-radius: 999px;
+    transition: all 180ms var(--ease);
+  }
+  .nav-links .cta:hover { background: var(--cozy); }
+  @media (max-width: 640px) {
+    nav.top .inner { padding: 14px 22px; }
+    .nav-links a:not(.cta) { display: none; }
+  }
+
+  /* =====================================================
+     BUTTONS
+     ===================================================== */
+  .btn {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    padding: 16px 26px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    display: inline-flex; align-items: center; gap: 10px;
+    line-height: 1;
+    transition: all 200ms var(--ease);
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--rest); color: var(--cream); }
+  .btn-primary:hover { background: var(--cozy); transform: translateY(-1px); }
+  .btn-primary .arr { width: 14px; height: 14px; transition: transform 200ms var(--ease); }
+  .btn-primary:hover .arr { transform: translateX(3px); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: rgba(75,62,32,0.30); }
+  .btn-ghost:hover { border-color: var(--ink); background: rgba(75,62,32,0.07); }
+
+  .sec-dancing .btn-ghost, .sec-love .btn-ghost, .sec-rest .btn-ghost {
+    color: var(--cream); border-color: rgba(240,237,201,0.40);
+  }
+  .sec-dancing .btn-ghost:hover, .sec-love .btn-ghost:hover, .sec-rest .btn-ghost:hover {
+    border-color: var(--cream); background: rgba(240,237,201,0.10);
+  }
+
+  /* =====================================================
+     CUT-PAPER ILLUSTRATIONS
+     Solid shapes with slight imperfections, like collage cutouts
+     ===================================================== */
+  .ill { position: absolute; pointer-events: none; z-index: 0; }
+  .ill svg { width: 100%; height: 100%; display: block; }
+
+  /* =====================================================
+     HERO
+     ===================================================== */
+  .hero { padding-top: clamp(80px, 14vw, 160px); padding-bottom: clamp(48px, 7vw, 80px); }
+  .hero .inner { position: relative; z-index: 2; }
+
+  .hero .ill-1 { top: 4%; right: 4%; width: clamp(140px, 18vw, 240px); aspect-ratio: 1/1; color: var(--sun); transform: rotate(-12deg); }
+  .hero .ill-2 { top: 16%; left: -3%; width: clamp(140px, 20vw, 280px); aspect-ratio: 1/1.2; color: var(--joy); transform: rotate(18deg); }
+  .hero .ill-3 { bottom: -2%; right: 4%; width: clamp(120px, 14vw, 200px); aspect-ratio: 1/1; color: var(--dancing); transform: rotate(-6deg); }
+  .hero .ill-4 { bottom: 4%; left: 6%; width: clamp(110px, 15vw, 200px); aspect-ratio: 1/0.9; color: var(--rest); transform: rotate(8deg); }
+  .hero .ill-5 { top: 8%; right: 38%; width: 56px; aspect-ratio: 1/1; color: var(--cozy); }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 9px 18px;
+    background: var(--love);
+    border-radius: 999px;
+    color: var(--joy);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .hero-tag::before {
+    content: ""; width: 6px; height: 6px; background: var(--joy); border-radius: 999px;
+    box-shadow: 0 0 0 4px rgba(210,164,189,0.30);
+    animation: pulse 2.4s var(--ease) infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 4px rgba(210,164,189,0.30); }
+    50%    { box-shadow: 0 0 0 10px rgba(210,164,189,0); }
+  }
+
+  h1.hero-title {
+    font-size: clamp(56px, 9.2vw, 132px);
+    margin: 0 0 32px;
+    max-width: 18ch;
+  }
+  h1.hero-title em {
+    font-style: normal;
+    color: var(--cozy);
+    position: relative;
+    display: inline-block;
+  }
+  h1.hero-title em::after {
+    content: ""; position: absolute; left: -0.05em; right: -0.05em; bottom: 0.04em;
+    height: 0.16em; background: var(--sun);
+    transform-origin: left;
+    animation: underline 1.4s var(--ease) 0.6s both;
+    z-index: -1;
+  }
+  @keyframes underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .hero-sub { margin-bottom: 48px; color: var(--ink-soft); }
+  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+  .hero-meta {
+    margin-top: 56px;
+    display: flex; flex-wrap: wrap; gap: 28px 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(75,62,32,0.20);
+    align-items: baseline;
+  }
+  .hero-meta .item .k {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .hero-meta .item .v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  /* =====================================================
+     SECTION HEAD
+     ===================================================== */
+  .section-head {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    margin-bottom: 36px;
+    align-items: start;
+  }
+  .section-head .label .num,
+  .section-head .label .role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+  .section-head .label .role { margin-top: 8px; display: block; opacity: 0.5; }
+  @media (max-width: 840px) {
+    .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }
+  }
+
+  /* =====================================================
+     PROBLEMA  (olive · dancing · cream text)
+     ===================================================== */
+  .problema .ill-a, .servicios.sec-dancing .ill-a { top: 6%; right: 4%; width: clamp(140px, 16vw, 240px); aspect-ratio: 1/1; color: var(--sun); transform: rotate(14deg); }
+  .problema .ill-b, .servicios.sec-dancing .ill-b { bottom: 6%; left: -3%; width: clamp(160px, 22vw, 320px); aspect-ratio: 1.2/1; color: var(--joy); opacity: 0.95; transform: rotate(-8deg); }
+  .problema .ill-c, .servicios.sec-dancing .ill-c { top: 30%; right: 18%; width: 80px; aspect-ratio: 1/1.2; color: var(--rest); transform: rotate(8deg); }
+  .problema .ill-d, .servicios.sec-dancing .ill-d { bottom: 18%; right: 4%; width: 96px; aspect-ratio: 1/1; color: var(--peace); transform: rotate(-22deg); }
+
+  .problema p {
+    font-family: var(--font-text);
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.42;
+    margin: 0 0 24px;
+    max-width: 28ch;
+    text-wrap: balance;
+    color: rgba(240,237,201,0.85);
+  }
+  .problema p strong { color: var(--cream); font-weight: 500; }
+  .problema p em { font-style: normal; color: var(--sun); font-weight: 500; }
+  .problema-tail {
+    margin-top: 48px;
+    font-family: var(--font-text);
+    font-size: 17px;
+    color: rgba(240,237,201,0.65);
+    max-width: 50ch;
+    border-left: 3px solid var(--sun);
+    padding-left: 18px;
+  }
+
+  .servicios.sec-dancing .section-head .label .num,
+  .servicios.sec-dancing .section-head .label .role { color: var(--cream); }
+  .servicios.sec-dancing .h-section { color: var(--cream); }
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 840px) { .servicios-grid { grid-template-columns: 1fr; } }
+
+  .service {
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 280ms var(--ease);
+    isolation: isolate;
+  }
+  .service.s-joy { background: var(--joy); color: var(--love); }
+  .service.s-peace { background: var(--peace); color: var(--calm); }
+  .service.s-sun { background: var(--sun); color: var(--calm); }
+  .service:hover { transform: translateY(-3px); }
+
+  /* Third card: spans full width, half height */
+  .service.span-full { grid-column: 1 / -1; padding: 32px 40px; }
+  .service-inline {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 720px) {
+    .service-inline { grid-template-columns: 1fr; gap: 12px; }
+    .service.span-full { padding: 28px 28px; }
+  }
+  .service-inline h3 { margin: 6px 0 0; font-size: clamp(26px, 2.8vw, 36px); }
+  .service-inline p { margin: 0; font-size: 17px; opacity: 0.86; }
+  .service-inline .tag { margin-bottom: 0; }
+
+  .service.s-sun .ill-sz1 { top: -20%; right: 6%; width: 180px; aspect-ratio: 1/1; color: var(--cozy); opacity: 0.65; transform: rotate(12deg); }
+  .service.s-sun .ill-sz2 { bottom: -30%; right: -4%; width: 200px; aspect-ratio: 1/1; color: var(--rest); opacity: 0.55; transform: rotate(-12deg); }
+
+  .service .ill { z-index: 0; }
+  .service.s-joy   .ill-sx { bottom: -12%; right: -10%; width: 240px; aspect-ratio: 1.2/1; color: var(--love); opacity: 0.55; transform: rotate(-15deg); }
+  .service.s-joy   .ill-sy { top: 10%; right: 14%; width: 44px; aspect-ratio: 1/1; color: var(--cozy); transform: rotate(20deg); }
+  .service.s-peace .ill-sx { bottom: -14%; right: -10%; width: 220px; aspect-ratio: 1/1; color: var(--rest); opacity: 0.55; transform: rotate(8deg); }
+  .service.s-peace .ill-sy { top: 12%; right: 14%; width: 56px; aspect-ratio: 1/1; color: var(--dancing); }
+
+  .service > *:not(.ill) { position: relative; z-index: 1; }
+  .service .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    opacity: 0.72;
+  }
+  .service h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 82%;
+    font-size: clamp(28px, 3vw, 40px);
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .service p {
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0 0 24px;
+    opacity: 0.88;
+  }
+  .service ul {
+    list-style: none; padding: 0; margin: 24px 0 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .service ul li {
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 15px; opacity: 0.9;
+  }
+  .service ul li::before {
+    content: ""; width: 7px; height: 7px; border-radius: 999px;
+    background: currentColor; flex-shrink: 0; transform: translateY(-2px); opacity: 0.6;
+  }
+  .service .ideal {
+    margin-top: 28px; padding-top: 20px;
+    border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+    font-family: var(--font-text);
+    font-size: 14px;
+    opacity: 0.78;
+  }
+  .service .ideal strong { font-weight: 600; opacity: 1; }
+
+  /* =====================================================
+     FRAME (9 áreas) — each its MORE color
+     ===================================================== */
+  .frame-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 900px) { .frame-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .frame-grid { grid-template-columns: 1fr; } }
+
+  .area {
+    border-radius: 12px;
+    padding: 32px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    min-height: 260px;
+    transition: transform 280ms var(--ease);
+  }
+  .area:hover { transform: translateY(-4px); }
+  .area > *:not(.ill) { position: relative; z-index: 1; }
+  .area .ill { z-index: 0; opacity: 0.85; }
+
+  /* Each area: bg, text, corner-illustration color */
+  .area.a1 { background: var(--sun);      color: var(--calm); }   .area.a1 .ill-corner { color: var(--cozy); }
+  .area.a2 { background: var(--cozy);     color: var(--healthy); }.area.a2 .ill-corner { color: var(--joy); }
+  .area.a3 { background: var(--joy);      color: var(--love); }   .area.a3 .ill-corner { color: var(--rest); }
+  .area.a4 { background: var(--dancing);  color: var(--healthy); }.area.a4 .ill-corner { color: var(--sun); }
+  .area.a5 { background: var(--peace);    color: var(--calm); }   .area.a5 .ill-corner { color: var(--love); }
+  .area.a6 { background: var(--love);     color: var(--joy); }    .area.a6 .ill-corner { color: var(--sun); }
+  .area.a7 { background: var(--growth);   color: var(--calm); }   .area.a7 .ill-corner { color: var(--rest); }
+  .area.a8 { background: var(--rest);     color: var(--healthy); }.area.a8 .ill-corner { color: var(--love); }
+  .area.a9 { background: var(--flowers);  color: var(--calm); }   .area.a9 .ill-corner { color: var(--love); }
+
+  .area .area-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  }
+  .area .area-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    opacity: 0.7;
+  }
+  .area .area-emoji { font-size: 22px; line-height: 1; opacity: 0.9; }
+  .area h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 82%;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .area p {
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+    text-wrap: pretty;
+    opacity: 0.88;
+  }
+  .area p .strong { font-weight: 600; opacity: 1; }
+
+  .area .ill-corner { bottom: -28px; right: -22px; width: 130px; aspect-ratio: 1/1; }
+
+  /* =====================================================
+     POR QUÉ  (love · aubergine · joy text)
+     ===================================================== */
+  .why .ill-w1 { top: -8%; left: -6%; width: 360px; aspect-ratio: 1/1; color: var(--cozy); opacity: 0.6; transform: rotate(-18deg); }
+  .why .ill-w2 { bottom: -8%; right: -6%; width: 280px; aspect-ratio: 1/1; color: var(--dancing); opacity: 0.55; transform: rotate(22deg); }
+  .why .ill-w3 { top: 30%; right: 12%; width: 50px; aspect-ratio: 1/1; color: var(--sun); }
+  .why .ill-w4 { top: 64%; left: 4%; width: 36px; aspect-ratio: 1/1; color: var(--joy); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .why-portrait {
+    aspect-ratio: 4/5;
+    background: var(--sun);
+    color: var(--calm);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 32px;
+  }
+  .why-portrait::before {
+    content: "FC";
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 75%;
+    font-size: 38vw;
+    line-height: 0.8;
+    color: var(--cozy);
+    opacity: 0.50;
+    letter-spacing: -0.06em;
+  }
+  .why-portrait .pi { position: absolute; }
+  .why-portrait .pi.p1 { top: 14px; right: 14px; width: 76px; aspect-ratio: 1/1; color: var(--love); }
+  .why-portrait .pi.p2 { bottom: -30px; left: -20px; width: 150px; aspect-ratio: 1/1; color: var(--dancing); opacity: 0.7; }
+  .why-portrait .pi.p3 { top: 40%; left: 20px; width: 30px; aspect-ratio: 1/1; color: var(--joy); }
+  .why-portrait .portrait-meta {
+    position: relative; z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--calm);
+  }
+  .why-portrait .portrait-meta .name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 82%;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    margin-bottom: 6px;
+    color: var(--calm);
+  }
+
+  .why-list { display: flex; flex-direction: column; gap: 0; }
+  .why-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(210,164,189,0.24);
+    align-items: baseline;
+  }
+  .why-row:last-child { border-bottom: none; }
+  .why-row .why-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: rgba(210,164,189,0.55);
+  }
+  .why-row .why-text {
+    font-family: var(--font-text);
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgba(240,237,201,0.85);
+  }
+  .why-row .why-text strong { color: var(--cream); font-weight: 600; }
+  .why-row .why-text .stat {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 82%;
+    color: var(--sun);
+    letter-spacing: -0.01em;
+    font-size: 19px;
+  }
+
+  /* =====================================================
+     FINAL CTA  (rest · terracota · with big burst)
+     ===================================================== */
+  .final .ill-f1 { left: 50%; top: 56%; transform: translate(-50%,-50%) rotate(8deg); width: 90vw; max-width: 800px; aspect-ratio: 1/1; color: var(--sun); opacity: 0.55; }
+  .final .ill-f2 { top: 14%; left: 8%; width: 120px; aspect-ratio: 1/1; color: var(--love); transform: rotate(-12deg); }
+  .final .ill-f3 { top: 18%; right: 10%; width: 84px; aspect-ratio: 1/1.2; color: var(--joy); transform: rotate(16deg); }
+  .final .ill-f4 { bottom: 6%; left: 6%; width: 100px; aspect-ratio: 1.2/1; color: var(--dancing); transform: rotate(-10deg); }
+  .final .ill-f5 { bottom: 8%; right: 14%; width: 60px; aspect-ratio: 1/1; color: var(--cozy); }
+
+  .final { text-align: center; padding: clamp(100px, 16vw, 180px) 0; }
+  .final .inner { position: relative; z-index: 2; }
+  .final h2 {
+    font-size: clamp(52px, 9vw, 132px);
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    margin: 0 auto 40px;
+    max-width: 14ch;
+    text-wrap: balance;
+  }
+  .final h2 em { font-style: normal; color: var(--love); position: relative; display: inline-block; }
+  .final h2 em::after {
+    content: ""; position: absolute; left: -0.05em; right: -0.05em; bottom: 0.04em;
+    height: 0.16em; background: var(--cream); z-index: -1;
+  }
+  .final p {
+    font-size: clamp(18px, 2vw, 22px);
+    margin: 0 auto 48px;
+    max-width: 50ch;
+    color: rgba(240,237,201,0.82);
+  }
+  .final .btn-primary { background: var(--love); color: var(--joy); }
+  .final .btn-primary:hover { background: var(--calm); }
+
+  /* =====================================================
+     FOOTER
+     ===================================================== */
+  footer {
+    padding: 56px 0 64px;
+    color: var(--ink-mute);
+    font-size: 14px;
+    background: var(--paper);
+    border-top: 1px solid rgba(75,62,32,0.14);
+  }
+  footer .inner {
+    display: flex; flex-wrap: wrap; gap: 24px;
+    justify-content: space-between; align-items: baseline;
+  }
+  footer .colophon {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  footer .channels { display: flex; gap: 18px; flex-wrap: wrap; }
+  footer .channels a {
+    color: var(--ink-soft);
+    transition: color 180ms var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+  footer .channels a:hover { color: var(--rest); border-color: var(--rest); }
+
+  /* =====================================================
+     REVEAL
+     ===================================================== */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 720ms var(--ease), transform 720ms var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal[data-delay="1"] { transition-delay: 80ms; }
+  .reveal[data-delay="2"] { transition-delay: 160ms; }
+  .reveal[data-delay="3"] { transition-delay: 240ms; }
+  .reveal[data-delay="4"] { transition-delay: 320ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, h1.hero-title em::after, .hero-tag::before { animation: none; transition: none; transform: none; opacity: 1; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============ CUT-PAPER ILLUSTRATIONS LIBRARY ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- ARCH (n shape — hollow inside) -->
+    <symbol id="i-arch" viewBox="0 0 200 200">
+      <path fill="currentColor" d="M22,196 L24,82 C28,38 60,8 100,8 C142,8 174,38 178,82 L180,196 L142,196 L140,86 C138,66 122,52 100,52 C78,52 62,66 60,86 L58,196 Z"/>
+    </symbol>
+    <!-- CRESCENT (chunky moon) -->
+    <symbol id="i-crescent" viewBox="0 0 200 160">
+      <path fill="currentColor" d="M28,40 C72,8 154,4 184,68 C198,108 174,150 116,154 C72,156 30,140 16,108 C44,116 76,118 100,108 C124,98 138,80 134,60 C130,42 102,30 70,32 C50,34 38,36 28,40 Z"/>
+    </symbol>
+    <!-- BURST (chunky starburst with 12 spikes) -->
+    <symbol id="i-burst" viewBox="0 0 200 200">
+      <path fill="currentColor" d="M100,4 L116,46 L150,16 L142,58 L188,46 L160,80 L196,98 L160,116 L188,150 L142,138 L150,180 L116,150 L100,196 L84,150 L50,180 L58,138 L12,150 L40,116 L4,98 L40,80 L12,46 L58,58 L50,16 L84,46 Z"/>
+    </symbol>
+    <!-- MOUNTAIN (peaked dome) -->
+    <symbol id="i-mountain" viewBox="0 0 200 200">
+      <path fill="currentColor" d="M100,4 C144,4 178,80 192,196 L8,196 C22,80 56,4 100,4 Z"/>
+    </symbol>
+    <!-- DONUT (O with hole) -->
+    <symbol id="i-donut" viewBox="0 0 200 200">
+      <path fill="currentColor" fill-rule="evenodd" d="M100,8 C148,8 192,52 192,100 C192,148 148,192 100,192 C52,192 8,148 8,100 C8,52 52,8 100,8 Z M100,72 C84,72 72,84 72,100 C72,116 84,128 100,128 C116,128 128,116 128,100 C128,84 116,72 100,72 Z"/>
+    </symbol>
+    <!-- TEARDROP (chunky drop) -->
+    <symbol id="i-teardrop" viewBox="0 0 160 200">
+      <path fill="currentColor" d="M80,4 C130,40 152,82 152,134 C152,170 122,196 80,196 C38,196 8,170 8,134 C8,82 30,40 80,4 Z"/>
+    </symbol>
+    <!-- BLOB (irregular peanut) -->
+    <symbol id="i-blob" viewBox="0 0 220 180">
+      <path fill="currentColor" d="M52,16 C100,4 130,28 158,32 C200,38 218,72 210,108 C202,148 170,172 124,170 C82,168 48,160 28,138 C4,110 8,76 18,52 C26,32 38,20 52,16 Z"/>
+    </symbol>
+    <!-- WAVE (chunky S squiggle) -->
+    <symbol id="i-wave" viewBox="0 0 220 120">
+      <path fill="currentColor" d="M10,52 C40,12 70,12 100,40 C124,62 144,72 168,58 C188,46 200,40 214,46 L214,76 C198,78 184,82 168,90 C140,104 116,98 90,80 C68,64 50,68 30,86 C20,96 14,98 8,96 Z"/>
+    </symbol>
+    <!-- M-SHAPE (chunky orchid M) -->
+    <symbol id="i-em" viewBox="0 0 240 180">
+      <path fill="currentColor" d="M10,178 L10,52 C10,28 28,8 54,8 C76,8 90,22 100,46 L120,98 L140,46 C150,22 164,8 186,8 C212,8 230,28 230,52 L230,178 L188,178 L188,76 L158,150 L122,150 L82,76 L82,178 Z"/>
+    </symbol>
+    <!-- SPARK (small 4-point star) -->
+    <symbol id="i-spark" viewBox="0 0 60 60">
+      <path fill="currentColor" d="M30,2 C32,18 34,26 46,28 C58,30 56,30 46,32 C34,34 32,42 30,58 C28,42 26,34 14,32 C2,30 4,30 14,28 C26,26 28,18 30,2 Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<nav class="top">
+  <div class="inner">
+    <a href="#top" class="brand"><span class="dot"></span>Francisca Celestino</a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#frame">Frame</a>
+      <a href="#francisca">Sobre mí</a>
+      <a class="cta" href="/cdn-cgi/l/email-protection#395f4b58575a504a5a585a5c555c4a4d5057567951564d54585055175a5654">Hablemos</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="ill ill-1"><svg><use href="#i-burst"/></svg></div>
+  <div class="ill ill-2"><svg><use href="#i-blob"/></svg></div>
+  <div class="ill ill-3"><svg><use href="#i-crescent"/></svg></div>
+  <div class="ill ill-4"><svg><use href="#i-arch"/></svg></div>
+  <div class="ill ill-5"><svg><use href="#i-spark"/></svg></div>
+
+  <div class="container inner">
+    <div class="hero-tag reveal">ESTRATEGIAS DE MARKETING · EARLY STAGE · SCALE UP</div>
+    <h1 class="hero-title display reveal" data-delay="1">
+      Marketing que <em>funciona</em>. Con sistema, no con improvisación.
+    </h1>
+    <p class="lede hero-sub reveal" data-delay="2">
+      Para startups y empresas que necesitan construir o reorganizar su marketing. Estrategia, equipo, procesos y resultados medibles.
+    </p>
+    <div class="hero-actions reveal" data-delay="3">
+      <a class="btn btn-ghost" href="#servicios">¿Cómo funciona?</a>
+      <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#7f190d1e111c160c1c1e1c1a131a0c0b1611103f17100b121e1613511c1012">
+        Contame tu caso
+        <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-meta reveal" data-delay="4">
+      <div class="item"><div class="k">RESULTADOS</div><div class="v">Medibles desde el dia 1</div></div>
+      <div class="item"><div class="k">MODALIDAD</div><div class="v">Acompañamiento activo</div></div>
+      <div class="item"><div class="k">QUE TE LLEVAS</div><div class="v">Estrategia + Equipo + Procesos</div></div>
+      <div class="item"><div class="k">DURACIÓN </div><div class="v">10 semanas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS (con fondo olive — antes la sección problema) ============ -->
+<section id="servicios" class="servicios sec-dancing">
+  <div class="ill ill-a"><svg><use href="#i-burst"/></svg></div>
+  <div class="ill ill-b"><svg><use href="#i-blob"/></svg></div>
+  <div class="ill ill-c"><svg><use href="#i-teardrop"/></svg></div>
+  <div class="ill ill-d"><svg><use href="#i-donut"/></svg></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">
+        <div class="num">01 / 03</div>
+        <div class="role">POR DONDE EMPEZAMOS</div>
+      </div>
+      <h2 class="h-section">Tres formas
+de trabajar juntos.</h2>
+    </div>
+
+    <div class="servicios-grid">
+      <div class="service s-joy reveal" data-delay="1">
+        <div class="ill ill-sx"><svg><use href="#i-arch"/></svg></div>
+        <div class="ill ill-sy"><svg><use href="#i-spark"/></svg></div>
+        <div class="tag">Servicio · 01</div>
+        <h3>Tu primer área de marketing</h3>
+        <p>Construyo el área desde cero: estrategia, procesos, equipo y herramientas. Cuando termina el proceso, te ayudo a elegir al perfil ideal para ejecutarlo.</p>
+        <ul>
+          <li>Diagnóstico del punto de partida</li>
+          <li>Estrategia y goals para los primeros 12 meses </li>
+          <li>Procesos y herramientas documentados</li>
+          <li>Definición y búsqueda del perfil ideal para ejecutar</li>
+        </ul>
+        <div class="ideal">Ideal para: Empresas que no están listas para contratar un equipo de marketing senior pero quieren arrancar con estructura profesional. </div>
+      </div>
+
+      <div class="service s-peace reveal" data-delay="2">
+        <div class="ill ill-sx"><svg><use href="#i-burst"/></svg></div>
+        <div class="ill ill-sy"><svg><use href="#i-teardrop"/></svg></div>
+        <div class="tag">Servicio · 02</div>
+        <h3>Consultoría +<br>acompañamiento</h3>
+        <p>Auditoría completa, plan de 12 meses y acompañamiento 
+activo durante el proceso. Estructura y dirección  para el equipo que ya tenés.</p>
+        <ul>
+          <li>Diagnóstico estratégico (Marketing Frame)</li>
+          <li>Plan anual + KPIs operacionales</li>
+          <li>Presencia activa en cada etapa</li>
+          <li>Modelo de reporte para Liderazgo</li>
+        </ul>
+        <div class="ideal">Ideal para: Empresas con equipo de marketing  que no están viendo los resultados que esperan.</div>
+      </div>
+
+      <div class="service s-sun span-full reveal" data-delay="3">
+        <div class="ill ill-sz1"><svg><use href="#i-burst"/></svg></div>
+        <div class="ill ill-sz2"><svg><use href="#i-crescent"/></svg></div>
+        <div>
+          <div class="tag">Servicio · 03</div>
+          <h3>Fractional CMO</h3>
+        </div>
+        <p>Estrategia, ejecución y presencia continua. Un head of marketing sin tener que contratar uno full-time.</p>
+        <ul>
+          <li>Liderazgo del área de marketing</li>
+          <li>Estrategia + roadmap trimestral</li>
+          <li>Gestión del equipo y procesos</li>
+          <li>Visibilidad total para liderazgo</li>
+        </ul>
+        <div class="ideal">Ideal para: Startups que necesitan liderazgo de marketing sin el costo de un CMO full-time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRAME (9 áreas) ============ -->
+<section id="frame" class="frame">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">
+        <div class="num">02 / 03</div>
+        <div class="role">EL FRAMEWORK</div>
+      </div>
+      <div>
+        <h2 class="h-section">Cómo construimos
+el sistema juntos.</h2>
+        <p class="lede" style="margin-top:24px">Cuando tienes una base sólida, puedes anticipar, ajustar y crecer.</p>
+      </div>
+    </div>
+
+    <div class="frame-grid reveal">
+
+      <div class="area a1">
+        <div class="ill ill-corner"><svg><use href="#i-burst"/></svg></div>
+        <div class="area-head"><span class="area-num">01</span><span class="area-emoji">🔍</span></div>
+        <h4>Discovery</h4>
+        <p>Sin entender dónde estás hoy, cualquier estrategia es <span class="strong">una apuesta</span>. Empezamos por la realidad, no por las suposiciones.</p>
+      </div>
+
+      <div class="area a2">
+        <div class="ill ill-corner"><svg><use href="#i-em"/></svg></div>
+        <div class="area-head"><span class="area-num">02</span><span class="area-emoji">👥</span></div>
+        <h4>Roles definidos</h4>
+        <p>El plan más sólido necesita a las personas correctas  ejecutándolo. Antes de arrancar, entendemos  con quién contamos y cómo potenciarlo.</p>
+      </div>
+
+      <div class="area a3">
+        <div class="ill ill-corner"><svg><use href="#i-spark"/></svg></div>
+        <div class="area-head"><span class="area-num">03</span><span class="area-emoji">🎯</span></div>
+        <h4>Los objetivos</h4>
+        <p>Con objetivos claros, cada acción tiene un propósito. Definimos a dónde vamos antes de movernos.</p>
+      </div>
+
+      <div class="area a4">
+        <div class="ill ill-corner"><svg><use href="#i-mountain"/></svg></div>
+        <div class="area-head"><span class="area-num">04</span><span class="area-emoji">📈</span></div>
+        <h4>El mercado</h4>
+        <p>Entender dónde están las oportunidades y cómo se posiciona la competencia es lo que define dónde conviene jugar.</p>
+      </div>
+
+      <div class="area a5">
+        <div class="ill ill-corner"><svg><use href="#i-wave"/></svg></div>
+        <div class="area-head"><span class="area-num">05</span><span class="area-emoji">🏓</span></div>
+        <h4>Los procesos</h4>
+        <p>Un proceso claro asegura que ningún lead se pierda en el camino. Mapeamos cada punto de contacto para que nada quede al azar.</p>
+      </div>
+
+      <div class="area a6">
+        <div class="ill ill-corner"><svg><use href="#i-crescent"/></svg></div>
+        <div class="area-head"><span class="area-num">06</span><span class="area-emoji">🏆</span></div>
+        <h4>Painpoints</h4>
+        <p>Antes de agregar más acciones, entendemos qué está frenando las que ya existen. Primero optimizar, después escalar.</p>
+      </div>
+
+      <div class="area a7">
+        <div class="ill ill-corner"><svg><use href="#i-teardrop"/></svg></div>
+        <div class="area-head"><span class="area-num">07</span><span class="area-emoji">🪁</span></div>
+        <h4>Plan Anual</h4>
+        <p>Un roadmap con lógica de cuándo y por qué activar cada cosa. No una lista de deseos,  sino un plan que se puede ejecutar.</p>
+      </div>
+
+      <div class="area a8">
+        <div class="ill ill-corner"><svg><use href="#i-donut"/></svg></div>
+        <div class="area-head"><span class="area-num">08</span><span class="area-emoji">💸</span></div>
+        <h4>El presupuesto</h4>
+        <p>Cada inversión tiene una justificación. 
+Definimos cuánto, en qué y qué retorno esperar antes de gastar.</p>
+      </div>
+
+      <div class="area a9">
+        <div class="ill ill-corner"><svg><use href="#i-arch"/></svg></div>
+        <div class="area-head"><span class="area-num">09</span><span class="area-emoji">💼</span></div>
+        <h4>Las reglas del juego</h4>
+        <p>Roles claros, reuniones con propósito 
+y reportes que informan. La estructura 
+que hace que todo lo anterior se sostenga.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ FRANCISCA ============ -->
+<section id="francisca" class="why sec-love">
+  <div class="ill ill-w1"><svg><use href="#i-burst"/></svg></div>
+  <div class="ill ill-w2"><svg><use href="#i-blob"/></svg></div>
+  <div class="ill ill-w3"><svg><use href="#i-spark"/></svg></div>
+  <div class="ill ill-w4"><svg><use href="#i-spark"/></svg></div>
+
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">
+        <div class="num">03 / 03</div>
+        <div class="role">SOBRE MÍ</div>
+      </div>
+      <h2 class="h-section">Más de 8 años construyendo  áreas de marketing que funcionan.  </h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-portrait reveal">
+        <div class="pi p1"><svg><use href="#i-burst"/></svg></div>
+        <div class="pi p2"><svg><use href="#i-arch"/></svg></div>
+        <div class="pi p3"><svg><use href="#i-spark"/></svg></div>
+        <div class="portrait-meta">
+          <div class="name">Francisca Celestino</div>
+          <div>FRACTIONAL CMO · MARKETING STRATEGIST</div>
+        </div>
+      </div>
+
+      <div class="why-list reveal" data-delay="1">
+        <div class="why-row"><div class="why-num">01</div><div class="why-text">CPG global &amp; B2B startups. Pasé por ABInBev y L'Oreal antes de saltar a startups. Sé cómo se ve marketing serio, y cómo construirlo cuando todavía no existe.</div></div>
+        <div class="why-row"><div class="why-num">02</div><div class="why-text"><strong>Construí MKT desde cero.</strong> <span class="stat">2.000+</span> contactos en 8 meses · <span class="stat">+259%</span> crecimiento de tráfico YoY.</div></div>
+        <div class="why-row"><div class="why-num">05</div><div class="why-text">Bilingüe español / inglés. Me adapto al idioma del negocio.</div></div>
+        <div class="why-row"><div class="why-num">03</div><div class="why-text">Obsesiva con el orden y los tiempos. 
+Herencia directa del project management.</div></div>
+        <div class="why-row"><div class="why-num">04</div><div class="why-text"><strong>AI &amp; automatización.</strong> Hago más con menos. La estrategia es humana; la ejecución es asistida.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final sec-rest">
+  <div class="ill ill-f1"><svg><use href="#i-burst"/></svg></div>
+  <div class="ill ill-f2"><svg><use href="#i-arch"/></svg></div>
+  <div class="ill ill-f3"><svg><use href="#i-teardrop"/></svg></div>
+  <div class="ill ill-f4"><svg><use href="#i-blob"/></svg></div>
+  <div class="ill ill-f5"><svg><use href="#i-spark"/></svg></div>
+
+  <div class="container inner reveal">
+    <h2>¿Tu marketing necesita <em>estructura</em>?</h2>
+    <p>Una llamada de 30 minutos. Te digo si puedo ayudar y, si no, te digo quién sí.</p>
+    <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#d3b5a1b2bdb0baa0b0b2b0b6bfb6a0a7babdbc93bbbca7beb2babffdb0bcbe">Cuentame más</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container inner">
+    <div class="colophon">© Francisca Celestino · 2026</div>
+    <div class="channels">
+      <a href="/cdn-cgi/l/email-protection#127460737c717b61717371777e7761667b7c7d527a7d667f737b7e3c717d7f"><span class="__cf_email__" data-cfemail="630511020d000a10000200060f0610170a0d0c230b0c170e020a0f4d000c0e">[email&#160;protected]</span></a>
+      <a href="https://www.linkedin.com/in/FranciscaCelestino" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 60 * i);
+    });
+  });
+</script>
+
+</body>
+</html>
