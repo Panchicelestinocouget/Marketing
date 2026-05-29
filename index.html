@@ -689,7 +689,40 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal, h1.hero-title em::after, .hero-tag::before { animation: none; transition: none; transform: none; opacity: 1; }
   }
+
+  /* =====================================================
+     LANG SWITCHER
+     ===================================================== */
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(75,62,32,0.10);
+    border-radius: 999px;
+    padding: 3px;
+  }
+  .lang-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--ink-mute);
+    cursor: pointer;
+    transition: all 160ms var(--ease);
+  }
+  .lang-btn.active {
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 1px 4px rgba(75,62,32,0.15);
+  }
+  .lang-btn:hover:not(.active) { color: var(--ink-soft); }
+
 </style>
+<script src="translations.js"></script>
 </head>
 
 <body>
@@ -745,10 +778,14 @@
   <div class="inner">
     <a href="#top" class="brand"><span class="dot"></span>Francisca Celestino</a>
     <div class="nav-links">
-      <a href="#servicios">Servicios</a>
-      <a href="#frame">Frame</a>
-      <a href="#francisca">Sobre mí</a>
-      <a class="cta" href="mailto:franciscacelestino@hotmail.com">Cuentame tu caso</a>
+      <a href="#servicios" data-i18n="nav_servicios">Servicios</a>
+      <a href="#frame" data-i18n="nav_frame">Frame</a>
+      <a href="#francisca" data-i18n="nav_sobre">Sobre mí</a>
+      <a class="cta" href="mailto:franciscacelestino@hotmail.com" data-i18n="nav_cta">Cuentame tu caso</a>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -764,15 +801,15 @@
   <div class="ill ill-5"><svg><use href="#i-spark"/></svg></div>
 
   <div class="container inner">
-    <div class="hero-tag reveal">ESTRATEGIAS DE MARKETING · EARLY STAGE · SCALE UP</div>
+    <div class="hero-tag reveal" data-i18n="hero_tag">ESTRATEGIAS DE MARKETING · EARLY STAGE · SCALE UP</div>
     <h1 class="hero-title display reveal" data-delay="1">
-      Marketing que <em>funciona</em>. Con sistema, no con improvisación.
+      <span data-i18n="hero_title_1">Marketing que </span><em data-i18n="hero_title_em">funciona</em><span data-i18n="hero_title_2">. Con sistema, no con improvisación.</span>
     </h1>
     <p class="lede hero-sub reveal" data-delay="2">
-      Para startups y empresas que necesitan construir o reorganizar su marketing. Estrategia, equipo, procesos y resultados medibles.
+      <span data-i18n="hero_sub">Para startups y empresas que necesitan construir o reorganizar su marketing. Estrategia, equipo, procesos y resultados medibles.</span>
     </p>
     <div class="hero-actions reveal" data-delay="3">
-      <a class="btn btn-ghost" href="#servicios">¿Cómo funciona?</a>
+      <a class="btn btn-ghost" href="#servicios" data-i18n="hero_btn_ghost">¿Cómo funciona?</a>
       <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com">
         Cuentame tu caso
         <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -780,9 +817,9 @@
     </div>
 
     <div class="hero-meta reveal" data-delay="4">
-      <div class="item"><div class="k">RESULTADOS</div><div class="v">Medibles desde el dia 1</div></div>
-      <div class="item"><div class="k">MODALIDAD</div><div class="v">Acompañamiento activo</div></div>
-      <div class="item"><div class="k">QUE TE LLEVAS</div><div class="v">Estrategia + Equipo + Procesos</div></div>
+      <div class="item"><div class="k" data-i18n="hero_k1">RESULTADOS</div><div class="v" data-i18n="hero_v1">Medibles desde el dia 1</div></div>
+      <div class="item"><div class="k" data-i18n="hero_k2">MODALIDAD</div><div class="v" data-i18n="hero_v2">Acompañamiento activo</div></div>
+      <div class="item"><div class="k" data-i18n="hero_k3">QUE TE LLEVAS</div><div class="v" data-i18n="hero_v3">Estrategia + Equipo + Procesos</div></div>
       <div class="item"><div class="k">DURACIÓN </div><div class="v">10 semanas</div></div>
     </div>
   </div>
@@ -798,9 +835,9 @@
     <div class="section-head reveal">
       <div class="label">
         <div class="num">01 / 03</div>
-        <div class="role">POR DONDE EMPEZAMOS</div>
+        <div class="role" data-i18n="svc_label_role">POR DONDE EMPEZAMOS</div>
       </div>
-      <h2 class="h-section">Tres formas
+      <h2 class="h-section" data-i18n="svc_heading">Tres formas
 de trabajar juntos.</h2>
     </div>
 
@@ -808,14 +845,14 @@ de trabajar juntos.</h2>
       <div class="service s-joy reveal" data-delay="1">
         <div class="ill ill-sx"><svg><use href="#i-arch"/></svg></div>
         <div class="ill ill-sy"><svg><use href="#i-spark"/></svg></div>
-        <div class="tag">Servicio · 01</div>
-        <h3>Tu primer área de marketing</h3>
+        <div class="tag" data-i18n="svc1_tag">Servicio · 01</div>
+        <h3 data-i18n="svc1_title">Tu primer área de marketing</h3>
         <p>Construyo el área desde cero: estrategia, procesos, equipo y herramientas. Cuando termina el proceso, te ayudo a elegir al perfil ideal para ejecutarlo.</p>
         <ul>
-          <li>Diagnóstico del punto de partida</li>
+          <li data-i18n="svc1_li1">Diagnóstico del punto de partida</li>
           <li>Estrategia y goals para los primeros 12 meses </li>
-          <li>Procesos y herramientas documentados</li>
-          <li>Definición y búsqueda del perfil ideal para ejecutar</li>
+          <li data-i18n="svc1_li3">Procesos y herramientas documentados</li>
+          <li data-i18n="svc1_li4">Definición y búsqueda del perfil ideal para ejecutar</li>
         </ul>
         <div class="ideal">Ideal para: Empresas que no están listas para contratar un equipo de marketing senior pero quieren arrancar con estructura profesional. </div>
       </div>
@@ -823,15 +860,15 @@ de trabajar juntos.</h2>
       <div class="service s-peace reveal" data-delay="2">
         <div class="ill ill-sx"><svg><use href="#i-burst"/></svg></div>
         <div class="ill ill-sy"><svg><use href="#i-teardrop"/></svg></div>
-        <div class="tag">Servicio · 02</div>
-        <h3>Consultoría +<br>acompañamiento</h3>
+        <div class="tag" data-i18n="svc2_tag">Servicio · 02</div>
+        <h3 data-i18n="svc2_title">Consultoría + acompañamiento</h3>
         <p>Auditoría completa, plan de 12 meses y acompañamiento 
 activo durante el proceso. Estructura y dirección  para el equipo que ya tenés.</p>
         <ul>
-          <li>Diagnóstico estratégico (Marketing Frame)</li>
-          <li>Plan anual + KPIs operacionales</li>
-          <li>Presencia activa en cada etapa</li>
-          <li>Modelo de reporte para Liderazgo</li>
+          <li data-i18n="svc2_li1">Diagnóstico estratégico (Marketing Frame)</li>
+          <li data-i18n="svc2_li2">Plan anual + KPIs operacionales</li>
+          <li data-i18n="svc2_li3">Presencia activa en cada etapa</li>
+          <li data-i18n="svc2_li4">Modelo de reporte para Liderazgo</li>
         </ul>
         <div class="ideal">Ideal para: Empresas con equipo de marketing  que no están viendo los resultados que esperan.</div>
       </div>
@@ -843,14 +880,14 @@ activo durante el proceso. Estructura y dirección  para el equipo que ya tené
           <div class="tag">Servicio · 03</div>
           <h3>Fractional CMO</h3>
         </div>
-        <p>Estrategia, ejecución y presencia continua. Un head of marketing sin tener que contratar uno full-time.</p>
+        <p data-i18n="svc3_desc">Estrategia, ejecución y presencia continua. Un head of marketing sin tener que contratar uno full-time.</p>
         <ul>
-          <li>Liderazgo del área de marketing</li>
-          <li>Estrategia + roadmap trimestral</li>
-          <li>Gestión del equipo y procesos</li>
-          <li>Visibilidad total para liderazgo</li>
+          <li data-i18n="svc3_li1">Liderazgo del área de marketing</li>
+          <li data-i18n="svc3_li2">Estrategia + roadmap trimestral</li>
+          <li data-i18n="svc3_li3">Gestión del equipo y procesos</li>
+          <li data-i18n="svc3_li4">Visibilidad total para liderazgo</li>
         </ul>
-        <div class="ideal">Ideal para: Startups que necesitan liderazgo de marketing sin el costo de un CMO full-time.</div>
+        <div class="ideal" data-i18n="svc3_ideal">Ideal para: Startups que necesitan liderazgo de marketing sin el costo de un CMO full-time.</div>
       </div>
     </div>
   </div>
@@ -862,10 +899,10 @@ activo durante el proceso. Estructura y dirección  para el equipo que ya tené
     <div class="section-head reveal">
       <div class="label">
         <div class="num">02 / 03</div>
-        <div class="role">EL FRAMEWORK</div>
+        <div class="role" data-i18n="frame_label_role">EL FRAMEWORK</div>
       </div>
       <div>
-        <h2 class="h-section">Cómo construimos
+        <h2 class="h-section" data-i18n="frame_heading">Cómo construimos
 el sistema juntos.</h2>
         <p class="lede" style="margin-top:24px">Cuando tienes una base sólida, puedes anticipar, ajustar y crecer.</p>
       </div>
@@ -876,56 +913,56 @@ el sistema juntos.</h2>
       <div class="area a1">
         <div class="ill ill-corner"><svg><use href="#i-burst"/></svg></div>
         <div class="area-head"><span class="area-num">01</span><span class="area-emoji">🔍</span></div>
-        <h4>Discovery</h4>
-        <p>Sin entender dónde estás hoy, cualquier estrategia es <span class="strong">una apuesta</span>. Empezamos por la realidad, no por las suposiciones.</p>
+        <h4 data-i18n="area1_title">Discovery</h4>
+        <p data-i18n="area1_desc" data-i18n-html="true">Sin entender dónde estás hoy, cualquier estrategia es <span class="strong">una apuesta</span>. Empezamos por la realidad, no por las suposiciones.</p>
       </div>
 
       <div class="area a2">
         <div class="ill ill-corner"><svg><use href="#i-em"/></svg></div>
         <div class="area-head"><span class="area-num">02</span><span class="area-emoji">👥</span></div>
-        <h4>Roles definidos</h4>
+        <h4 data-i18n="area2_title">Roles definidos</h4>
         <p>El plan más sólido necesita a las personas correctas  ejecutándolo. Antes de arrancar, entendemos  con quién contamos y cómo potenciarlo.</p>
       </div>
 
       <div class="area a3">
         <div class="ill ill-corner"><svg><use href="#i-spark"/></svg></div>
         <div class="area-head"><span class="area-num">03</span><span class="area-emoji">🎯</span></div>
-        <h4>Los objetivos</h4>
+        <h4 data-i18n="area3_title">Los objetivos</h4>
         <p>Con objetivos claros, cada acción tiene un propósito. Definimos a dónde vamos antes de movernos.</p>
       </div>
 
       <div class="area a4">
         <div class="ill ill-corner"><svg><use href="#i-mountain"/></svg></div>
         <div class="area-head"><span class="area-num">04</span><span class="area-emoji">📈</span></div>
-        <h4>El mercado</h4>
+        <h4 data-i18n="area4_title">El mercado</h4>
         <p>Entender dónde están las oportunidades y cómo se posiciona la competencia es lo que define dónde conviene jugar.</p>
       </div>
 
       <div class="area a5">
         <div class="ill ill-corner"><svg><use href="#i-wave"/></svg></div>
         <div class="area-head"><span class="area-num">05</span><span class="area-emoji">🏓</span></div>
-        <h4>Los procesos</h4>
+        <h4 data-i18n="area5_title">Los procesos</h4>
         <p>Un proceso claro asegura que ningún lead se pierda en el camino. Mapeamos cada punto de contacto para que nada quede al azar.</p>
       </div>
 
       <div class="area a6">
         <div class="ill ill-corner"><svg><use href="#i-crescent"/></svg></div>
         <div class="area-head"><span class="area-num">06</span><span class="area-emoji">🏆</span></div>
-        <h4>Painpoints</h4>
-        <p>Antes de agregar más acciones, entendemos qué está frenando las que ya existen. Primero optimizar, después escalar.</p>
+        <h4 data-i18n="area6_title">Painpoints</h4>
+        <p data-i18n="area6_desc" data-i18n-html="true">Antes de agregar más acciones, entendemos qué está frenando las que ya existen. Primero optimizar, después escalar.</p>
       </div>
 
       <div class="area a7">
         <div class="ill ill-corner"><svg><use href="#i-teardrop"/></svg></div>
         <div class="area-head"><span class="area-num">07</span><span class="area-emoji">🪁</span></div>
-        <h4>Plan Anual</h4>
+        <h4 data-i18n="area7_title">Plan Anual</h4>
         <p>Un roadmap con lógica de cuándo y por qué activar cada cosa. No una lista de deseos,  sino un plan que se puede ejecutar.</p>
       </div>
 
       <div class="area a8">
         <div class="ill ill-corner"><svg><use href="#i-donut"/></svg></div>
         <div class="area-head"><span class="area-num">08</span><span class="area-emoji">💸</span></div>
-        <h4>El presupuesto</h4>
+        <h4 data-i18n="area8_title">El presupuesto</h4>
         <p>Cada inversión tiene una justificación. 
 Definimos cuánto, en qué y qué retorno esperar antes de gastar.</p>
       </div>
@@ -933,7 +970,7 @@ Definimos cuánto, en qué y qué retorno esperar antes de gastar.</p>
       <div class="area a9">
         <div class="ill ill-corner"><svg><use href="#i-arch"/></svg></div>
         <div class="area-head"><span class="area-num">09</span><span class="area-emoji">💼</span></div>
-        <h4>Las reglas del juego</h4>
+        <h4 data-i18n="area9_title">Las reglas del juego</h4>
         <p>Roles claros, reuniones con propósito 
 y reportes que informan. La estructura 
 que hace que todo lo anterior se sostenga.</p>
@@ -954,9 +991,9 @@ que hace que todo lo anterior se sostenga.</p>
     <div class="section-head reveal">
       <div class="label">
         <div class="num">03 / 03</div>
-        <div class="role">SOBRE MÍ</div>
+        <div class="role" data-i18n="why_label_role">SOBRE MÍ</div>
       </div>
-      <h2 class="h-section">Más de 8 años construyendo áreas de marketing que funcionan.  </h2>
+      <h2 class="h-section" data-i18n="why_heading">Más de 8 años construyendo áreas de marketing que funcionan.</h2>
     </div>
 
     <div class="why-grid">
@@ -966,16 +1003,16 @@ que hace que todo lo anterior se sostenga.</p>
         <div class="pi p3"><svg><use href="#i-spark"/></svg></div>
         <div class="portrait-meta">
           <div class="name">Francisca Celestino</div>
-          <div>FRACTIONAL CMO · MARKETING STRATEGIST</div>
+          <div data-i18n="why_role">FRACTIONAL CMO · MARKETING STRATEGIST</div>
         </div>
       </div>
 
       <div class="why-list reveal" data-delay="1">
-        <div class="why-row"><div class="why-num">01</div><div class="why-text"><strong> CPG global &amp; B2B startups..</strong>  Pasé por ABInBev y L'Oreal antes de saltar a startups. Sé cómo se ve marketing serio, y cómo construirlo cuando todavía no existe.</div></div>
-        <div class="why-row"><div class="why-num">02</div><div class="why-text"><strong>Construí MKT desde cero.</strong> <span class="stat">2.000+</span> contactos en 8 meses · <span class="stat">+259%</span> crecimiento de tráfico YoY.</div></div>
+        <div class="why-row"><div class="why-num">01</div><div class="why-text" data-i18n="why1" data-i18n-html="true"><strong>CPG global &amp; B2B startups.</strong> Pasé por ABInBev y L'Oreal antes de saltar a startups. Sé cómo se ve marketing serio, y cómo construirlo cuando todavía no existe.</div></div>
+        <div class="why-row"><div class="why-num">02</div><div class="why-text" data-i18n="why2" data-i18n-html="true"><strong>Construí MKT desde cero.</strong> <span class="stat">2.000+</span> contactos en 8 meses · <span class="stat">+259%</span> crecimiento de tráfico YoY.</div></div>
         <div class="why-row"><div class="why-num">05</div><div class="why-text"><strong> Bilingüe español / inglés.</strong>  Me adapto al idioma del negocio.</div></div>
-        <div class="why-row"><div class="why-num">03</div><div class="why-text"><strong> Obsesiva con el orden y los tiempos.</strong> Herencia directa del project management.</div></div>
-        <div class="why-row"><div class="why-num">04</div><div class="why-text"><strong>AI &amp; automatización.</strong> Hago más con menos. La estrategia es humana; la ejecución es asistida.</div></div>
+        <div class="why-row"><div class="why-num">03</div><div class="why-text" data-i18n="why3" data-i18n-html="true"><strong>Obsesiva con el orden y los tiempos.</strong> Herencia directa del project management.</div></div>
+        <div class="why-row"><div class="why-num">04</div><div class="why-text" data-i18n="why4" data-i18n-html="true"><strong>AI &amp; automatización.</strong> Hago más con menos. La estrategia es humana; la ejecución es asistida.</div></div>
       </div>
     </div>
   </div>
@@ -990,16 +1027,16 @@ que hace que todo lo anterior se sostenga.</p>
   <div class="ill ill-f5"><svg><use href="#i-spark"/></svg></div>
 
   <div class="container inner reveal">
-    <h2>¿Tu marketing necesita <em>estructura</em>?</h2>
-    <p>Una llamada de 30 minutos. Te digo si puedo ayudar y, si no, te digo quién sí.</p>
-    <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com">Cuentame más</a>
+    <h2><span data-i18n="final_heading_1">¿Tu marketing necesita </span><em data-i18n="final_heading_em">estructura</em><span data-i18n="final_heading_2">?</span></h2>
+    <p data-i18n="final_sub">Una llamada de 30 minutos. Te digo si puedo ayudar y, si no, te digo quién sí.</p>
+    <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com" data-i18n="final_btn">Cuentame más</a>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container inner">
-    <div class="colophon">© Francisca Celestino · 2026</div>
+    <div class="colophon" data-i18n="footer_copy">© Francisca Celestino · 2026</div>
     <div class="channels">
       <span>franciscacelestino@hotmail.com</span>
       <a href="https://www.linkedin.com/in/FranciscaCelestino" target="_blank" rel="noopener">LinkedIn</a>
