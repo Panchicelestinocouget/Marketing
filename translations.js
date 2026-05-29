@@ -14,8 +14,8 @@ const i18n = {
     // Hero
     hero_tag: "ESTRATEGIAS DE MARKETING · EARLY STAGE · SCALE UP",
     hero_title_1: "Marketing que ",
-    hero_title_em: "funciona",
-    hero_title_2: ". Con sistema, no con improvisación.",
+    hero_title_em: "funciona.",
+    hero_title_2: " Con sistema, no con improvisación.",
     hero_sub: "Para startups y empresas que necesitan construir o reorganizar su marketing. Estrategia, equipo, procesos y resultados medibles.",
     hero_btn_ghost: "¿Cómo funciona?",
     hero_btn_primary: "Cuentame tu caso",
@@ -114,8 +114,8 @@ const i18n = {
     // Hero
     hero_tag: "MARKETING STRATEGY · EARLY STAGE · SCALE UP",
     hero_title_1: "Marketing that ",
-    hero_title_em: "works",
-    hero_title_2: ". With systems, not improvisation.",
+    hero_title_em: "works.",
+    hero_title_2: " With systems, not improvisation.",
     hero_sub: "For startups and companies that need to build or restructure their marketing. Strategy, team, processes, and measurable results.",
     hero_btn_ghost: "How does it work?",
     hero_btn_primary: "Tell me your case",
