@@ -114,7 +114,7 @@ const i18n = {
     // Hero
     hero_tag: "MARKETING STRATEGY · EARLY STAGE · SCALE UP",
     hero_title_1: "Marketing that ",
-    hero_title_em: "works.",
+    hero_title_em: "works",
     hero_title_2: " With systems, not improvisation.",
     hero_sub: "For startups and companies that need to build or restructure their marketing. Strategy, team, processes, and measurable results.",
     hero_btn_ghost: "How does it work?",
