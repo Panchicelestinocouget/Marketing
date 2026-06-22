@@ -218,6 +218,57 @@
   }
 
   /* =====================================================
+     PORTFOLIO CTA BUTTON (llamativo, dentro de sec-love)
+     ===================================================== */
+  .btn-portfolio {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 85%;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    padding: 18px 34px;
+    border-radius: 999px;
+    background: var(--sun);
+    color: var(--love);
+    display: inline-flex; align-items: center; gap: 12px;
+    line-height: 1;
+    box-shadow: 0 0 0 0 rgba(200,151,48,0.5);
+    transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), background 220ms var(--ease);
+    animation: portfolio-pulse 2.6s var(--ease) infinite;
+  }
+  .btn-portfolio:hover {
+    background: var(--cream);
+    transform: translateY(-2px) scale(1.02);
+  }
+  .btn-portfolio .arr {
+    width: 16px; height: 16px;
+    transition: transform 220ms var(--ease);
+  }
+  .btn-portfolio:hover .arr { transform: translateX(4px); }
+  @keyframes portfolio-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(200,151,48,0.45); }
+    50% { box-shadow: 0 0 0 10px rgba(200,151,48,0); }
+  }
+  .portfolio-cta-wrap {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .portfolio-cta-wrap .pc-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(210,164,189,0.65);
+  }
+  @media (max-width: 900px) {
+    .portfolio-cta-wrap { align-items: stretch; }
+    .btn-portfolio { justify-content: center; }
+  }
+
+  /* =====================================================
      CUT-PAPER ILLUSTRATIONS
      Solid shapes with slight imperfections, like collage cutouts
      ===================================================== */
@@ -820,7 +871,7 @@
       <div class="item"><div class="k" data-i18n="hero_k1">RESULTADOS</div><div class="v" data-i18n="hero_v1">Medibles desde el dia 1</div></div>
       <div class="item"><div class="k" data-i18n="hero_k2">MODALIDAD</div><div class="v" data-i18n="hero_v2">Acompañamiento activo</div></div>
       <div class="item"><div class="k" data-i18n="hero_k3">QUE TE LLEVAS</div><div class="v" data-i18n="hero_v3">Estrategia + Equipo + Procesos</div></div>
-      <div class="item"><div class="k">DURACIÓN </div><div class="v">10 semanas</div></div>
+      <div class="item"><div class="k">DURACIÓN </div><div class="v">10 semanas</div></div>
     </div>
   </div>
 </section>
@@ -847,14 +898,14 @@ de trabajar juntos.</h2>
         <div class="ill ill-sy"><svg><use href="#i-spark"/></svg></div>
         <div class="tag" data-i18n="svc1_tag">Servicio · 01</div>
         <h3 data-i18n="svc1_title">Tu primer área de marketing</h3>
-        <p>Construyo el área desde cero: estrategia, procesos, equipo y herramientas. Cuando termina el proceso, te ayudo a elegir al perfil ideal para ejecutarlo.</p>
+        <p>Construyo el área desde cero: estrategia, procesos, equipo y herramientas. Cuando termina el proceso, te ayudo a elegir al perfil ideal para ejecutarlo.</p>
         <ul>
           <li data-i18n="svc1_li1">Diagnóstico del punto de partida</li>
-          <li>Estrategia y goals para los primeros 12 meses </li>
+          <li>Estrategia y goals para los primeros 12 meses </li>
           <li data-i18n="svc1_li3">Procesos y herramientas documentados</li>
           <li data-i18n="svc1_li4">Definición y búsqueda del perfil ideal para ejecutar</li>
         </ul>
-        <div class="ideal">Ideal para: Empresas que no están listas para contratar un equipo de marketing senior pero quieren arrancar con estructura profesional. </div>
+        <div class="ideal">Ideal para: Empresas que no están listas para contratar un equipo de marketing senior pero quieren arrancar con estructura profesional. </div>
       </div>
 
       <div class="service s-peace reveal" data-delay="2">
@@ -862,15 +913,15 @@ de trabajar juntos.</h2>
         <div class="ill ill-sy"><svg><use href="#i-teardrop"/></svg></div>
         <div class="tag" data-i18n="svc2_tag">Servicio · 02</div>
         <h3 data-i18n="svc2_title">Consultoría + acompañamiento</h3>
-        <p>Auditoría completa, plan de 12 meses y acompañamiento 
-activo durante el proceso. Estructura y dirección  para el equipo que ya tenés.</p>
+        <p>Auditoría completa, plan de 12 meses y acompañamiento 
+activo durante el proceso. Estructura y dirección  para el equipo que ya tenés.</p>
         <ul>
           <li data-i18n="svc2_li1">Diagnóstico estratégico (Marketing Frame)</li>
           <li data-i18n="svc2_li2">Plan anual + KPIs operacionales</li>
           <li data-i18n="svc2_li3">Presencia activa en cada etapa</li>
           <li data-i18n="svc2_li4">Modelo de reporte para Liderazgo</li>
         </ul>
-        <div class="ideal">Ideal para: Empresas con equipo de marketing  que no están viendo los resultados que esperan.</div>
+        <div class="ideal">Ideal para: Empresas con equipo de marketing  que no están viendo los resultados que esperan.</div>
       </div>
 
       <div class="service s-sun span-full reveal" data-delay="3">
@@ -904,7 +955,7 @@ activo durante el proceso. Estructura y dirección  para el equipo que ya tené
       <div>
         <h2 class="h-section" data-i18n="frame_heading">Cómo construimos
 el sistema juntos.</h2>
-        <p class="lede" style="margin-top:24px">Cuando tienes una base sólida, puedes anticipar, ajustar y crecer.</p>
+        <p class="lede" style="margin-top:24px">Cuando tienes una base sólida, puedes anticipar, ajustar y crecer.</p>
       </div>
     </div>
 
@@ -921,28 +972,28 @@ el sistema juntos.</h2>
         <div class="ill ill-corner"><svg><use href="#i-em"/></svg></div>
         <div class="area-head"><span class="area-num">02</span><span class="area-emoji">👥</span></div>
         <h4 data-i18n="area2_title">Roles definidos</h4>
-        <p>El plan más sólido necesita a las personas correctas  ejecutándolo. Antes de arrancar, entendemos  con quién contamos y cómo potenciarlo.</p>
+        <p>El plan más sólido necesita a las personas correctas  ejecutándolo. Antes de arrancar, entendemos  con quién contamos y cómo potenciarlo.</p>
       </div>
 
       <div class="area a3">
         <div class="ill ill-corner"><svg><use href="#i-spark"/></svg></div>
         <div class="area-head"><span class="area-num">03</span><span class="area-emoji">🎯</span></div>
         <h4 data-i18n="area3_title">Los objetivos</h4>
-        <p>Con objetivos claros, cada acción tiene un propósito. Definimos a dónde vamos antes de movernos.</p>
+        <p>Con objetivos claros, cada acción tiene un propósito. Definimos a dónde vamos antes de movernos.</p>
       </div>
 
       <div class="area a4">
         <div class="ill ill-corner"><svg><use href="#i-mountain"/></svg></div>
         <div class="area-head"><span class="area-num">04</span><span class="area-emoji">📈</span></div>
         <h4 data-i18n="area4_title">El mercado</h4>
-        <p>Entender dónde están las oportunidades y cómo se posiciona la competencia es lo que define dónde conviene jugar.</p>
+        <p>Entender dónde están las oportunidades y cómo se posiciona la competencia es lo que define dónde conviene jugar.</p>
       </div>
 
       <div class="area a5">
         <div class="ill ill-corner"><svg><use href="#i-wave"/></svg></div>
         <div class="area-head"><span class="area-num">05</span><span class="area-emoji">🏓</span></div>
         <h4 data-i18n="area5_title">Los procesos</h4>
-        <p>Un proceso claro asegura que ningún lead se pierda en el camino. Mapeamos cada punto de contacto para que nada quede al azar.</p>
+        <p>Un proceso claro asegura que ningún lead se pierda en el camino. Mapeamos cada punto de contacto para que nada quede al azar.</p>
       </div>
 
       <div class="area a6">
@@ -956,23 +1007,23 @@ el sistema juntos.</h2>
         <div class="ill ill-corner"><svg><use href="#i-teardrop"/></svg></div>
         <div class="area-head"><span class="area-num">07</span><span class="area-emoji">🪁</span></div>
         <h4 data-i18n="area7_title">Plan Anual</h4>
-        <p>Un roadmap con lógica de cuándo y por qué activar cada cosa. No una lista de deseos,  sino un plan que se puede ejecutar.</p>
+        <p>Un roadmap con lógica de cuándo y por qué activar cada cosa. No una lista de deseos,  sino un plan que se puede ejecutar.</p>
       </div>
 
       <div class="area a8">
         <div class="ill ill-corner"><svg><use href="#i-donut"/></svg></div>
         <div class="area-head"><span class="area-num">08</span><span class="area-emoji">💸</span></div>
         <h4 data-i18n="area8_title">El presupuesto</h4>
-        <p>Cada inversión tiene una justificación. 
-Definimos cuánto, en qué y qué retorno esperar antes de gastar.</p>
+        <p>Cada inversión tiene una justificación. 
+Definimos cuánto, en qué y qué retorno esperar antes de gastar.</p>
       </div>
 
       <div class="area a9">
         <div class="ill ill-corner"><svg><use href="#i-arch"/></svg></div>
         <div class="area-head"><span class="area-num">09</span><span class="area-emoji">💼</span></div>
         <h4 data-i18n="area9_title">Las reglas del juego</h4>
-        <p>Roles claros, reuniones con propósito 
-y reportes que informan. La estructura 
+        <p>Roles claros, reuniones con propósito 
+y reportes que informan. La estructura 
 que hace que todo lo anterior se sostenga.</p>
       </div>
 
@@ -1010,9 +1061,17 @@ que hace que todo lo anterior se sostenga.</p>
       <div class="why-list reveal" data-delay="1">
         <div class="why-row"><div class="why-num">01</div><div class="why-text" data-i18n="why1" data-i18n-html="true"><strong>CPG global &amp; B2B startups.</strong> Pasé por ABInBev y L'Oreal antes de saltar a startups. Sé cómo se ve marketing serio, y cómo construirlo cuando todavía no existe.</div></div>
         <div class="why-row"><div class="why-num">02</div><div class="why-text" data-i18n="why2" data-i18n-html="true"><strong>Construí MKT desde cero.</strong> <span class="stat">2.000+</span> contactos en 8 meses · <span class="stat">+259%</span> crecimiento de tráfico YoY.</div></div>
-        <div class="why-row"><div class="why-num">05</div><div class="why-text"><strong> Bilingüe español / inglés.</strong>  Me adapto al idioma del negocio.</div></div>
+        <div class="why-row"><div class="why-num">05</div><div class="why-text"><strong> Bilingüe español / inglés.</strong>  Me adapto al idioma del negocio.</div></div>
         <div class="why-row"><div class="why-num">03</div><div class="why-text" data-i18n="why3" data-i18n-html="true"><strong>Obsesiva con el orden y los tiempos.</strong> Herencia directa del project management.</div></div>
         <div class="why-row"><div class="why-num">04</div><div class="why-text" data-i18n="why4" data-i18n-html="true"><strong>AI &amp; automatización.</strong> Hago más con menos. La estrategia es humana; la ejecución es asistida.</div></div>
+      </div>
+
+      <div class="portfolio-cta-wrap reveal" data-delay="2">
+        <span class="pc-label" data-i18n="portfolio_label">CASOS REALES</span>
+        <a class="btn-portfolio" href="Portfolio_Francisca_Celestino.html" data-i18n="portfolio_btn">
+          Ver portfolio
+          <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </div>
