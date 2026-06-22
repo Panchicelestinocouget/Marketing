@@ -307,6 +307,8 @@
     #pf .video.local { padding-top: 0; max-width: 240px; background: transparent; cursor: default; }
     #pf .video.local video { width: 100%; display: block; border-radius: 10px; background: var(--love); aspect-ratio: 9 / 16; object-fit: cover; }
     #pf .video.local:hover { transform: none; }
+    #pf .video.local.horizontal { max-width: 480px; }
+    #pf .video.local.horizontal video { aspect-ratio: 16 / 9; object-fit: contain; background: var(--love); }
     #pf .case-body .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
     #pf .case-body .grid > .full { grid-column: 1 / -1; }
     #pf .case-body h4 { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rest); margin: 0 0 10px; }
@@ -424,7 +426,7 @@
 
       <div class="hero-meta reveal" data-delay="3">
         <div class="item"><div class="k">Based in</div><div class="v">San Francisco, CA</div></div>
-        <div class="item"><div class="k">Email</div><div class="v"><a href="/cdn-cgi/l/email-protection#81e7f3e0efe2e8f2e2e0e2e4ede4f2f5e8efeec1e9eef5ece0e8edafe2eeec"><span class="__cf_email__" data-cfemail="244256454a474d5747454741484157504d4a4b644c4b5049454d480a474b49">[email&#160;protected]</span></a></div></div>
+        <div class="item"><div class="k">Email</div><div class="v"><a href="mailto:franciscacelestino@hotmail.com">franciscacelestino@hotmail.com</a></div></div>
         <div class="item"><div class="k">Phone</div><div class="v"><a href="tel:+14154650887">(415) 465-0887</a></div></div>
         <div class="item"><div class="k">Network</div><div class="v"><a href="https://www.linkedin.com/in/franciscacelestino" target="_blank" rel="noopener">LinkedIn &#8599;</a></div></div>
       </div>
@@ -619,7 +621,7 @@
           </summary>
           <div class="case-body">
             <p class="summary-line">Reparación Total is Elvive's top-selling product. L'Oréal usually relies on global content, but for this launch we used our local ambassador to connect with Argentine culture. I worked across pre-production, on-set coordination, and the post-launch e-commerce ripple.</p>
-            <div class="video local">
+            <div class="video local horizontal">
               <video src="Reparacion_total_Elvive.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
@@ -655,11 +657,9 @@
           </summary>
           <div class="case-body">
             <p class="summary-line">Óleo Extraordinario was Elvive's highest-margin product. When YouTube Shorts and Reels first launched, we had global content built for traditional 30s formats and had to make it feel native to vertical short-form, then translate that into e-commerce.</p>
-            <a class="video shorts" href="https://www.youtube.com/watch?v=Paf9zKz13oA" target="_blank" rel="noopener" aria-label="Watch on YouTube">
-              <img src="https://i.ytimg.com/vi/Paf9zKz13oA/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
-              <span class="play-btn"></span>
-              <span class="yt-tag">YouTube &#8599;</span>
-            </a>
+            <div class="video local">
+              <video src="Oleo_Extraordinario.mp4" controls preload="metadata" playsinline></video>
+            </div>
             <div class="grid">
               <div>
                 <h4>Brief / Constraint</h4>
@@ -1123,7 +1123,7 @@
       <h2>Let's build the next <em>chapter</em>.</h2>
       <p>If you're hiring marketing leadership, or just want to compare notes, I'd love to talk.</p>
       <div class="links">
-        <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#1d7b6f7c737e746e7e7c7e7871786e697473725d757269707c7471337e7270">
+        <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com">
           Send a note
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
@@ -1140,7 +1140,7 @@
     <div class="container inner">
       <div class="colophon">© Francisca Celestino · 2026 · San Francisco</div>
       <div class="channels">
-        <a href="/cdn-cgi/l/email-protection#e38591828d808a90808280868f8690978a8d8ca38b8c978e828a8fcd808c8e"><span class="__cf_email__" data-cfemail="026470636c616b71616361676e6771766b6c6d426a6d766f636b6e2c616d6f">[email&#160;protected]</span></a>
+        <a href="mailto:franciscacelestino@hotmail.com">franciscacelestino@hotmail.com</a>
         <a href="tel:+14154650887">(415) 465-0887</a>
         <a href="https://www.linkedin.com/in/franciscacelestino" target="_blank" rel="noopener">LinkedIn &#8599;</a>
       </div>
@@ -1148,7 +1148,7 @@
   </footer>
 
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   function init(){
     var root=document.getElementById('pf'); if(!root) return;
