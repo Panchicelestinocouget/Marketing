@@ -107,9 +107,28 @@ h1 {
   margin-bottom: 28px;
   position: relative;
   z-index: 2;
+  flex-wrap: wrap;
 }
 .client-filter label.field-label { margin: 0; flex: 0 0 auto; color: rgba(240,237,201,0.6); }
-.client-filter select { flex: 1; background: var(--healthy); border-color: transparent; color: var(--calm); }
+.client-filter select { flex: 1; min-width: 140px; background: var(--healthy); border-color: transparent; color: var(--calm); }
+#download-btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-stretch: 85%;
+  font-size: 13px;
+  letter-spacing: -0.005em;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(240,237,201,0.45);
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 8px 16px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  transition: all 180ms var(--ease);
+}
+#download-btn:hover { border-color: var(--cream); background: rgba(240,237,201,0.12); }
+#download-btn:active { transform: scale(0.97); }
 
 .totals {
   display: grid;
@@ -180,6 +199,10 @@ input:focus, select:focus {
   border-color: var(--love);
   box-shadow: 0 0 0 2px rgba(60,27,35,0.18);
 }
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.25) sepia(1) saturate(2) hue-rotate(330deg);
+  cursor: pointer;
+}
 
 button#add-btn {
   font-family: var(--font-display);
@@ -227,6 +250,14 @@ button#add-btn:active { transform: scale(0.97); }
 }
 .badge.cliente { background: var(--love); color: var(--joy); }
 .badge.general { background: transparent; color: var(--calm); opacity: 0.65; border: 1px solid rgba(75,62,32,0.3); }
+.row .date-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--calm);
+  opacity: 0.55;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
 .row .client-tag {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -299,6 +330,7 @@ button#add-btn:active { transform: scale(0.97); }
     <select id="client-filter-select">
       <option value="__all__">Todos los clientes</option>
     </select>
+    <button id="download-btn" type="button">Descargar PDF</button>
   </div>
 
   <div class="totals">
@@ -316,11 +348,15 @@ button#add-btn:active { transform: scale(0.97); }
     <div class="ill ill-corner"><svg viewBox="0 0 200 200"><path fill="currentColor" d="M100,4 L116,46 L150,16 L142,58 L188,46 L160,80 L196,98 L160,116 L188,150 L142,138 L150,180 L116,150 L100,196 L84,150 L50,180 L58,138 L12,150 L40,116 L4,98 L40,80 L12,46 L58,58 L50,16 L84,46 Z"/></svg></div>
     <div class="form-row">
       <div class="form-controls-top">
-        <div style="flex: 1.2;">
+        <div style="flex: 0 0 132px;">
+          <label class="field-label" for="date-input">Fecha</label>
+          <input type="date" id="date-input" style="width: 100%;" />
+        </div>
+        <div style="flex: 1;">
           <label class="field-label" for="client-input">Cliente</label>
           <input type="text" id="client-input" placeholder="Ej. Sagitaz" style="width: 100%;" />
         </div>
-        <div style="flex: 2;">
+        <div style="flex: 1.6;">
           <label class="field-label" for="activity-input">Actividad</label>
           <input type="text" id="activity-input" placeholder="Ej. call con Pau y Pedro" style="width: 100%;" />
         </div>
@@ -351,6 +387,7 @@ button#add-btn:active { transform: scale(0.97); }
   <p class="hint">Sincronizado en vivo entre todos tus dispositivos. Usá el campo cliente para filtrar por proyecto.</p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
@@ -382,14 +419,14 @@ let activeClient = '__all__';
 
 function defaultRows() {
   return [
-    { client: 'Sagitaz', activity: 'Reunión primera (kickoff)', hours: 1.0, type: 'general' },
-    { client: 'Sagitaz', activity: 'Agenda de reuniones', hours: 1.3, type: 'general' },
-    { client: 'Sagitaz', activity: 'Viaje a Valencia (ida y vuelta)', hours: 3.0, type: 'cliente' },
-    { client: 'Sagitaz', activity: 'Reunión en la oficina (presencial)', hours: 4.0, type: 'general' },
-    { client: 'Sagitaz', activity: 'Reunión de discovery (lunes 8.30 a 11)', hours: 2.5, type: 'general' },
-    { client: 'Sagitaz', activity: 'Trabajo con Claude, Roles', hours: 2.0, type: 'general' },
-    { client: 'Sagitaz', activity: 'Trabajo con Claude, Discovery', hours: 3.0, type: 'general' },
-    { client: 'Sagitaz', activity: 'Revisión framework (22 jun)', hours: 1.4, type: 'general' }
+    { client: 'Sagitaz', activity: 'Reunión primera (kickoff)', hours: 1.0, type: 'general', date: '2026-06-01' },
+    { client: 'Sagitaz', activity: 'Agenda de reuniones', hours: 1.3, type: 'general', date: '2026-06-01' },
+    { client: 'Sagitaz', activity: 'Viaje a Valencia (ida y vuelta)', hours: 3.0, type: 'cliente', date: '2026-06-09' },
+    { client: 'Sagitaz', activity: 'Reunión en la oficina (presencial)', hours: 4.0, type: 'general', date: '2026-06-09' },
+    { client: 'Sagitaz', activity: 'Reunión de discovery (lunes 8.30 a 11)', hours: 2.5, type: 'general', date: '2026-06-01' },
+    { client: 'Sagitaz', activity: 'Trabajo con Claude, Roles', hours: 2.0, type: 'general', date: '2026-06-09' },
+    { client: 'Sagitaz', activity: 'Trabajo con Claude, Discovery', hours: 3.0, type: 'general', date: '2026-06-01' },
+    { client: 'Sagitaz', activity: 'Revisión framework (22 jun)', hours: 1.4, type: 'general', date: '2026-06-22' }
   ];
 }
 
@@ -407,7 +444,10 @@ function startFirebaseSync() {
     } else {
       rows = Array.isArray(data) ? data.filter(Boolean) : Object.values(data);
     }
-    rows.forEach(r => { if (!r.client) r.client = 'Sin cliente'; });
+    rows.forEach(r => {
+      if (!r.client) r.client = 'Sin cliente';
+      if (!r.date) r.date = '';
+    });
     renderClientOptions();
     render();
   }, (error) => {
@@ -429,6 +469,8 @@ function saveToFirebase() {
 }
 
 function load() {
+  const dateInput = document.getElementById('date-input');
+  if (dateInput && !dateInput.value) dateInput.value = todayStr();
   if (window.__firebaseReady) {
     startFirebaseSync();
   } else {
@@ -444,6 +486,107 @@ function formatNum(n) {
   const num = Math.round(Number(n) * 100) / 100;
   return num.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
+
+function todayStr() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+
+function formatDateLong(dateStr) {
+  if (!dateStr) return 'sin fecha';
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  return parts[2] + '/' + parts[1] + '/' + parts[0];
+}
+
+function generatePdf() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+  const visibleRows = (activeClient === '__all__' ? rows : rows.filter(r => r.client === activeClient))
+    .slice()
+    .sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+
+  const title = activeClient === '__all__' ? 'Todos los clientes' : activeClient;
+  const marginX = 48;
+  let y = 56;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(18);
+  doc.text('Reporte de horas', marginX, y);
+  y += 22;
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(11);
+  doc.setTextColor(90, 90, 90);
+  doc.text(title, marginX, y);
+  y += 14;
+  doc.text('Generado el ' + formatDateLong(todayStr()), marginX, y);
+  y += 28;
+
+  let totalClient = 0;
+  let totalGeneral = 0;
+  visibleRows.forEach(r => {
+    const h = Number(r.hours) || 0;
+    totalClient += h;
+    if (r.type === 'general') totalGeneral += h;
+  });
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(12);
+  doc.setTextColor(20, 20, 20);
+  doc.text('Total: ' + formatNum(totalClient) + ' hs', marginX, y);
+  doc.text('General: ' + formatNum(totalGeneral) + ' hs', marginX + 200, y);
+  y += 24;
+
+  doc.setDrawColor(200, 200, 200);
+  doc.line(marginX, y, 547, y);
+  y += 18;
+
+  const colDate = marginX;
+  const colClient = marginX + 60;
+  const colActivity = marginX + 160;
+  const colType = 430;
+  const colHours = 500;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text('Fecha', colDate, y);
+  doc.text('Cliente', colClient, y);
+  doc.text('Actividad', colActivity, y);
+  doc.text('Tipo', colType, y);
+  doc.text('Horas', colHours, y);
+  y += 10;
+  doc.setDrawColor(220, 220, 220);
+  doc.line(marginX, y, 547, y);
+  y += 14;
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.setTextColor(40, 40, 40);
+
+  visibleRows.forEach(r => {
+    if (y > 770) {
+      doc.addPage();
+      y = 56;
+    }
+    doc.text(formatDateLong(r.date), colDate, y);
+    doc.text(String(r.client || '').slice(0, 18), colClient, y);
+    const activityLines = doc.splitTextToSize(String(r.activity || ''), 250);
+    doc.text(activityLines, colActivity, y);
+    doc.text(r.type === 'cliente' ? 'Cliente' : 'General', colType, y);
+    doc.text(formatNum(r.hours) + ' hs', colHours, y);
+    y += Math.max(16, activityLines.length * 12);
+  });
+
+  const filenameClient = (activeClient === '__all__' ? 'todos' : activeClient).replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+  doc.save('reporte-horas-' + filenameClient + '-' + todayStr() + '.pdf');
+}
+
+document.getElementById('download-btn').addEventListener('click', generatePdf);
 
 function escapeHtml(s) {
   const div = document.createElement('div');
@@ -470,11 +613,20 @@ function renderClientOptions() {
   }
 }
 
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  return parts[2] + '/' + parts[1];
+}
+
 function render() {
   const container = document.getElementById('rows-container');
   container.innerHTML = '';
 
-  const visibleRows = activeClient === '__all__' ? rows : rows.filter(r => r.client === activeClient);
+  const visibleRows = (activeClient === '__all__' ? rows : rows.filter(r => r.client === activeClient))
+    .slice()
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
   if (visibleRows.length === 0) {
     container.innerHTML = '<p class="empty">Todavía no agregaste actividades</p>';
@@ -494,6 +646,7 @@ function render() {
     div.className = 'row';
     div.innerHTML =
       '<span class="badge ' + (isClient ? 'cliente' : 'general') + '">' + (isClient ? 'cliente' : 'general') + '</span>' +
+      (row.date ? '<span class="date-tag">' + formatDate(row.date) + '</span>' : '') +
       (activeClient === '__all__' ? '<span class="client-tag">' + escapeHtml(row.client) + '</span>' : '') +
       '<span class="activity">' + escapeHtml(row.activity) + '</span>' +
       '<span class="hours">' + formatNum(row.hours) + ' hs</span>' +
@@ -523,20 +676,23 @@ document.getElementById('client-filter-select').addEventListener('change', (e) =
 });
 
 document.getElementById('add-btn').addEventListener('click', () => {
+  const dateInput = document.getElementById('date-input');
   const clientInput = document.getElementById('client-input');
   const activityInput = document.getElementById('activity-input');
   const hoursInput = document.getElementById('hours-input');
   const typeInput = document.getElementById('type-input');
+  const date = dateInput.value || todayStr();
   const client = clientInput.value.trim() || 'Sin cliente';
   const activity = activityInput.value.trim();
   const hours = parseFloat(hoursInput.value);
   if (!activity || isNaN(hours) || hours <= 0) return;
-  rows.push({ client, activity, hours, type: typeInput.value });
+  rows.push({ client, activity, hours, type: typeInput.value, date });
   save();
   renderClientOptions();
   render();
   activityInput.value = '';
   hoursInput.value = '';
+  dateInput.value = todayStr();
   activityInput.focus();
 });
 
