@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registro de horas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --growth:   #CFCEB1;
+  --sun:      #C89730;
+  --peace:    #C7D2D8;
+  --cozy:     #B5662A;
+  --joy:      #D2A4BD;
+  --dancing:  #8C8C2F;
+  --calm:     #4B3E20;
+  --love:     #3C1B23;
+  --flowers:  #A6ADBE;
+  --healthy:  #D8DDB6;
+  --rest:     #BD5F2F;
+  --art:      #C4A8A0;
+
+  --paper:        #E0DFB9;
+  --paper-soft:   #E6E4C0;
+  --paper-deep:   #C8C69A;
+  --cream:        #F0EDC9;
+
+  --ink:          var(--calm);
+  --ink-soft:     rgba(75,62,32,0.82);
+  --ink-mute:     rgba(75,62,32,0.58);
+  --ink-faint:    rgba(75,62,32,0.30);
+
+  --font-display: "Bricolage Grotesque","Helvetica Neue",system-ui,sans-serif;
+  --font-text:    "DM Sans","Helvetica Neue",system-ui,sans-serif;
+  --font-mono:    "JetBrains Mono",ui-monospace,Menlo,monospace;
+
+  --ease: cubic-bezier(0.2,0.6,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--dancing);
+  color: var(--cream);
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body { padding: 48px 24px; overflow-x: hidden; }
+
+.ill { position: absolute; pointer-events: none; z-index: 5; }
+.ill svg { width: 100%; height: 100%; display: block; }
+.ill-1 { top: 1%; right: 1%; width: 150px; aspect-ratio: 1/1; color: var(--sun); opacity: 0.9; transform: rotate(-10deg); }
+.ill-2 { top: 20%; left: -5%; width: 170px; aspect-ratio: 1/1.15; color: var(--joy); opacity: 0.85; transform: rotate(16deg); }
+.ill-3 { bottom: 4%; right: 3%; width: 130px; aspect-ratio: 1/1; color: var(--rest); opacity: 0.85; transform: rotate(-6deg); }
+.ill-4 { bottom: 8%; left: 1%; width: 100px; aspect-ratio: 1/0.9; color: var(--cream); opacity: 0.75; transform: rotate(8deg); }
+.ill-5 { top: 36%; right: 6%; width: 42px; aspect-ratio: 1/1; color: var(--cozy); opacity: 0.9; }
+.ill-6 { top: 62%; left: 4%; width: 34px; aspect-ratio: 1/1; color: var(--peace); opacity: 0.9; }
+.ill-7 { top: 48%; right: 22%; width: 26px; aspect-ratio: 1/1; color: var(--sun); opacity: 0.85; }
+.ill-8 { bottom: 30%; left: 18%; width: 26px; aspect-ratio: 1/1; color: var(--cream); opacity: 0.8; }
+
+.wrap { max-width: 640px; margin: 0 auto; position: relative; z-index: 10; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,237,201,0.65);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.eyebrow::before { content: ""; width: 20px; height: 1px; background: currentColor; opacity: 0.7; }
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 80%;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(28px, 5vw, 38px);
+  color: var(--cream);
+  margin: 0 0 8px;
+}
+
+.lede {
+  font-family: var(--font-text);
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(240,237,201,0.78);
+  margin: 0 0 28px;
+  max-width: 50ch;
+}
+
+.client-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+}
+.client-filter label.field-label { margin: 0; flex: 0 0 auto; color: rgba(240,237,201,0.6); }
+.client-filter select { flex: 1; background: var(--healthy); border-color: transparent; color: var(--calm); }
+
+.totals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
+}
+.total-card { border-radius: 16px; padding: 18px 20px; }
+.total-card.is-accent { background: var(--joy); color: var(--love); }
+.total-card.is-soft { background: var(--peace); color: var(--calm); }
+
+.total-card .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  opacity: 0.7;
+}
+.total-card .value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 80%;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.total-card .value .unit { font-size: 15px; font-weight: 500; margin-left: 4px; opacity: 0.75; }
+
+.form-block {
+  border-radius: 16px;
+  background: var(--sun);
+  padding: 18px;
+  margin-bottom: 32px;
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
+}
+.form-block .ill-corner { top: -16px; right: -14px; width: 56px; aspect-ratio: 1/1; color: var(--cozy); opacity: 0.9; transform: rotate(10deg); z-index: 6; }
+.form-row { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.form-controls { display: flex; gap: 10px; }
+.form-controls-top { display: flex; gap: 10px; }
+
+label.field-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--calm);
+  opacity: 0.65;
+  margin-bottom: 4px;
+  display: block;
+}
+
+input, select, button {
+  font-family: var(--font-text);
+  font-size: 14px;
+  border: 1px solid rgba(75,62,32,0.25);
+  border-radius: 8px;
+  padding: 9px 12px;
+  background: var(--cream);
+  color: var(--calm);
+}
+input::placeholder { color: rgba(75,62,32,0.45); }
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--love);
+  box-shadow: 0 0 0 2px rgba(60,27,35,0.18);
+}
+
+button#add-btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 85%;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  background: var(--love);
+  color: var(--joy);
+  border: 1px solid var(--love);
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 9px 20px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  transition: opacity 180ms var(--ease);
+}
+button#add-btn:hover { opacity: 0.88; }
+button#add-btn:active { transform: scale(0.97); }
+
+.rows {
+  position: relative;
+  z-index: 2;
+  background: var(--flowers);
+  border-radius: 16px;
+  padding: 4px 16px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(75,62,32,0.18);
+}
+.row:last-child { border-bottom: none; }
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.badge.cliente { background: var(--love); color: var(--joy); }
+.badge.general { background: transparent; color: var(--calm); opacity: 0.65; border: 1px solid rgba(75,62,32,0.3); }
+.row .client-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--calm);
+  opacity: 0.6;
+  flex: 0 0 auto;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.row .activity { font-family: var(--font-text); font-size: 15px; flex: 1; word-break: break-word; color: var(--calm); }
+.row .hours {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 56px;
+  text-align: right;
+  color: var(--calm);
+}
+.row .del {
+  border: none;
+  background: transparent;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--calm);
+  opacity: 0.5;
+  font-size: 18px;
+  line-height: 1;
+}
+.row .del:hover { color: var(--love); opacity: 1; }
+
+.hint {
+  font-family: var(--font-text);
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(240,237,201,0.6);
+  margin-top: 16px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+.empty {
+  font-family: var(--font-text);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--calm);
+  opacity: 0.6;
+  padding: 24px 0;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="ill ill-1"><svg viewBox="0 0 200 200"><path fill="currentColor" d="M100,4 L116,46 L150,16 L142,58 L188,46 L160,80 L196,98 L160,116 L188,150 L142,138 L150,180 L116,150 L100,196 L84,150 L50,180 L58,138 L12,150 L40,116 L4,98 L40,80 L12,46 L58,58 L50,16 L84,46 Z"/></svg></div>
+<div class="ill ill-2"><svg viewBox="0 0 220 180"><path fill="currentColor" d="M52,16 C100,4 130,28 158,32 C200,38 218,72 210,108 C202,148 170,172 124,170 C82,168 48,160 28,138 C4,110 8,76 18,52 C26,32 38,20 52,16 Z"/></svg></div>
+<div class="ill ill-3"><svg viewBox="0 0 200 160"><path fill="currentColor" d="M28,40 C72,8 154,4 184,68 C198,108 174,150 116,154 C72,156 30,140 16,108 C44,116 76,118 100,108 C124,98 138,80 134,60 C130,42 102,30 70,32 C50,34 38,36 28,40 Z"/></svg></div>
+<div class="ill ill-4"><svg viewBox="0 0 200 200"><path fill="currentColor" d="M22,196 L24,82 C28,38 60,8 100,8 C142,8 174,38 178,82 L180,196 L142,196 L140,86 C138,66 122,52 100,52 C78,52 62,66 60,86 L58,196 Z"/></svg></div>
+<div class="ill ill-5"><svg viewBox="0 0 60 60"><path fill="currentColor" d="M30,2 C32,18 34,26 46,28 C58,30 56,30 46,32 C34,34 32,42 30,58 C28,42 26,34 14,32 C2,30 4,30 14,28 C26,26 28,18 30,2 Z"/></svg></div>
+<div class="ill ill-6"><svg viewBox="0 0 60 60"><path fill="currentColor" d="M30,2 C32,18 34,26 46,28 C58,30 56,30 46,32 C34,34 32,42 30,58 C28,42 26,34 14,32 C2,30 4,30 14,28 C26,26 28,18 30,2 Z"/></svg></div>
+
+<div class="wrap">
+  <p class="eyebrow">Registro de horas</p>
+  <h1>Cuánto le dedico a cada cliente</h1>
+  <p class="lede">General es lo que pasaría con cualquier cliente. Específica es lo propio de ese proyecto puntual, como un viaje.</p>
+
+  <div class="client-filter">
+    <label class="field-label" for="client-filter-select">Ver</label>
+    <select id="client-filter-select">
+      <option value="__all__">Todos los clientes</option>
+    </select>
+  </div>
+
+  <div class="totals">
+    <div class="total-card is-accent">
+      <p class="label" id="total-client-label">Para el cliente, total</p>
+      <p class="value" id="total-client">0<span class="unit">hs</span></p>
+    </div>
+    <div class="total-card is-soft">
+      <p class="label">General, replicable</p>
+      <p class="value" id="total-general">0<span class="unit">hs</span></p>
+    </div>
+  </div>
+
+  <div class="form-block">
+    <div class="ill ill-corner"><svg viewBox="0 0 200 200"><path fill="currentColor" d="M100,4 L116,46 L150,16 L142,58 L188,46 L160,80 L196,98 L160,116 L188,150 L142,138 L150,180 L116,150 L100,196 L84,150 L50,180 L58,138 L12,150 L40,116 L4,98 L40,80 L12,46 L58,58 L50,16 L84,46 Z"/></svg></div>
+    <div class="form-row">
+      <div class="form-controls-top">
+        <div style="flex: 1.2;">
+          <label class="field-label" for="client-input">Cliente</label>
+          <input type="text" id="client-input" placeholder="Ej. Sagitaz" style="width: 100%;" />
+        </div>
+        <div style="flex: 2;">
+          <label class="field-label" for="activity-input">Actividad</label>
+          <input type="text" id="activity-input" placeholder="Ej. call con Pau y Pedro" style="width: 100%;" />
+        </div>
+      </div>
+      <div class="form-controls">
+        <div style="flex: 0 0 90px;">
+          <label class="field-label" for="hours-input">Horas</label>
+          <input type="number" id="hours-input" placeholder="0.0" step="0.1" min="0" style="width: 100%;" />
+        </div>
+        <div style="flex: 1.4; min-width: 0;">
+          <label class="field-label" for="type-input">Tipo</label>
+          <select id="type-input" style="width: 100%;">
+            <option value="general">General, replicable</option>
+            <option value="cliente">Específica del cliente</option>
+          </select>
+        </div>
+        <div style="flex: 0 0 auto; display: flex; flex-direction: column; justify-content: flex-end;">
+          <button id="add-btn">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="rows-container" class="rows">
+    <p class="empty">Conectando con la base de datos…</p>
+  </div>
+
+  <p class="hint">Sincronizado en vivo entre todos tus dispositivos. Usá el campo cliente para filtrar por proyecto.</p>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBemHMUUHjlZDnCXHuW-iygdnYx0QCTcI4",
+  authDomain: "horas-proyectos-consulting.firebaseapp.com",
+  databaseURL: "https://horas-proyectos-consulting-default-rtdb.firebaseio.com",
+  projectId: "horas-proyectos-consulting",
+  storageBucket: "horas-proyectos-consulting.firebasestorage.app",
+  messagingSenderId: "806126260376",
+  appId: "1:806126260376:web:3f312d536e22b9ec8fc0ed"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const rowsRef = ref(db, 'rows');
+
+window.__firebaseRowsRef = rowsRef;
+window.__firebaseSet = set;
+window.__firebaseOnValue = onValue;
+window.__firebaseReady = true;
+window.dispatchEvent(new Event('firebase-ready'));
+</script>
+<script>
+const STORAGE_KEY = 'horas-multi-cliente';
+let rows = [];
+let activeClient = '__all__';
+
+function defaultRows() {
+  return [
+    { client: 'Sagitaz', activity: 'Reunión primera (kickoff)', hours: 1.0, type: 'general' },
+    { client: 'Sagitaz', activity: 'Agenda de reuniones', hours: 1.3, type: 'general' },
+    { client: 'Sagitaz', activity: 'Viaje a Valencia (ida y vuelta)', hours: 3.0, type: 'cliente' },
+    { client: 'Sagitaz', activity: 'Reunión en la oficina (presencial)', hours: 4.0, type: 'general' },
+    { client: 'Sagitaz', activity: 'Reunión de discovery (lunes 8.30 a 11)', hours: 2.5, type: 'general' },
+    { client: 'Sagitaz', activity: 'Trabajo con Claude, Roles', hours: 2.0, type: 'general' },
+    { client: 'Sagitaz', activity: 'Trabajo con Claude, Discovery', hours: 3.0, type: 'general' },
+    { client: 'Sagitaz', activity: 'Revisión framework (22 jun)', hours: 1.4, type: 'general' }
+  ];
+}
+
+let firebaseInitialized = false;
+
+function startFirebaseSync() {
+  if (firebaseInitialized) return;
+  firebaseInitialized = true;
+
+  window.__firebaseOnValue(window.__firebaseRowsRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data === null) {
+      rows = defaultRows();
+      saveToFirebase();
+    } else {
+      rows = Array.isArray(data) ? data.filter(Boolean) : Object.values(data);
+    }
+    rows.forEach(r => { if (!r.client) r.client = 'Sin cliente'; });
+    renderClientOptions();
+    render();
+  }, (error) => {
+    console.error('Error de sincronizacion con Firebase', error);
+    showSyncError();
+  });
+}
+
+function showSyncError() {
+  const hint = document.querySelector('.hint');
+  if (hint) hint.textContent = 'No se pudo conectar con la base de datos. Revisa tu conexion y recarga la pagina.';
+}
+
+function saveToFirebase() {
+  window.__firebaseSet(window.__firebaseRowsRef, rows).catch((e) => {
+    console.error('No se pudo guardar en Firebase', e);
+    showSyncError();
+  });
+}
+
+function load() {
+  if (window.__firebaseReady) {
+    startFirebaseSync();
+  } else {
+    window.addEventListener('firebase-ready', startFirebaseSync, { once: true });
+  }
+}
+
+function save() {
+  saveToFirebase();
+}
+
+function formatNum(n) {
+  const num = Math.round(Number(n) * 100) / 100;
+  return num.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+}
+
+function escapeHtml(s) {
+  const div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
+}
+
+function getClients() {
+  const set = new Set(rows.map(r => r.client));
+  return Array.from(set).sort((a, b) => a.localeCompare(b));
+}
+
+function renderClientOptions() {
+  const select = document.getElementById('client-filter-select');
+  const clients = getClients();
+  const prevValue = activeClient;
+  select.innerHTML = '<option value="__all__">Todos los clientes</option>' +
+    clients.map(c => '<option value="' + escapeHtml(c) + '">' + escapeHtml(c) + '</option>').join('');
+  if (clients.includes(prevValue) || prevValue === '__all__') {
+    select.value = prevValue;
+  } else {
+    select.value = '__all__';
+    activeClient = '__all__';
+  }
+}
+
+function render() {
+  const container = document.getElementById('rows-container');
+  container.innerHTML = '';
+
+  const visibleRows = activeClient === '__all__' ? rows : rows.filter(r => r.client === activeClient);
+
+  if (visibleRows.length === 0) {
+    container.innerHTML = '<p class="empty">Todavía no agregaste actividades</p>';
+  }
+
+  let totalClient = 0;
+  let totalGeneral = 0;
+
+  visibleRows.forEach((row) => {
+    const idx = rows.indexOf(row);
+    const h = Number(row.hours) || 0;
+    totalClient += h;
+    if (row.type === 'general') totalGeneral += h;
+
+    const isClient = row.type === 'cliente';
+    const div = document.createElement('div');
+    div.className = 'row';
+    div.innerHTML =
+      '<span class="badge ' + (isClient ? 'cliente' : 'general') + '">' + (isClient ? 'cliente' : 'general') + '</span>' +
+      (activeClient === '__all__' ? '<span class="client-tag">' + escapeHtml(row.client) + '</span>' : '') +
+      '<span class="activity">' + escapeHtml(row.activity) + '</span>' +
+      '<span class="hours">' + formatNum(row.hours) + ' hs</span>' +
+      '<button class="del" data-idx="' + idx + '" aria-label="Eliminar">&times;</button>';
+    container.appendChild(div);
+  });
+
+  const labelEl = document.getElementById('total-client-label');
+  labelEl.textContent = activeClient === '__all__' ? 'Total general, todos' : 'Para ' + activeClient + ', total';
+
+  document.getElementById('total-client').innerHTML = formatNum(totalClient) + '<span class="unit">hs</span>';
+  document.getElementById('total-general').innerHTML = formatNum(totalGeneral) + '<span class="unit">hs</span>';
+
+  container.querySelectorAll('.del').forEach(btn => {
+    btn.addEventListener('click', () => {
+      rows.splice(Number(btn.dataset.idx), 1);
+      save();
+      renderClientOptions();
+      render();
+    });
+  });
+}
+
+document.getElementById('client-filter-select').addEventListener('change', (e) => {
+  activeClient = e.target.value;
+  render();
+});
+
+document.getElementById('add-btn').addEventListener('click', () => {
+  const clientInput = document.getElementById('client-input');
+  const activityInput = document.getElementById('activity-input');
+  const hoursInput = document.getElementById('hours-input');
+  const typeInput = document.getElementById('type-input');
+  const client = clientInput.value.trim() || 'Sin cliente';
+  const activity = activityInput.value.trim();
+  const hours = parseFloat(hoursInput.value);
+  if (!activity || isNaN(hours) || hours <= 0) return;
+  rows.push({ client, activity, hours, type: typeInput.value });
+  save();
+  renderClientOptions();
+  render();
+  activityInput.value = '';
+  hoursInput.value = '';
+  activityInput.focus();
+});
+
+document.getElementById('hours-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('add-btn').click();
+});
+document.getElementById('activity-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('hours-input').focus();
+});
+document.getElementById('client-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('activity-input').focus();
+});
+
+load();
+</script>
+</body>
+</html>
