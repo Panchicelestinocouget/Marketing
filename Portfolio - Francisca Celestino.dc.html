@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="image-slot.js"></script>
+  <style>
+    :root {
+      --growth:#CFCEB1; --sun:#C89730; --peace:#C7D2D8; --cozy:#B5662A; --joy:#D2A4BD;
+      --dancing:#8C8C2F; --calm:#4B3E20; --love:#3C1B23; --flowers:#A6ADBE; --healthy:#D8DDB6;
+      --rest:#BD5F2F; --art:#C4A8A0;
+      --paper:#E0DFB9; --paper-soft:#E6E4C0; --paper-deep:#C8C69A; --cream:#F0EDC9;
+      --ink:var(--calm); --ink-soft:rgba(75,62,32,0.82); --ink-mute:rgba(75,62,32,0.58); --ink-faint:rgba(75,62,32,0.30);
+      --font-display:"Bricolage Grotesque","Helvetica Neue",system-ui,sans-serif;
+      --font-text:"DM Sans","Helvetica Neue",system-ui,sans-serif;
+      --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+      --container:1180px; --ease:cubic-bezier(0.2,0.6,0.2,1);
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; overflow-x: hidden; }
+    #pf {
+      background: var(--paper); color: var(--ink); font-family: var(--font-text);
+      font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility; position: relative;
+    }
+    ::selection { background: var(--rest); color: var(--cream); }
+    #pf a { color: inherit; text-decoration: none; }
+    #pf img, #pf svg { display: block; max-width: 100%; }
+    #pf button { font: inherit; cursor: pointer; }
+
+    /* Worn paper texture */
+    #pf::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+      opacity: 0.78; mix-blend-mode: multiply;
+      background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'><filter id='a'><feTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='4' seed='7'/><feColorMatrix values='0 0 0 0 0.28  0 0 0 0 0.22  0 0 0 0 0.11  0 0 0 0.26 0'/></filter><rect width='100%25' height='100%25' filter='url(%23a)'/></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><filter id='b'><feTurbulence type='fractalNoise' baseFrequency='0.06' numOctaves='1' seed='3'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.07  0 0 0 0.20 0'/></filter><rect width='100%25' height='100%25' filter='url(%23b)'/></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.07  0 0 0 0.22 0'/></filter><rect width='100%25' height='100%25' filter='url(%23c)'/></svg>");
+      background-size: 1600px 1600px, 600px 600px, 220px 220px;
+    }
+    #pf[data-texture="off"]::after { display: none; }
+    #pf::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 99;
+      background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 60%, rgba(75,62,32,0.18) 100%);
+    }
+
+    /* Type */
+    #pf .display, #pf h1, #pf h2 {
+      font-family: var(--font-display); font-weight: 700; font-stretch: 80%;
+      letter-spacing: -0.032em; line-height: 0.96; text-wrap: balance; margin: 0;
+    }
+    #pf .h-section {
+      font-family: var(--font-display); font-weight: 700; font-stretch: 80%;
+      font-size: clamp(40px, 5.4vw, 76px); line-height: 0.98; letter-spacing: -0.03em;
+      text-wrap: balance; margin: 0;
+    }
+    #pf .lede {
+      font-family: var(--font-text); font-weight: 400; font-size: clamp(19px, 2.1vw, 24px);
+      line-height: 1.5; text-wrap: pretty; max-width: 60ch; opacity: 0.85;
+    }
+    #pf .eyebrow {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em;
+      text-transform: uppercase; opacity: 0.65;
+    }
+
+    /* Layout */
+    #pf .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+    #pf section { padding: clamp(80px, 12vw, 140px) 0; position: relative; isolation: isolate; overflow: hidden; }
+    @media (max-width: 720px) { #pf .container { padding: 0 22px; } }
+
+    #pf .sec-dancing { background: var(--dancing); color: var(--cream); }
+    #pf .sec-love    { background: var(--love);    color: var(--joy); }
+    #pf .sec-rest    { background: var(--rest);    color: var(--cream); }
+    #pf .sec-peace   { background: var(--peace);   color: var(--ink); }
+
+    /* Nav */
+    #pf nav.top {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+      background: color-mix(in srgb, var(--paper) 78%, transparent);
+      border-bottom: 1px solid rgba(75,62,32,0.12);
+    }
+    #pf nav.top .inner {
+      max-width: var(--container); margin: 0 auto; padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    #pf .brand {
+      font-family: var(--font-display); font-weight: 700; font-stretch: 80%; font-size: 18px;
+      letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 10px; color: var(--ink);
+    }
+    #pf .brand .dot { width: 14px; height: 14px; background: var(--rest); border-radius: 999px; box-shadow: 0 0 0 3px var(--joy); }
+    #pf .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; }
+    #pf .nav-links a { color: var(--ink-soft); transition: color 180ms var(--ease); }
+    #pf .nav-links a:hover { color: var(--ink); }
+    #pf .nav-links .cta {
+      color: var(--cream); background: var(--rest); padding: 9px 16px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 8px; transition: all 180ms var(--ease);
+    }
+    #pf .nav-links .cta:hover { background: var(--cozy); }
+    #pf .nav-links .cta svg { width: 12px; height: 12px; }
+    @media (max-width: 640px) {
+      #pf nav.top .inner { padding: 14px 22px; }
+      #pf .nav-links a:not(.cta) { display: none; }
+    }
+
+    /* Cut-paper illustration positioning */
+    #pf .ill { position: absolute; pointer-events: none; z-index: 0; }
+    #pf .ill svg { width: 100%; height: 100%; display: block; }
+
+    /* Hero */
+    #pf .hero { padding-top: clamp(72px, 12vw, 140px); padding-bottom: clamp(48px, 7vw, 80px); }
+    #pf .hero .inner { position: relative; z-index: 2; }
+    #pf .hero .ill-1 { top: 6%; right: 6%; width: clamp(140px, 18vw, 240px); aspect-ratio: 1/1; color: var(--sun); transform: rotate(-12deg); }
+    #pf .hero .ill-2 { top: 18%; left: -4%; width: clamp(140px, 20vw, 280px); aspect-ratio: 1/1.2; color: var(--joy); transform: rotate(18deg); }
+    #pf .hero .ill-3 { bottom: 0%; right: 6%; width: clamp(120px, 14vw, 200px); aspect-ratio: 1/1; color: var(--dancing); transform: rotate(-6deg); }
+    #pf .hero .ill-4 { bottom: 6%; left: 6%; width: clamp(110px, 15vw, 200px); aspect-ratio: 1/0.9; color: var(--rest); transform: rotate(8deg); }
+    #pf .hero .ill-5 { top: 10%; right: 36%; width: 56px; aspect-ratio: 1/1; color: var(--cozy); }
+
+    #pf .hero-tag {
+      display: inline-flex; align-items: center; gap: 12px; padding: 9px 18px;
+      background: var(--love); border-radius: 999px; color: var(--joy);
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 36px;
+    }
+    #pf .hero-tag::before {
+      content: ""; width: 6px; height: 6px; background: var(--joy); border-radius: 999px;
+      box-shadow: 0 0 0 4px rgba(210,164,189,0.30); animation: pf-pulse 2.4s var(--ease) infinite;
+    }
+    @keyframes pf-pulse {
+      0%,100% { box-shadow: 0 0 0 4px rgba(210,164,189,0.30); }
+      50%    { box-shadow: 0 0 0 10px rgba(210,164,189,0); }
+    }
+
+    #pf h1.hero-title {
+      font-size: clamp(64px, 12vw, 168px); margin: 0 0 28px;
+      letter-spacing: -0.038em; line-height: 0.86;
+    }
+    #pf h1.hero-title .light { font-weight: 400; font-stretch: 86%; display: block; color: var(--ink-soft); }
+    #pf h1.hero-title .heavy { font-weight: 800; font-stretch: 75%; display: block; color: var(--ink); }
+    #pf h1.hero-title .heavy em { font-style: normal; color: var(--cozy); position: relative; display: inline-block; }
+    #pf h1.hero-title .heavy em::after {
+      content: ""; position: absolute; left: -0.05em; right: -0.05em; bottom: 0.04em;
+      height: 0.14em; background: var(--sun); transform-origin: left;
+      animation: pf-underline 1.4s var(--ease) 0.6s both; z-index: -1;
+    }
+    #pf[data-heroaccent="rest"] h1.hero-title .heavy em { color: var(--rest); }
+    #pf[data-heroaccent="rest"] h1.hero-title .heavy em::after { background: var(--cozy); }
+    #pf[data-heroaccent="joy"] h1.hero-title .heavy em { color: var(--love); }
+    #pf[data-heroaccent="joy"] h1.hero-title .heavy em::after { background: var(--joy); }
+    @keyframes pf-underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    #pf .hero-sub { margin-bottom: 48px; color: var(--ink-soft); max-width: 56ch; }
+    #pf .hero-meta {
+      margin-top: 8px; display: flex; flex-wrap: wrap; gap: 20px 40px;
+      padding-top: 24px; border-top: 1px solid rgba(75,62,32,0.20); align-items: baseline;
+    }
+    #pf .hero-meta .item .k {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-mute); margin-bottom: 6px;
+    }
+    #pf .hero-meta .item .v {
+      font-family: var(--font-display); font-weight: 600; font-stretch: 88%;
+      font-size: 17px; letter-spacing: -0.01em; color: var(--ink);
+    }
+    #pf .hero-meta .item .v a { border-bottom: 1px solid rgba(75,62,32,0.30); padding-bottom: 1px; transition: border-color 180ms var(--ease); }
+    #pf .hero-meta .item .v a:hover { border-bottom-color: var(--ink); }
+
+    /* Section head */
+    #pf .section-head { display: grid; grid-template-columns: 140px 1fr; gap: 24px; margin-bottom: 48px; align-items: start; }
+    #pf .section-head .label .num, #pf .section-head .label .role {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.65;
+    }
+    #pf .section-head .label .role { margin-top: 8px; display: block; opacity: 0.5; }
+    #pf .section-head .aside { color: inherit; opacity: 0.7; font-family: var(--font-text); font-size: 16px; max-width: 38ch; margin-top: 16px; line-height: 1.55; }
+    @media (max-width: 840px) { #pf .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; } }
+
+    /* STATS (olive) */
+    #pf .stats.sec-dancing .h-section, #pf .stats.sec-dancing .section-head .label .num, #pf .stats.sec-dancing .section-head .label .role { color: var(--cream); }
+    #pf .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(240,237,201,0.22); }
+    #pf .stat { padding: 32px 24px; border-bottom: 1px solid rgba(240,237,201,0.22); border-right: 1px solid rgba(240,237,201,0.22); position: relative; }
+    #pf .stat:nth-child(3n) { border-right: none; }
+    #pf .stat:nth-last-child(-n+3) { border-bottom: none; }
+    #pf .stat .num { font-family: var(--font-display); font-weight: 800; font-stretch: 75%; font-size: clamp(54px, 6.4vw, 88px); line-height: 0.9; letter-spacing: -0.04em; color: var(--cream); }
+    #pf .stat .num em { font-style: normal; color: var(--sun); }
+    #pf .stat .where { display: inline-block; margin-top: 18px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--calm); padding: 5px 10px; background: var(--cream); border-radius: 4px; }
+    #pf .stat .label { font-family: var(--font-text); font-size: 14px; color: rgba(240,237,201,0.78); margin-top: 14px; line-height: 1.5; text-wrap: pretty; }
+    @media (max-width: 720px) {
+      #pf .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      #pf .stat:nth-child(3n) { border-right: 1px solid rgba(240,237,201,0.22); }
+      #pf .stat:nth-child(2n) { border-right: none; }
+      #pf .stat:nth-last-child(-n+3) { border-bottom: 1px solid rgba(240,237,201,0.22); }
+      #pf .stat:nth-last-child(-n+2) { border-bottom: none; }
+    }
+
+    /* PRINCIPLES (paper) */
+    #pf .principles-section .ill-p1 { top: 8%; right: -4%; width: clamp(160px, 18vw, 260px); aspect-ratio: 1/1; color: var(--joy); transform: rotate(-12deg); opacity: 0.7; }
+    #pf .principles-section .ill-p2 { bottom: 6%; left: -3%; width: clamp(140px, 16vw, 220px); aspect-ratio: 1/1; color: var(--peace); transform: rotate(14deg); opacity: 0.8; }
+    #pf .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 840px) { #pf .principles { grid-template-columns: 1fr; } }
+    #pf .principle {
+      border-radius: 14px; padding: 36px 32px; position: relative; overflow: hidden; isolation: isolate;
+      min-height: 320px; display: flex; flex-direction: column; gap: 16px; transition: transform 280ms var(--ease);
+    }
+    #pf .principle:hover { transform: translateY(-3px); }
+    #pf .principle > *:not(.ill) { position: relative; z-index: 1; }
+    #pf .principle.p1 { background: var(--sun); color: var(--calm); }
+    #pf .principle.p1 .ill-corner { color: var(--cozy); }
+    #pf .principle.p2 { background: var(--joy); color: var(--love); }
+    #pf .principle.p2 .ill-corner { color: var(--rest); }
+    #pf .principle.p3 { background: var(--peace); color: var(--calm); }
+    #pf .principle.p3 .ill-corner { color: var(--love); }
+    #pf .principle .num { font-family: var(--font-display); font-weight: 800; font-stretch: 75%; font-size: 48px; line-height: 0.85; letter-spacing: -0.04em; opacity: 0.88; }
+    #pf .principle h3 { font-family: var(--font-display); font-weight: 700; font-stretch: 82%; font-size: 24px; letter-spacing: -0.02em; line-height: 1.1; margin: 0; text-wrap: balance; }
+    #pf .principle p { font-size: 15px; line-height: 1.55; margin: 0; opacity: 0.85; text-wrap: pretty; }
+    #pf .principle .ill-corner { position: absolute; bottom: -32px; right: -28px; width: 150px; aspect-ratio: 1/1; opacity: 0.55; z-index: 0; }
+
+    /* CAREER (aubergine) */
+    #pf .career .ill-c1 { top: -6%; left: -4%; width: 320px; aspect-ratio: 1/1; color: var(--cozy); opacity: 0.6; transform: rotate(-20deg); }
+    #pf .career .ill-c2 { bottom: -8%; right: -6%; width: 260px; aspect-ratio: 1/1; color: var(--dancing); opacity: 0.55; transform: rotate(18deg); }
+    #pf .career .ill-c3 { top: 50%; right: 10%; width: 46px; aspect-ratio: 1/1; color: var(--sun); }
+    #pf .career.sec-love .h-section, #pf .career.sec-love .section-head .label .num, #pf .career.sec-love .section-head .label .role, #pf .career.sec-love .section-head .aside { color: var(--joy); }
+    #pf .career.sec-love .section-head .label .num, #pf .career.sec-love .section-head .label .role { opacity: 0.6; }
+    #pf .career.sec-love .section-head .aside { opacity: 0.78; }
+    #pf .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(210,164,189,0.30); border-bottom: 1px solid rgba(210,164,189,0.30); }
+    #pf .tl-item { padding: 28px 22px; border-right: 1px solid rgba(210,164,189,0.30); display: block; transition: background 180ms var(--ease); }
+    #pf .tl-item:last-child { border-right: none; }
+    #pf .tl-item:hover { background: rgba(210,164,189,0.06); }
+    #pf .tl-item .yr { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sun); margin-bottom: 12px; }
+    #pf .tl-item .co { font-family: var(--font-display); font-weight: 700; font-stretch: 82%; font-size: 22px; letter-spacing: -0.02em; line-height: 1.1; color: var(--cream); margin-bottom: 10px; transition: color 180ms var(--ease); }
+    #pf .tl-item:hover .co { color: var(--sun); }
+    #pf .tl-item .co .arrow { font-weight: 400; opacity: 0.6; margin-left: 4px; font-size: 14px; }
+    #pf .tl-item .desc { font-family: var(--font-text); font-size: 13px; color: rgba(210,164,189,0.95); font-weight: 500; margin-bottom: 6px; }
+    #pf .tl-item .role { font-family: var(--font-text); font-size: 12px; color: rgba(210,164,189,0.62); line-height: 1.5; }
+    @media (max-width: 720px) {
+      #pf .timeline { grid-template-columns: 1fr 1fr; }
+      #pf .tl-item:nth-child(2) { border-right: none; }
+      #pf .tl-item:nth-child(-n+2) { border-bottom: 1px solid rgba(210,164,189,0.30); }
+    }
+
+    /* CASE STUDIES (paper) */
+    #pf .cases-section .ill-cs1 { top: 4%; right: -4%; width: 260px; aspect-ratio: 1/1; color: var(--peace); opacity: 0.65; transform: rotate(-12deg); }
+    #pf .cases-section .ill-cs2 { bottom: 4%; left: -3%; width: 200px; aspect-ratio: 1/1; color: var(--healthy); opacity: 0.7; transform: rotate(8deg); }
+    #pf .filter-bar { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+    #pf .chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    #pf .filter-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-right: 6px; }
+    #pf .chip { font-family: var(--font-text); font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(75,62,32,0.22); background: transparent; color: var(--ink-soft); cursor: pointer; transition: all 160ms var(--ease); letter-spacing: 0; }
+    #pf .chip:hover { border-color: var(--rest); color: var(--rest); }
+    #pf .chip.active { background: var(--rest); color: var(--cream); border-color: var(--rest); }
+    #pf .expand-all { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(75,62,32,0.22); background: transparent; color: var(--ink-mute); cursor: pointer; margin-left: auto; transition: all 160ms var(--ease); }
+    #pf .expand-all:hover { color: var(--rest); border-color: var(--rest); }
+    #pf .cases { display: flex; flex-direction: column; gap: 10px; }
+    #pf .case { background: var(--paper-soft); border: 1px solid rgba(75,62,32,0.10); border-radius: 10px; overflow: hidden; transition: border-color 160ms var(--ease); }
+    #pf .case[hidden] { display: none; }
+    #pf .case[open] { border-color: rgba(75,62,32,0.22); }
+    #pf .case summary { list-style: none; cursor: pointer; padding: 22px 28px; display: grid; grid-template-columns: 100px 1fr auto; gap: 16px; align-items: center; transition: background 160ms var(--ease); }
+    #pf .case summary::-webkit-details-marker { display: none; }
+    #pf .case summary:hover { background: rgba(75,62,32,0.04); }
+    #pf .case[open] summary { background: rgba(75,62,32,0.04); border-bottom: 1px solid rgba(75,62,32,0.10); }
+    #pf .case .case-yr { font-family: var(--font-mono); font-weight: 500; font-size: 12px; color: var(--rest); letter-spacing: 0.12em; text-transform: uppercase; }
+    #pf .case .case-meta { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+    #pf .case .case-brand { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-mute); }
+    #pf .case .case-title { font-family: var(--font-display); font-weight: 700; font-stretch: 86%; font-size: 19px; letter-spacing: -0.02em; color: var(--ink); line-height: 1.25; text-wrap: balance; }
+    #pf .case .case-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; justify-content: flex-end; max-width: 300px; }
+    #pf .case .stag { font-family: var(--font-mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; padding: 5px 10px; border-radius: 999px; white-space: nowrap; }
+    #pf .case .stag.creative  { background: var(--joy);    color: var(--love); }
+    #pf .case .stag.strategy  { background: var(--peace);  color: var(--calm); }
+    #pf .case .stag.ops       { background: var(--dancing); color: var(--cream); }
+    #pf .case .stag.innov     { background: var(--cozy);   color: var(--healthy); }
+    #pf .case .stag.cpg       { background: var(--sun);    color: var(--calm); }
+    #pf .case .stag.dtc       { background: var(--art);    color: var(--love); }
+    #pf .case .stag.startup   { background: var(--flowers); color: var(--calm); }
+    #pf .case .stag.tech      { background: var(--growth); color: var(--calm); }
+    #pf .case .stag.beauty    { background: var(--joy);    color: var(--love); }
+    #pf .case .stag.fb        { background: var(--sun);    color: var(--calm); }
+    #pf .case .stag.agro      { background: var(--dancing); color: var(--cream); }
+    #pf .case .stag.software  { background: var(--peace);  color: var(--calm); }
+    #pf .case .stag.wellness  { background: var(--flowers); color: var(--calm); }
+    #pf .case-arrow { width: 32px; height: 32px; border-radius: 50%; background: var(--rest); color: var(--cream); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; line-height: 1; transition: transform 220ms var(--ease); margin-left: 10px; flex-shrink: 0; }
+    #pf .case[open] .case-arrow { transform: rotate(45deg); }
+    @media (max-width: 720px) {
+      #pf .case summary { grid-template-columns: 1fr auto; padding: 20px 22px; }
+      #pf .case .case-yr { grid-column: 1; font-size: 11px; }
+      #pf .case .case-meta { grid-column: 1 / -1; }
+      #pf .case .case-tags { grid-column: 1 / -1; margin-top: 4px; justify-content: flex-start; max-width: 100%; }
+      #pf .case .case-arrow { position: absolute; top: 20px; right: 22px; }
+      #pf .case { position: relative; }
+    }
+
+    /* Case body */
+    #pf .case-body { padding: 28px 32px 36px; }
+    #pf .case-body .summary-line { font-family: var(--font-text); font-weight: 500; font-size: 18px; line-height: 1.5; color: var(--rest); margin: 0 0 26px; max-width: 64ch; text-wrap: pretty; }
+    #pf .case-body .summary-line em { color: var(--cozy); font-style: italic; font-weight: 600; }
+    #pf .video { position: relative; padding-top: 56.25%; background: var(--love); border-radius: 10px; overflow: hidden; margin: 0 0 24px; display: block; max-width: 480px; text-decoration: none; cursor: pointer; transition: transform 200ms var(--ease); }
+    #pf .video.shorts { padding-top: 177.78%; max-width: 200px; }
+    #pf .video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 200ms var(--ease); display: block; }
+    #pf .video:hover { transform: translateY(-2px); }
+    #pf .video:hover img { opacity: 0.85; }
+    #pf .video .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 44px; background: rgba(60,27,35,0.85); border-radius: 12px; display: flex; align-items: center; justify-content: center; pointer-events: none; transition: background 200ms var(--ease); }
+    #pf .video:hover .play-btn { background: var(--rest); }
+    #pf .video .play-btn::before { content: ''; border-style: solid; border-width: 9px 0 9px 13px; border-color: transparent transparent transparent var(--cream); margin-left: 3px; }
+    #pf .video .yt-tag { position: absolute; bottom: 10px; right: 12px; font-family: var(--font-mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cream); background: rgba(60,27,35,0.75); padding: 4px 9px; border-radius: 4px; }
+    #pf .video.local { padding-top: 0; max-width: 240px; background: transparent; cursor: default; }
+    #pf .video.local video { width: 100%; display: block; border-radius: 10px; background: var(--love); aspect-ratio: 9 / 16; object-fit: cover; }
+    #pf .video.local:hover { transform: none; }
+    #pf .case-body .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    #pf .case-body .grid > .full { grid-column: 1 / -1; }
+    #pf .case-body h4 { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rest); margin: 0 0 10px; }
+    #pf .case-body p { font-family: var(--font-text); font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 12px; text-wrap: pretty; }
+    #pf .case-body .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 28px; background: var(--peace); border-radius: 10px; margin-top: 8px; color: var(--calm); }
+    #pf .case-body .results .num { font-family: var(--font-display); font-weight: 800; font-stretch: 75%; font-size: 38px; line-height: 0.92; letter-spacing: -0.03em; color: var(--love); }
+    #pf .case-body .results .lab { font-family: var(--font-text); font-size: 13px; color: var(--calm); margin-top: 8px; line-height: 1.45; text-wrap: pretty; }
+    #pf .case-body .pull { font-family: var(--font-text); font-style: italic; font-size: 19px; line-height: 1.45; color: var(--ink); border-left: 3px solid var(--rest); padding: 4px 0 4px 20px; margin: 8px 0; max-width: 60ch; font-weight: 400; text-wrap: pretty; }
+    #pf .case-body .ext { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: var(--rest); border-bottom: 1px solid rgba(189,95,47,0.30); padding-bottom: 2px; transition: border-color 160ms var(--ease); }
+    #pf .case-body .ext:hover { border-bottom-color: var(--rest); }
+    #pf .case-body .mockups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0 24px; }
+    #pf .case-body .mockups image-slot { aspect-ratio: 9 / 16; width: 100%; border-radius: 8px; display: block; }
+    @media (max-width: 720px) {
+      #pf .case-body { padding: 22px; }
+      #pf .case-body .grid { grid-template-columns: 1fr; gap: 24px; }
+      #pf .case-body .results { grid-template-columns: 1fr 1fr; }
+      #pf .case-body .mockups { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* FINAL CTA */
+    #pf .final .ill-f1 { left: 50%; top: 56%; transform: translate(-50%,-50%) rotate(8deg); width: 90vw; max-width: 800px; aspect-ratio: 1/1; color: var(--sun); opacity: 0.55; }
+    #pf .final .ill-f2 { top: 14%; left: 8%; width: 120px; aspect-ratio: 1/1; color: var(--love); transform: rotate(-12deg); }
+    #pf .final .ill-f3 { top: 18%; right: 10%; width: 84px; aspect-ratio: 1/1.2; color: var(--joy); transform: rotate(16deg); }
+    #pf .final .ill-f4 { bottom: 6%; left: 6%; width: 100px; aspect-ratio: 1.2/1; color: var(--dancing); transform: rotate(-10deg); }
+    #pf .final .ill-f5 { bottom: 8%; right: 14%; width: 60px; aspect-ratio: 1/1; color: var(--cozy); }
+    #pf .final { text-align: center; padding: clamp(100px, 14vw, 160px) 0; }
+    #pf .final .inner { position: relative; z-index: 2; }
+    #pf .final h2 { font-family: var(--font-display); font-weight: 800; font-stretch: 75%; font-size: clamp(48px, 8vw, 112px); line-height: 0.94; letter-spacing: -0.035em; margin: 0 auto 32px; max-width: 16ch; text-wrap: balance; color: var(--cream); }
+    #pf .final h2 em { font-style: normal; color: var(--love); position: relative; display: inline-block; }
+    #pf .final h2 em::after { content: ""; position: absolute; left: -0.05em; right: -0.05em; bottom: 0.04em; height: 0.16em; background: var(--cream); z-index: -1; }
+    #pf .final p { font-family: var(--font-text); font-size: clamp(17px, 1.8vw, 20px); margin: 0 auto 40px; max-width: 48ch; color: rgba(240,237,201,0.82); }
+    #pf .final .links { display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    #pf .btn { font-family: var(--font-display); font-weight: 600; font-stretch: 88%; font-size: 15px; letter-spacing: -0.005em; padding: 15px 24px; border-radius: 999px; border: 1px solid transparent; display: inline-flex; align-items: center; gap: 10px; line-height: 1; transition: all 200ms var(--ease); text-decoration: none; cursor: pointer; }
+    #pf .btn-primary { background: var(--love); color: var(--joy); }
+    #pf .btn-primary:hover { background: var(--calm); transform: translateY(-1px); }
+    #pf .btn-ghost { background: transparent; color: var(--cream); border-color: rgba(240,237,201,0.40); }
+    #pf .btn-ghost:hover { border-color: var(--cream); background: rgba(240,237,201,0.10); }
+    #pf .btn svg { width: 14px; height: 14px; }
+
+    /* Footer */
+    #pf footer { padding: 56px 0 64px; color: var(--ink-mute); font-size: 14px; background: var(--paper); border-top: 1px solid rgba(75,62,32,0.14); }
+    #pf footer .inner { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: baseline; }
+    #pf footer .colophon { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+    #pf footer .channels { display: flex; gap: 18px; flex-wrap: wrap; }
+    #pf footer .channels a { color: var(--ink-soft); transition: color 180ms var(--ease); border-bottom: 1px solid transparent; }
+    #pf footer .channels a:hover { color: var(--rest); border-color: var(--rest); }
+
+    /* reveal */
+    #pf .reveal { opacity: 0; transform: translateY(16px); transition: opacity 720ms var(--ease), transform 720ms var(--ease); }
+    #pf .reveal.in { opacity: 1; transform: none; }
+    #pf .reveal[data-delay="1"] { transition-delay: 80ms; }
+    #pf .reveal[data-delay="2"] { transition-delay: 160ms; }
+    #pf .reveal[data-delay="3"] { transition-delay: 240ms; }
+    #pf .reveal[data-delay="4"] { transition-delay: 320ms; }
+    @media (prefers-reduced-motion: reduce) {
+      #pf .reveal, #pf h1.hero-title .heavy em::after, #pf .hero-tag::before { animation: none; transition: none; transform: none; opacity: 1; }
+    }
+  </style>
+</helmet>
+
+<div id="pf" data-texture="{{ texture }}" data-heroaccent="{{ heroAccent }}">
+
+  <!-- Cut-paper illustration library -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arch" viewBox="0 0 200 200"><path fill="currentColor" d="M22,196 L24,82 C28,38 60,8 100,8 C142,8 174,38 178,82 L180,196 L142,196 L140,86 C138,66 122,52 100,52 C78,52 62,66 60,86 L58,196 Z"/></symbol>
+      <symbol id="i-crescent" viewBox="0 0 200 160"><path fill="currentColor" d="M28,40 C72,8 154,4 184,68 C198,108 174,150 116,154 C72,156 30,140 16,108 C44,116 76,118 100,108 C124,98 138,80 134,60 C130,42 102,30 70,32 C50,34 38,36 28,40 Z"/></symbol>
+      <symbol id="i-burst" viewBox="0 0 200 200"><path fill="currentColor" d="M100,4 L116,46 L150,16 L142,58 L188,46 L160,80 L196,98 L160,116 L188,150 L142,138 L150,180 L116,150 L100,196 L84,150 L50,180 L58,138 L12,150 L40,116 L4,98 L40,80 L12,46 L58,58 L50,16 L84,46 Z"/></symbol>
+      <symbol id="i-mountain" viewBox="0 0 200 200"><path fill="currentColor" d="M100,4 C144,4 178,80 192,196 L8,196 C22,80 56,4 100,4 Z"/></symbol>
+      <symbol id="i-donut" viewBox="0 0 200 200"><path fill="currentColor" fill-rule="evenodd" d="M100,8 C148,8 192,52 192,100 C192,148 148,192 100,192 C52,192 8,148 8,100 C8,52 52,8 100,8 Z M100,72 C84,72 72,84 72,100 C72,116 84,128 100,128 C116,128 128,116 128,100 C128,84 116,72 100,72 Z"/></symbol>
+      <symbol id="i-teardrop" viewBox="0 0 160 200"><path fill="currentColor" d="M80,4 C130,40 152,82 152,134 C152,170 122,196 80,196 C38,196 8,170 8,134 C8,82 30,40 80,4 Z"/></symbol>
+      <symbol id="i-blob" viewBox="0 0 220 180"><path fill="currentColor" d="M52,16 C100,4 130,28 158,32 C200,38 218,72 210,108 C202,148 170,172 124,170 C82,168 48,160 28,138 C4,110 8,76 18,52 C26,32 38,20 52,16 Z"/></symbol>
+      <symbol id="i-wave" viewBox="0 0 220 120"><path fill="currentColor" d="M10,52 C40,12 70,12 100,40 C124,62 144,72 168,58 C188,46 200,40 214,46 L214,76 C198,78 184,82 168,90 C140,104 116,98 90,80 C68,64 50,68 30,86 C20,96 14,98 8,96 Z"/></symbol>
+      <symbol id="i-em" viewBox="0 0 240 180"><path fill="currentColor" d="M10,178 L10,52 C10,28 28,8 54,8 C76,8 90,22 100,46 L120,98 L140,46 C150,22 164,8 186,8 C212,8 230,28 230,52 L230,178 L188,178 L188,76 L158,150 L122,150 L82,76 L82,178 Z"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 60 60"><path fill="currentColor" d="M30,2 C32,18 34,26 46,28 C58,30 56,30 46,32 C34,34 32,42 30,58 C28,42 26,34 14,32 C2,30 4,30 14,28 C26,26 28,18 30,2 Z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- NAV -->
+  <nav class="top">
+    <div class="inner">
+      <a href="#top" class="brand"><span class="dot"></span>Francisca Celestino</a>
+      <div class="nav-links">
+        <a href="#numbers">Numbers</a>
+        <a href="#approach">Approach</a>
+        <a href="#career">Career</a>
+        <a href="#cases">Case studies</a>
+        <a class="cta" href="Francisca-Celestino-CV.pdf" download>
+          <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.5a.5.5 0 0 1 .5.5v8.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.793V2a.5.5 0 0 1 .5-.5zM3 13.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/></svg>
+          Resume
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <a id="top"></a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ill ill-1"><svg><use href="#i-burst"/></svg></div>
+    <div class="ill ill-2"><svg><use href="#i-blob"/></svg></div>
+    <div class="ill ill-3"><svg><use href="#i-crescent"/></svg></div>
+    <div class="ill ill-4"><svg><use href="#i-arch"/></svg></div>
+    <div class="ill ill-5"><svg><use href="#i-spark"/></svg></div>
+
+    <div class="container inner">
+      <div class="hero-tag reveal">PORTFOLIO &middot; MARKETING STRATEGIST &middot; 2026</div>
+      <h1 class="hero-title display reveal" data-delay="1">
+        <span class="light">Francisca</span>
+        <span class="heavy"><em>Celestino</em></span>
+      </h1>
+      <p class="lede hero-sub reveal" data-delay="2">
+        Strategic marketing leader. I bridge the gap between CPG craft and high-growth startup agility, building high-performing marketing functions from the ground up.
+      </p>
+
+      <div class="hero-meta reveal" data-delay="3">
+        <div class="item"><div class="k">Based in</div><div class="v">San Francisco, CA</div></div>
+        <div class="item"><div class="k">Email</div><div class="v"><a href="/cdn-cgi/l/email-protection#9ff9edfef1fcf6ecfcfefcfaf3faecebf6f1f0dff7f0ebf2fef6f3b1fcf0f2"><span class="__cf_email__" data-cfemail="d7b1a5b6b9b4bea4b4b6b4b2bbb2a4a3beb9b897bfb8a3bab6bebbf9b4b8ba">[email&#160;protected]</span></a></div></div>
+        <div class="item"><div class="k">Phone</div><div class="v"><a href="tel:+14154650887">(415) 465-0887</a></div></div>
+        <div class="item"><div class="k">Network</div><div class="v"><a href="https://www.linkedin.com/in/franciscacelestino" target="_blank" rel="noopener">LinkedIn &#8599;</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS · olive -->
+  <section id="numbers" class="stats sec-dancing">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label">
+          <div class="num">01 / 04</div>
+          <div class="role">RESULTS</div>
+        </div>
+        <div>
+          <h2 class="h-section">Some numbers I'm proud of.</h2>
+        </div>
+      </div>
+
+      <div class="stats-grid reveal" data-delay="1">
+        <div class="stat">
+          <div class="num"><em>7</em></div>
+          <span class="where">AB InBev</span>
+          <div class="label">Cannes Lions awarded to portfolio brands during my time leading Creative Effectiveness.</div>
+        </div>
+        <div class="stat">
+          <div class="num"><em>+2</em>%</div>
+          <span class="where">Brahma</span>
+          <div class="label">Market share growth, breaking a 6-year losing streak through a specialized regional marketing engine.</div>
+        </div>
+        <div class="stat">
+          <div class="num"><em>90</em>+</div>
+          <span class="where">AB InBev &middot; Capabilities</span>
+          <div class="label">Marketers scaled through a flywheel program (Talent &rarr; Work &rarr; Awards), 2x standard CPG results.</div>
+        </div>
+        <div class="stat">
+          <div class="num"><em>+14</em>%</div>
+          <span class="where">Amalgama</span>
+          <div class="label">Organic growth of the B2B customer database with zero acquisition cost, driven by industry partnerships.</div>
+        </div>
+        <div class="stat">
+          <div class="num"><em>2K</em>+</div>
+          <span class="where">UpTerra</span>
+          <div class="label">B2B contacts generated in under 8 months in a specialized AgTech market.</div>
+        </div>
+        <div class="stat">
+          <div class="num"><em>259</em>%</div>
+          <span class="where">UpTerra</span>
+          <div class="label">YoY website traffic growth, sustained through organic and paid channels.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH · paper -->
+  <section id="approach" class="principles-section">
+    <div class="ill ill-p1"><svg><use href="#i-blob"/></svg></div>
+    <div class="ill ill-p2"><svg><use href="#i-burst"/></svg></div>
+
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label">
+          <div class="num">02 / 04</div>
+          <div class="role">HOW I WORK</div>
+        </div>
+        <div>
+          <h2 class="h-section">How I think about the work.</h2>
+          <p class="aside">Three habits I take into every team.</p>
+        </div>
+      </div>
+
+      <div class="principles">
+        <div class="principle p1 reveal" data-delay="1">
+          <div class="ill ill-corner"><svg><use href="#i-burst"/></svg></div>
+          <div class="num">01</div>
+          <h3>Strategy as a disciplined craft</h3>
+          <p>Trained under top-tier creative leadership, I believe a strategy is only as powerful as its execution. I bring a disciplined eye to every project, ensuring even the scrappiest initiative is built on a rock-solid foundation.</p>
+        </div>
+        <div class="principle p2 reveal" data-delay="2">
+          <div class="ill ill-corner"><svg><use href="#i-arch"/></svg></div>
+          <div class="num">02</div>
+          <h3>Build the engine, then fuel it</h3>
+          <p>At a startup, brand and demand engine are the same project. CRM, analytics, and content cadence come before paid spend, and every channel I run gets tested, measured, and decided by the data, not the gut.</p>
+        </div>
+        <div class="principle p3 reveal" data-delay="3">
+          <div class="ill ill-corner"><svg><use href="#i-crescent"/></svg></div>
+          <div class="num">03</div>
+          <h3>External voices before launch</h3>
+          <p>A habit from AB InBev: pressure-test work with peers and audience before going public. The process de-risks the launch and turns the audience into early amplification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER · aubergine -->
+  <section id="career" class="career sec-love">
+    <div class="ill ill-c1"><svg><use href="#i-burst"/></svg></div>
+    <div class="ill ill-c2"><svg><use href="#i-blob"/></svg></div>
+    <div class="ill ill-c3"><svg><use href="#i-spark"/></svg></div>
+
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label">
+          <div class="num">03 / 04</div>
+          <div class="role">CAREER</div>
+        </div>
+        <div>
+          <h2 class="h-section">Nine years across CPG and startups.</h2>
+          <p class="aside">Beauty and beer across Latin American markets, then B2B software and AgTech in San Francisco.</p>
+        </div>
+      </div>
+
+      <div class="timeline reveal" data-delay="1">
+        <a class="tl-item" href="https://www.loreal.com/en/" target="_blank" rel="noopener">
+          <div class="yr">2017–2019</div>
+          <div class="co">L'Oréal Paris<span class="arrow">&#8599;</span></div>
+          <div class="desc">Elvive shampoo</div>
+          <div class="role">Brand Analyst, innovation, launches, e-commerce.</div>
+        </a>
+        <a class="tl-item" href="https://www.ab-inbev.com/" target="_blank" rel="noopener">
+          <div class="yr">2019–2022</div>
+          <div class="co">AB InBev / draftLine<span class="arrow">&#8599;</span></div>
+          <div class="desc">Corona, Budweiser, Stella Artois</div>
+          <div class="role">Creative Effectiveness, Project Manager, Regional Marketing Lead.</div>
+        </a>
+        <a class="tl-item" href="https://amalgama.co/" target="_blank" rel="noopener">
+          <div class="yr">2022–Jul 2024</div>
+          <div class="co">Amalgama<span class="arrow">&#8599;</span></div>
+          <div class="desc">B2B wellness software</div>
+          <div class="role">Marketing &amp; Comms Manager.</div>
+        </a>
+        <a class="tl-item" href="https://upterra.co/" target="_blank" rel="noopener">
+          <div class="yr">2024–Now</div>
+          <div class="co">UpTerra<span class="arrow">&#8599;</span></div>
+          <div class="desc">Quantum-frequency water tech</div>
+          <div class="role">Head of Marketing, founded the marketing function.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES · paper -->
+  <section id="cases" class="cases-section">
+    <div class="ill ill-cs1"><svg><use href="#i-crescent"/></svg></div>
+    <div class="ill ill-cs2"><svg><use href="#i-teardrop"/></svg></div>
+
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="label">
+          <div class="num">04 / 04</div>
+          <div class="role">SELECTED WORK</div>
+        </div>
+        <div>
+          <h2 class="h-section">Case studies.</h2>
+          <p class="aside">14 selected projects in chronological order. Click any title to expand. Filter by brand or by type, one filter at a time.</p>
+        </div>
+      </div>
+
+      <div class="filter-bar reveal" data-delay="1">
+        <div class="chips" id="brand-chips">
+          <span class="filter-label">Brand</span>
+          <button class="chip active" data-filter-key="all" data-filter-value="all">All</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="loreal">L'Oréal</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="abinbev">AB InBev / draftLine</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="amalgama">Amalgama</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="upterra">UpTerra</button>
+        </div>
+        <div class="chips" id="type-chips">
+          <span class="filter-label">Type</span>
+          <button class="chip" data-filter-key="type" data-filter-value="creativity">Brand &amp; Creative</button>
+          <button class="chip" data-filter-key="type" data-filter-value="strategy">Growth &amp; Strategy</button>
+          <button class="chip" data-filter-key="type" data-filter-value="ops">Mkt Operations</button>
+          <button class="expand-all" id="toggle-all">Expand all &darr;</button>
+        </div>
+      </div>
+
+      <div class="cases" id="cases-list">
+
+        <details class="case" data-brand="loreal" data-type="creativity">
+          <summary>
+            <span class="case-yr">2017</span>
+            <div class="case-meta">
+              <span class="case-brand">L'Oréal Paris · Elvive</span>
+              <span class="case-title">Reparación Total | local production with Luisana Lopilato</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag cpg">CPG</span>
+              <span class="stag beauty">Beauty</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Reparación Total is Elvive's top-selling product. L'Oréal usually relies on global content, but for this launch we used our local ambassador to connect with Argentine culture. I worked across pre-production, on-set coordination, and the post-launch e-commerce ripple.</p>
+            <a class="video" href="https://www.youtube.com/watch?v=tZkAc538D-s" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+              <img src="https://i.ytimg.com/vi/tZkAc538D-s/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <span class="play-btn"></span>
+              <span class="yt-tag">YouTube &#8599;</span>
+            </a>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>A global Elvive platform that needs its own cut, talent moment, and sell-in by market. Translate the global codes into something Argentine without compromising brand consistency.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Worked with our agency partners McCann and Publicis on the production. Beyond the film, we built influencer activations and a launch event with 200+ guests, plus the post-launch e-commerce rollout.</p>
+              </div>
+              <div class="full">
+                <h4>What I took with me</h4>
+                <p>The single most useful lesson: the difference between a beautiful spot and a commercially useful one is the activation calendar that follows it.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="loreal" data-type="creativity">
+          <summary>
+            <span class="case-yr">2018</span>
+            <div class="case-meta">
+              <span class="case-brand">L'Oréal Paris · Elvive</span>
+              <span class="case-title">Óleo Extraordinario | translating global film for vertical, social-first</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag cpg">CPG</span>
+              <span class="stag beauty">Beauty</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Óleo Extraordinario was Elvive's highest-margin product. When YouTube Shorts and Reels first launched, we had global content built for traditional 30s formats and had to make it feel native to vertical short-form, then translate that into e-commerce.</p>
+            <a class="video shorts" href="https://www.youtube.com/watch?v=Paf9zKz13oA" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+              <img src="https://i.ytimg.com/vi/Paf9zKz13oA/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <span class="play-btn"></span>
+              <span class="yt-tag">YouTube &#8599;</span>
+            </a>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Get an established hero product into formats that worked muted, vertical, and scroll-driven, without losing the codes the franchise had spent years building.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Worked on the social-first creative rollout, coordinating with the brand team and digital partners to produce vertical-native content that retained L'Oréal's premium codes but earned attention in the first second. Then mirrored the same content across e-commerce surfaces.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="strategy ops">
+          <summary>
+            <span class="case-yr">2019–2020</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Multi-brand · GMT Program</span>
+              <span class="case-title">Building 6 regional marketing teams across Argentina</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag strategy">Growth &amp; Strategy</span>
+              <span class="stag ops">Mkt Operations</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Argentina is a huge country with very different traditions, culture, and income levels by region, but everything in the beer business gets concentrated in Buenos Aires. We opened 6 regional marketing teams, reallocating budget by each brand's local market share, so they could activate locally instead of competing for the same Buenos Aires events.</p>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Within six months, lift the market share of our value-tier brands. Quilmes and Brahma are the company's cash cows, and they had been losing share for five years against CCU. The bet was that locally-rooted activations would do what national campaigns couldn't.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Designed the entire project, pitched it, hired the team, and managed the activations and the connection between regional execution and central marketing. Seven brands running ad-hoc regional activations in parallel.</p>
+              </div>
+              <div class="full">
+                <div class="results">
+                  <div><div class="num">+2%</div><div class="lab">Brahma share, from one single region</div></div>
+                  <div><div class="num">7</div><div class="lab">Brands activating locally, ad-hoc by region</div></div>
+                  <div><div class="num">1st</div><div class="lab">Time the regions had their own marketing teams</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="creativity">
+          <summary>
+            <span class="case-yr">2020</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Brahma · draftLine</span>
+              <span class="case-title">"Una idea para cuidarnos" | a beer label as public-health gesture</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">In 2020, sharing a bottle, a normal social ritual, was suddenly a vector. Brahma's response: stickers on the label, so each person could mark their own bottle. A small product gesture, scaled into a national campaign.</p>
+            <a class="video" href="https://www.youtube.com/watch?v=fyxmA77gt0I" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+              <img src="https://i.ytimg.com/vi/fyxmA77gt0I/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <span class="play-btn"></span>
+              <span class="yt-tag">YouTube &#8599;</span>
+            </a>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>How does a beer brand show up in a pandemic without being either tone-deaf or sanctimonious? The category was paralyzed; nobody had figured out the tone yet.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Project-managed the campaign across the creative team at draftLine and the brand team at Brahma: briefing, production, delivery. The product gesture was simple, but the alignment between marketing, packaging, and ops to ship stickers nationally was where most of the work lived.</p>
+              </div>
+              <div class="full">
+                <div class="pull">The product became the message. Brahma didn't tell people to be careful, it gave them a way to be careful that fit inside an existing social moment.</div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="strategy creativity">
+          <summary>
+            <span class="case-yr">2020</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Coronita · draftLine</span>
+              <span class="case-title">Coronita | a smaller bottle for a smaller wallet</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag strategy">Growth &amp; Strategy</span>
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">The Argentine market was beaten down. People couldn't afford to pay more, so we made the beer smaller. Coronita, a smaller-format bottle that lowered out-of-pocket cost without lowering the brand. Since we couldn't shoot the new product (no production crews on set), we built the entire launch in illustration.</p>
+            <div class="video local">
+              <video src="coronita-relax-a-little.mp4" controls preload="metadata" playsinline></video>
+            </div>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Launch a new SKU into a market in lockdown. No production crews allowed on set, no live talent, and a category that all looks the same on shelf. Two constraints stacked on top of a launch.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Led the creative team end-to-end (briefing, production coordination, delivery) and pivoted to a fully illustrated visual system, turning the constraint into the brand's entry point.</p>
+              </div>
+              <div class="full">
+                <p>This is the cleanest example of the mindset I want on every team I'm in: when the constraint is real, stop trying to solve around it, solve through it.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="creativity">
+          <summary>
+            <span class="case-yr">2020</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Corona · draftLine</span>
+              <span class="case-title">Viajes con Conexión | when "go outside" isn't allowed, find a cause</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">How do you keep an outdoor-celebration brand alive when the country won't let you leave home? We turned it from a brand problem into a cause: helping the people in the tourism industry who were worse off than us.</p>
+            <a class="video" href="https://www.youtube.com/watch?v=LblBTvZtRFs" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+              <img src="https://i.ytimg.com/vi/LblBTvZtRFs/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <span class="play-btn"></span>
+              <span class="yt-tag">YouTube &#8599;</span>
+            </a>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Tourism, Corona's natural cultural territory, was on the floor. The brand had to participate, but participation in 2020 meant something different than a glossy beach spot. The work had to be useful, not decorative.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Coordinated with the partner hotels on the brief, the deal terms, and the redemption mechanic (six-pack with QR code, raffle for one of 100 four-person, three-night packages). Then built the production structure and managed the crews who filmed across 8 regions of the country: Patagonia, Atlantic Coast, NOA, NEA, Litoral, Córdoba, and Cuyo.</p>
+              </div>
+              <div class="full">
+                <div class="results">
+                  <div><div class="num">1,200</div><div class="lab">Hotel nights bought and redistributed</div></div>
+                  <div><div class="num">8</div><div class="lab">Argentine regions documented</div></div>
+                  <div><div class="num">2</div><div class="lab">Months on air during peak shutdown</div></div>
+                </div>
+                <p style="margin-top: 20px;">Purpose isn't a tagline, it's a commitment. When a brand's core identity is "the outdoors" and the world is forced to stay inside, authenticity is proven by how you show up for the industry that makes your brand possible. We turned a marketing challenge into a cause that connected our values with the survival of local tourism.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="creativity ops">
+          <summary>
+            <span class="case-yr">2021</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Corona · draftLine</span>
+              <span class="case-title">Corona Sunsets | the first post-pandemic event</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag ops">Mkt Operations</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Corona Sunsets is Corona's flagship music-and-sunset event franchise. I led the first edition back after the pandemic, end-to-end.</p>
+            <a class="video" href="https://www.youtube.com/watch?v=ce8Wv5qCkYw" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+              <img src="https://i.ytimg.com/vi/ce8Wv5qCkYw/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <span class="play-btn"></span>
+              <span class="yt-tag">YouTube &#8599;</span>
+            </a>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Re-introduce the brand's biggest experiential platform in a country emerging from lockdown, for a brand whose territory is "outdoors." Get the format right on the first try, the audience would tell us immediately if it felt forced.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Owned the event end-to-end: guest list curation, registration mechanic, entry experience and arrival flow, F&amp;B pour design, brand visual integration across stages, signage and photo moments, and the communications calendar that built anticipation in the weeks before.</p>
+              </div>
+              <div class="full">
+                <h4>Why it mattered</h4>
+                <p>A test in operational precision. I designed the end-to-end guest experience, from the first digital invite to the physical arrival flow, ensuring every touchpoint felt safe, seamless, and authentically Corona.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="creativity">
+          <summary>
+            <span class="case-yr">2021</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Budweiser · draftLine</span>
+              <span class="case-title">Budweiser 710 | rebuilding a brand the competition had bastardized</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Budweiser had been damaged in Argentina under the previous distributor. The brief was to rebuild it as a premium brand. New format launches were part of that repositioning, leaning on the global communications that already had real strength behind them.</p>
+            <a class="video" href="https://www.youtube.com/watch?v=MAEZCfXNssg" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+              <img src="https://i.ytimg.com/vi/MAEZCfXNssg/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <span class="play-btn"></span>
+              <span class="yt-tag">YouTube &#8599;</span>
+            </a>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Format launches are usually a trade story, a packaging change communicated in flat, transactional terms. Budweiser wanted this one to feel like a brand moment, part of the broader premium repositioning.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Project-managed the launch campaign across creative, packaging, and trade activation. The simple naming idea, turning a volume number into a football chant (710 = OLE upside down), gave the rollout a single, sharp narrative anchor that worked across film, point-of-sale, and digital.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="creativity">
+          <summary>
+            <span class="case-yr">2021</span>
+            <div class="case-meta">
+              <span class="case-brand">PepsiCo · Paso de los Toros · draftLine</span>
+              <span class="case-title">"Cortá con tanta dulzura" | brand attribute as pandemic commentary</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Paso de los Toros owns the bitter and acidic territory in Argentine soft drinks. During lockdown, the brand turned that exact attribute outward as social commentary, the acidity people needed to make it through being stuck together.</p>
+            <div class="mockups">
+              <image-slot id="pdt-1" shape="rounded" radius="8" placeholder="Drop PDT: Monogamia"></image-slot>
+              <image-slot id="pdt-2" shape="rounded" radius="8" placeholder="Drop PDT: Saludo Beso"></image-slot>
+              <image-slot id="pdt-3" shape="rounded" radius="8" placeholder="Drop PDT: Vacaciones"></image-slot>
+            </div>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Most beverage brands during early lockdown either froze or pivoted to "we're with you" generic messaging. Paso de los Toros wanted to keep its voice (sharp, sarcastic, opinionated) without being insensitive about a real public-health moment.</p>
+              </div>
+              <div>
+                <h4>The idea</h4>
+                <p>Use the brand's own attribute as a frame for the small daily frictions of lockdown. <em>"Andaba faltando ventilación social." "Hoy arrancan las vacaciones de la pareja."</em> Each post carried <em>#CortaConTantaDulzura</em> or <em>#LaAcidezQueHaceFalta</em>, turning the pandemic into a use-case for the brand's POV.</p>
+              </div>
+              <div class="full">
+                <p>We connected the brand's acidity to a very real cultural moment, and earned more reposts and viral pickup than any other brand in our portfolio that period. Brand voice as use-case, not as decoration.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="creativity">
+          <summary>
+            <span class="case-yr">2021</span>
+            <div class="case-meta">
+              <span class="case-brand">PepsiCo · 7Up · draftLine</span>
+              <span class="case-title">Bringing Fido Dido back | renegotiating IP, then turning the city into a 7Up channel</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag creative">Brand &amp; Creative</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Fido Dido was 7Up's most iconic asset, but the brand had let the design rights lapse and he had disappeared from the channel. We renegotiated the licensing, brought him back, and built him into the brand's protagonist again.</p>
+            <div class="mockups">
+              <image-slot id="sevenup-1" shape="rounded" radius="8" placeholder="Drop 7Up: Chill Up"></image-slot>
+              <image-slot id="sevenup-2" shape="rounded" radius="8" placeholder="Drop 7Up: Paternal"></image-slot>
+              <image-slot id="sevenup-3" shape="rounded" radius="8" placeholder="Drop 7Up: Chill Spot"></image-slot>
+            </div>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>7Up needed a brand asset that travelled, something that could carry the brand across film, social, OOH, and trade without needing a new creative idea every quarter. Fido Dido had nostalgia equity. The challenge was making him feel like 2021, not 1995, and getting the rights back first.</p>
+              </div>
+              <div>
+                <h4>The mechanic</h4>
+                <p>Fido became the brand's host. <em>Chill Up</em> was the platform line, <em>Chill Spot</em> the UGC engine. As people went out again post-lockdown, 7Up asked them to share neighborhood spots. Fido was illustrated into each location, turning user photography into branded content.</p>
+              </div>
+              <div class="full">
+                <p>We reactivated an IP the brand already owned and built a content engine where the audience did the production. It scaled without scaling the budget.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="strategy ops">
+          <summary>
+            <span class="case-yr">2020–2022</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Marketing Capabilities</span>
+              <span class="case-title">Marketing Capabilities | a talent flywheel to attract better work</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag strategy">Growth &amp; Strategy</span>
+              <span class="stag ops">Mkt Operations</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">The strategic idea was to close a full circle: have great people, doing great work, that wins us awards, that attracts more great people. To make it real, we upskilled the entire marketing org with structured programs, courses, talks, and events.</p>
+            <div class="grid">
+              <div>
+                <h4>What I did</h4>
+                <p>Designed and ran the full Capabilities program. Owned the curriculum, the calendar, the partnerships with global creativity experts, and the events. Tracked completion across every step (98%) and made sure the work upstream of the program connected with the work downstream of it.</p>
+              </div>
+              <div>
+                <h4>Why this format</h4>
+                <p>Generic training programs fail because they don't connect to the real briefs people are working on. Every module in our program was designed around a live campaign or live problem the team was facing, so the upskilling and the output were the same loop.</p>
+              </div>
+              <div class="full">
+                <div class="results">
+                  <div><div class="num">7</div><div class="lab">Cannes Lions during my tenure</div></div>
+                  <div><div class="num">40+</div><div class="lab">Local awards (40%+ YoY)</div></div>
+                  <div><div class="num">90+ / 98%</div><div class="lab">Marketers · completion rate</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="abinbev" data-type="strategy ops">
+          <summary>
+            <span class="case-yr">2020–2022</span>
+            <div class="case-meta">
+              <span class="case-brand">AB InBev · Creative Effectiveness</span>
+              <span class="case-title">Creative Excellence | frameworks, agile, and external pressure-testing</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag strategy">Growth &amp; Strategy</span>
+              <span class="stag ops">Mkt Operations</span>
+              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">AB InBev runs on frameworks (Brand Trust, Creative X). My team's job was to bring those structures to brand managers and turn them into better campaigns. We worked agile, pressure-tested every brief with external creative voices, and reduced launch risk before a peso went out.</p>
+            <div class="grid">
+              <div>
+                <h4>What I did</h4>
+                <p>Brought in great creative leaders from other markets, other brands, and top agencies to critique our work in structured review sessions. Scored briefs against Creative X and Brand Trust. Worked agile across 9+ brands.</p>
+              </div>
+              <div>
+                <h4>The principle I took with me</h4>
+                <p>Inviting external voices, peers, industry leaders, target audience, before high-exposure launches. Risk mitigation and organic amplification at once, plus a flywheel that attracts top creative talent. I bring the same habit into every team, even on a startup budget.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="amalgama" data-type="strategy ops">
+          <summary>
+            <span class="case-yr">2022–2024</span>
+            <div class="case-meta">
+              <span class="case-brand">Amalgama · B2B Wellness Software</span>
+              <span class="case-title">Amalgama | wellness software in a high-trust, low-budget category</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag strategy">Growth &amp; Strategy</span>
+              <span class="stag ops">Mkt Operations</span>
+              <span class="stag startup">Startup</span>
+              <span class="stag software">Software</span>
+              <span class="stag wellness">Wellness</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">Amalgama sells expensive wellness software. The buying cycle is long. The whole pitch rests on buyers believing we're the best at what we do. The relationship is long-term and built on trust.</p>
+            <div class="grid">
+              <div>
+                <h4>Brief / Constraint</h4>
+                <p>Build demand without a marketing budget, in a category where the entry point is education, not ads, and where every prospect is doing reference checks before they sign anything.</p>
+              </div>
+              <div>
+                <h4>What I did</h4>
+                <p>Architected an event-led growth strategy, producing 10+ high-retention webinars and 5+ strategic industry events per year to bridge the trust gap. Partnered with Sales to map the journey, turning webinar recordings into long-tail content. I leveraged strategic co-marketing by inviting guests with established relationships in target accounts to co-host, accelerating trust in the room. Additionally, I managed internal subject-matter experts' LinkedIn presence and designed post-event nurture campaigns to keep leads warm.</p>
+              </div>
+              <div class="full">
+                <div class="results">
+                  <div><div class="num">65%</div><div class="lab">Avg. webinar attendance</div></div>
+                  <div><div class="num">+15</div><div class="lab">Annual strategic events to drive organic lead generation</div></div>
+                  <div><div class="num">+14%</div><div class="lab">Organic database growth with zero acquisition cost (CAC)</div></div>
+                </div>
+                <a class="ext" href="https://amalgama.co/category/webinars/" target="_blank" rel="noopener">View the Amalgama webinar library &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="case" data-brand="upterra" data-type="strategy ops">
+          <summary>
+            <span class="case-yr">2024–Now</span>
+            <div class="case-meta">
+              <span class="case-brand">UpTerra · AgTech</span>
+              <span class="case-title">UpTerra | founded a high-performance marketing engine from the ground up</span>
+            </div>
+            <div class="case-tags">
+              <span class="stag strategy">Growth &amp; Strategy</span>
+              <span class="stag ops">Mkt Operations</span>
+              <span class="stag startup">Startup</span>
+              <span class="stag tech">Tech</span>
+              <span class="stag agro">Agro</span>
+              <span class="case-arrow">+</span>
+            </div>
+          </summary>
+          <div class="case-body">
+            <p class="summary-line">My work here was about architecture. In a deeply specialized B2B category with no existing demand to leverage, I designed and scaled a full-funnel marketing function from zero to a cross-border operation.</p>
+            <a class="video" href="https://www.youtube.com/watch?v=ETXe4GjSPec" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+              <img src="https://i.ytimg.com/vi/ETXe4GjSPec/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
+              <span class="play-btn"></span>
+              <span class="yt-tag">YouTube &#8599;</span>
+            </a>
+            <h4>What I built</h4>
+            <p><strong>Infrastructure:</strong> full-stack deployment (HubSpot, GA4) and website redesign optimized for a high-friction B2B sales cycle. <strong>Go-To-Market:</strong> designed and executed the entry strategy for the Mexican market, including localized content and sales enablement. <strong>Demand Stack:</strong> managed a multi-channel engine (SEO, paid, PR, TikTok, events) and led a multidisciplinary team of 5, plus agency partners. <strong>Sales-Marketing Alignment:</strong> developed lead scoring and sales collateral that shortened the feedback loop between marketing and revenue.</p>
+            <h4 style="margin-top: 28px;">Results</h4>
+            <div class="results" style="grid-template-columns: repeat(5, 1fr);">
+              <div><div class="num">2,000+</div><div class="lab">B2B contacts in &lt;8 months</div></div>
+              <div><div class="num">259%</div><div class="lab">YoY website traffic</div></div>
+              <div><div class="num">500+</div><div class="lab">Qualified leads · 25.7% sales-ready</div></div>
+              <div><div class="num">29/13</div><div class="lab">% email open / CTR sustained</div></div>
+              <div><div class="num">+224%</div><div class="lab">LinkedIn organic</div></div>
+            </div>
+            <h4 style="margin-top: 28px;">Where the strategy lives</h4>
+            <p>The decisions that drove the numbers are upstream: which market to enter first, which agencies to hire and which to insource, which channel to over-invest in given the buyer profile, how to design lead scoring so Sales actually trusts the handoff, what content compounds in SEO vs. what burns budget on a campaign.</p>
+            <a class="ext" href="https://upterra.co/results/" target="_blank" rel="noopener">See the live results page &rarr;</a>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final sec-rest">
+    <div class="ill ill-f1"><svg><use href="#i-burst"/></svg></div>
+    <div class="ill ill-f2"><svg><use href="#i-arch"/></svg></div>
+    <div class="ill ill-f3"><svg><use href="#i-teardrop"/></svg></div>
+    <div class="ill ill-f4"><svg><use href="#i-blob"/></svg></div>
+    <div class="ill ill-f5"><svg><use href="#i-spark"/></svg></div>
+
+    <div class="container inner reveal">
+      <h2>Let's build the next <em>chapter</em>.</h2>
+      <p>If you're hiring marketing leadership, or just want to compare notes, I'd love to talk.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#f59387949b969c8696949690999086819c9b9ab59d9a8198949c99db969a98">
+          Send a note
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="Francisca-Celestino-CV.pdf" download>
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a.5.5 0 0 1 .5.5v8.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.793V2a.5.5 0 0 1 .5-.5zM3 13.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container inner">
+      <div class="colophon">© Francisca Celestino · 2026 · San Francisco</div>
+      <div class="channels">
+        <a href="/cdn-cgi/l/email-protection#4a2c382b24292339292b292f262f393e2324250a22253e272b232664292527"><span class="__cf_email__" data-cfemail="e680948788858f95858785838a8395928f8889a68e89928b878f8ac885898b">[email&#160;protected]</span></a>
+        <a href="tel:+14154650887">(415) 465-0887</a>
+        <a href="https://www.linkedin.com/in/franciscacelestino" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;texture&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;heroAccent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;sun&quot;,&quot;rest&quot;,&quot;joy&quot;],&quot;default&quot;:&quot;sun&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const root = document.getElementById('pf');
+    if (!root || root.__wired) return;
+    root.__wired = true;
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    root.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    requestAnimationFrame(() => {
+      root.querySelectorAll('.hero .reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('in'), 60 * i);
+      });
+    });
+
+    // Filters + expand-all
+    const cases = root.querySelectorAll('.case');
+    const allChips = root.querySelectorAll('.chip');
+    const toggleAll = root.querySelector('#toggle-all');
+    allChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        allChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const key = chip.dataset.filterKey;
+        const val = chip.dataset.filterValue;
+        cases.forEach(c => {
+          if (key === 'all') {
+            c.hidden = false;
+          } else if (key === 'brand') {
+            c.hidden = c.dataset.brand !== val;
+          } else if (key === 'type') {
+            const types = (c.dataset.type || '').split(' ');
+            c.hidden = !types.includes(val);
+          }
+        });
+      });
+    });
+    if (toggleAll) {
+      let allOpen = false;
+      toggleAll.addEventListener('click', () => {
+        allOpen = !allOpen;
+        cases.forEach(c => { if (!c.hidden) c.open = allOpen; });
+        toggleAll.textContent = allOpen ? 'Collapse all \u2191' : 'Expand all \u2193';
+      });
+    }
+  }
+
+  renderVals() {
+    return {
+      texture: this.props.texture === false ? 'off' : 'on',
+      heroAccent: this.props.heroAccent ?? 'sun',
+    };
+  }
+}
+</script>
+</body>
+</html>
