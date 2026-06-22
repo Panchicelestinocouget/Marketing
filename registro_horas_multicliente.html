@@ -502,30 +502,50 @@ function formatDateLong(dateStr) {
   return parts[2] + '/' + parts[1] + '/' + parts[0];
 }
 
+function hexToRgb(hex) {
+  const n = parseInt(hex.replace('#', ''), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
 function generatePdf() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'pt', format: 'a4' });
 
-  const visibleRows = (activeClient === '__all__' ? rows : rows.filter(r => r.client === activeClient))
+  const isFiltered = activeClient !== '__all__';
+  const visibleRows = (isFiltered ? rows.filter(r => r.client === activeClient) : rows)
     .slice()
     .sort((a, b) => (a.date || '').localeCompare(b.date || ''));
 
-  const title = activeClient === '__all__' ? 'Todos los clientes' : activeClient;
+  const pageW = 595;
   const marginX = 48;
-  let y = 56;
+  const rightX = 547;
+
+  const dancing = hexToRgb('#8C8C2F');
+  const cream = hexToRgb('#F0EDC9');
+  const calm = hexToRgb('#4B3E20');
+  const love = hexToRgb('#3C1B23');
+  const joy = hexToRgb('#D2A4BD');
+  const flowers = hexToRgb('#A6ADBE');
+  const rowAlt = hexToRgb('#ECEAD3');
+
+  // header band
+  doc.setFillColor(...dancing);
+  doc.rect(0, 0, pageW, 118, 'F');
 
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(18);
-  doc.text('Reporte de horas', marginX, y);
-  y += 22;
+  doc.setFontSize(11);
+  doc.setTextColor(...cream);
+  doc.text('REGISTRO DE HORAS', marginX, 40);
+
+  doc.setFontSize(24);
+  doc.text(isFiltered ? activeClient : 'Todos los clientes', marginX, 70);
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(11);
-  doc.setTextColor(90, 90, 90);
-  doc.text(title, marginX, y);
-  y += 14;
-  doc.text('Generado el ' + formatDateLong(todayStr()), marginX, y);
-  y += 28;
+  doc.setFontSize(10);
+  doc.setTextColor(230, 227, 200);
+  doc.text('Generado el ' + formatDateLong(todayStr()), marginX, 94);
+
+  let y = 150;
 
   let totalClient = 0;
   let totalGeneral = 0;
@@ -535,54 +555,101 @@ function generatePdf() {
     if (r.type === 'general') totalGeneral += h;
   });
 
+  // total cards
+  const cardW = 230;
+  const cardH = 56;
+  doc.setFillColor(...joy);
+  doc.roundedRect(marginX, y, cardW, cardH, 8, 8, 'F');
+  doc.setFillColor(...flowers);
+  doc.roundedRect(marginX + cardW + 16, y, cardW, cardH, 8, 8, 'F');
+
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(12);
-  doc.setTextColor(20, 20, 20);
-  doc.text('Total: ' + formatNum(totalClient) + ' hs', marginX, y);
-  doc.text('General: ' + formatNum(totalGeneral) + ' hs', marginX + 200, y);
-  y += 24;
+  doc.setFontSize(9);
+  doc.setTextColor(...love);
+  doc.text('TOTAL', marginX + 16, y + 20);
+  doc.setTextColor(...calm);
+  doc.text('GENERAL, REPLICABLE', marginX + cardW + 32, y + 20);
 
-  doc.setDrawColor(200, 200, 200);
-  doc.line(marginX, y, 547, y);
-  y += 18;
+  doc.setFontSize(20);
+  doc.setTextColor(...love);
+  doc.text(formatNum(totalClient) + ' hs', marginX + 16, y + 42);
+  doc.setTextColor(...calm);
+  doc.text(formatNum(totalGeneral) + ' hs', marginX + cardW + 32, y + 42);
 
+  y += cardH + 36;
+
+  const showClientCol = !isFiltered;
   const colDate = marginX;
-  const colClient = marginX + 60;
-  const colActivity = marginX + 160;
-  const colType = 430;
+  const colClient = showClientCol ? marginX + 56 : 0;
+  const colActivity = showClientCol ? marginX + 152 : marginX + 56;
+  const colType = showClientCol ? 420 : 420;
   const colHours = 500;
+  const activityWidth = showClientCol ? 260 : 350;
 
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.text('Fecha', colDate, y);
-  doc.text('Cliente', colClient, y);
-  doc.text('Actividad', colActivity, y);
-  doc.text('Tipo', colType, y);
-  doc.text('Horas', colHours, y);
-  y += 10;
-  doc.setDrawColor(220, 220, 220);
-  doc.line(marginX, y, 547, y);
-  y += 14;
+  function drawHeaderRow(yPos) {
+    doc.setFillColor(...calm);
+    doc.rect(marginX, yPos - 14, rightX - marginX, 22, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(...cream);
+    doc.text('FECHA', colDate + 4, yPos);
+    if (showClientCol) doc.text('CLIENTE', colClient, yPos);
+    doc.text('ACTIVIDAD', colActivity, yPos);
+    doc.text('TIPO', colType, yPos);
+    doc.text('HORAS', colHours, yPos);
+  }
+
+  drawHeaderRow(y);
+  y += 22;
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
-  doc.setTextColor(40, 40, 40);
+  doc.setFontSize(9.5);
 
-  visibleRows.forEach(r => {
-    if (y > 770) {
+  visibleRows.forEach((r, i) => {
+    const activityLines = doc.splitTextToSize(String(r.activity || ''), activityWidth);
+    const rowH = Math.max(18, activityLines.length * 13);
+
+    if (y + rowH > 780) {
       doc.addPage();
       y = 56;
+      drawHeaderRow(y);
+      y += 22;
     }
-    doc.text(formatDateLong(r.date), colDate, y);
-    doc.text(String(r.client || '').slice(0, 18), colClient, y);
-    const activityLines = doc.splitTextToSize(String(r.activity || ''), 250);
+
+    if (i % 2 === 0) {
+      doc.setFillColor(...rowAlt);
+      doc.rect(marginX, y - 12, rightX - marginX, rowH + 2, 'F');
+    }
+
+    doc.setTextColor(...calm);
+    doc.text(formatDateLong(r.date), colDate + 4, y);
+    if (showClientCol) doc.text(String(r.client || '').slice(0, 16), colClient, y);
     doc.text(activityLines, colActivity, y);
-    doc.text(r.type === 'cliente' ? 'Cliente' : 'General', colType, y);
+
+    const isClientType = r.type === 'cliente';
+    if (isClientType) {
+      doc.setFillColor(...love);
+      doc.roundedRect(colType - 4, y - 10, 50, 14, 7, 7, 'F');
+      doc.setTextColor(...joy);
+      doc.setFontSize(8);
+      doc.text('CLIENTE', colType, y);
+      doc.setFontSize(9.5);
+    } else {
+      doc.setTextColor(120, 116, 90);
+      doc.setFontSize(8);
+      doc.text('GENERAL', colType, y);
+      doc.setFontSize(9.5);
+    }
+
+    doc.setTextColor(...calm);
+    doc.setFont('helvetica', 'bold');
     doc.text(formatNum(r.hours) + ' hs', colHours, y);
-    y += Math.max(16, activityLines.length * 12);
+    doc.setFont('helvetica', 'normal');
+
+    y += rowH;
   });
 
-  const filenameClient = (activeClient === '__all__' ? 'todos' : activeClient).replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+  const filenameClient = (isFiltered ? activeClient : 'todos').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
   doc.save('reporte-horas-' + filenameClient + '-' + todayStr() + '.pdf');
 }
 
