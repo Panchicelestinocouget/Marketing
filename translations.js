@@ -1,21 +1,20 @@
 const i18n = {
   es: {
-    // Meta
+    // ===== LANDING (index.html) =====
     page_title: "Francisca Celestino — Fractional CMO · Marketing para startups B2B",
     page_description: "Fractional CMO y consultora de marketing para startups B2B. Estrategia, equipo, procesos y resultados medibles.",
     lang: "es",
 
-    // Nav
-    nav_servicios: "Servicios",
-    nav_frame: "Frame",
-    nav_sobre: "Sobre mí",
-    nav_cta: "Cuentame tu caso",
+    // Nav unificado
+    nav_servicios: "Formas de trabajar",
+    nav_portfolio: "Portfolio",
+    nav_cta: "Contacto",
 
     // Hero
     hero_tag: "ESTRATEGIAS DE MARKETING · EARLY STAGE · SCALE UP",
     hero_title_1: "Marketing que ",
-    hero_title_em: "funciona.",
-    hero_title_2: " Con sistema, no con improvisación.",
+    hero_title_em: "funciona",
+    hero_title_2: ". Con sistema, no con improvisación.",
     hero_sub: "Para startups y empresas que necesitan construir o reorganizar su marketing. Estrategia, equipo, procesos y resultados medibles.",
     hero_btn_ghost: "¿Cómo funciona?",
     hero_btn_primary: "Cuentame tu caso",
@@ -88,6 +87,9 @@ const i18n = {
     why3: "<strong>Obsesiva con el orden y los tiempos.</strong> Herencia directa del project management.",
     why4: "<strong>AI &amp; automatización.</strong> Hago más con menos. La estrategia es humana; la ejecución es asistida.",
 
+    portfolio_label: "CASOS REALES",
+    portfolio_btn: "Ver portfolio",
+
     // Final CTA
     final_heading_1: "¿Tu marketing necesita ",
     final_heading_em: "estructura",
@@ -97,25 +99,240 @@ const i18n = {
 
     // Footer
     footer_copy: "© Francisca Celestino · 2026",
+
+    // ===== PORTFOLIO (Portfolio_Francisca_Celestino.html) =====
+    pf_page_title: "Francisca Celestino, Portfolio de Marketing",
+    pf_page_description: "Portfolio de marketing de Francisca Celestino. De AB InBev draftLine y L'Oréal Paris a fundar áreas de marketing en startups B2B y AgTech.",
+
+    pf_nav_sitio: "Formas de trabajar",
+    pf_nav_portfolio: "Portfolio",
+    pf_nav_contacto: "Contacto",
+    pf_nav_resume: "Currículum",
+
+    pf_hero_tag: "PORTFOLIO · MARKETING STRATEGIST · 2026",
+    pf_hero_sub: "Líder de marketing estratégico. Conecto el oficio del CPG con la agilidad de las startups de alto crecimiento, construyendo áreas de marketing de alto rendimiento desde cero.",
+    pf_hero_k1: "Ubicación", pf_hero_v1: "San Francisco, CA",
+    pf_hero_k2: "Email",     pf_hero_v2: "franciscacelestino@hotmail.com",
+    pf_hero_k3: "Teléfono",  pf_hero_v3: "(415) 465-0887",
+    pf_hero_k4: "Red",       pf_hero_v4: "LinkedIn ↗",
+
+    pf_numbers_num: "01 / 04",
+    pf_numbers_role: "RESULTADOS",
+    pf_numbers_heading: "Algunos números de los que estoy orgullosa.",
+    pf_stat1_where: "AB InBev",
+    pf_stat1_label: "Cannes Lions otorgados a marcas del portfolio durante mi gestión liderando Creative Effectiveness.",
+    pf_stat2_where: "Brahma",
+    pf_stat2_label: "Crecimiento de market share, rompiendo una racha de 6 años en baja gracias a un motor de marketing regional especializado.",
+    pf_stat3_where: "AB InBev · Capabilities",
+    pf_stat3_label: "Marketers escalados a través de un programa flywheel (Talento → Trabajo → Premios), 2x el resultado promedio del CPG.",
+    pf_stat4_where: "Amalgama",
+    pf_stat4_label: "Crecimiento orgánico de la base de datos B2B con costo de adquisición cero, impulsado por alianzas de industria.",
+    pf_stat5_where: "UpTerra",
+    pf_stat5_label: "Contactos B2B generados en menos de 8 meses en un mercado AgTech altamente especializado.",
+    pf_stat6_where: "UpTerra",
+    pf_stat6_label: "Crecimiento de tráfico web YoY, sostenido a través de canales orgánicos y pagos.",
+
+    pf_approach_num: "02 / 04",
+    pf_approach_role: "CÓMO TRABAJO",
+    pf_approach_heading: "Cómo pienso el trabajo.",
+    pf_approach_aside: "Tres hábitos que llevo a cada equipo.",
+    pf_p1_title: "Estrategia como oficio disciplinado",
+    pf_p1_desc: "Formada bajo liderazgo creativo de primer nivel, creo que una estrategia es tan poderosa como su ejecución. Le pongo una mirada disciplinada a cada proyecto, asegurándome de que hasta la iniciativa más improvisada tenga una base sólida.",
+    pf_p2_title: "Construir el motor, después alimentarlo",
+    pf_p2_desc: "En una startup, marca y motor de demanda son el mismo proyecto. CRM, analítica y cadencia de contenido van antes que la inversión paga, y cada canal que manejo se prueba, se mide y se decide con datos, no con el instinto.",
+    pf_p3_title: "Voces externas antes de lanzar",
+    pf_p3_desc: "Un hábito de AB InBev: pone a prueba el trabajo con pares y audiencia antes de salir al público. El proceso reduce el riesgo del lanzamiento y convierte a la audiencia en amplificación temprana.",
+
+    pf_career_num: "03 / 04",
+    pf_career_role: "CARRERA",
+    pf_career_heading: "Nueve años entre CPG y startups.",
+    pf_career_aside: "Belleza y cerveza en mercados latinoamericanos, después software B2B y AgTech en San Francisco.",
+    pf_tl1_co: "L'Oréal Paris",
+    pf_tl1_desc: "Champú Elvive",
+    pf_tl1_role: "Brand Analyst, innovación, lanzamientos, e-commerce.",
+    pf_tl2_co: "AB InBev / draftLine",
+    pf_tl2_desc: "Corona, Budweiser, Stella Artois",
+    pf_tl2_role: "Creative Effectiveness, Project Manager, Regional Marketing Lead.",
+    pf_tl3_co: "Amalgama",
+    pf_tl3_desc: "Software B2B de bienestar",
+    pf_tl3_role: "Marketing & Comms Manager.",
+    pf_tl4_co: "UpTerra",
+    pf_tl4_desc: "Tecnología de agua de frecuencia cuántica",
+    pf_tl4_role: "Head of Marketing, fundé el área de marketing.",
+
+    pf_cases_num: "04 / 04",
+    pf_cases_role: "TRABAJO SELECCIONADO",
+    pf_cases_heading: "Casos de estudio.",
+    pf_cases_aside: "14 proyectos seleccionados en orden cronológico. Hacé click en cualquier título para expandir. Filtrá por marca o por tipo, un filtro a la vez.",
+    pf_filter_brand_label: "Marca",
+    pf_filter_all: "Todas",
+    pf_filter_loreal: "L'Oréal",
+    pf_filter_abinbev: "AB InBev / draftLine",
+    pf_filter_amalgama: "Amalgama",
+    pf_filter_upterra: "UpTerra",
+    pf_filter_type_label: "Tipo",
+    pf_filter_creativity: "Marca y Creatividad",
+    pf_filter_strategy: "Crecimiento y Estrategia",
+    pf_filter_ops: "Operaciones de Mkt",
+    pf_toggle_expand: "Expandir todo ↓",
+    pf_toggle_collapse: "Colapsar todo ↑",
+
+    pf_tag_creative: "Marca y Creatividad",
+    pf_tag_strategy: "Crecimiento y Estrategia",
+    pf_tag_ops: "Operaciones de Mkt",
+    pf_tag_cpg: "CPG",
+    pf_tag_beauty: "Belleza",
+    pf_tag_fb: "Alimentos y Bebidas",
+    pf_tag_startup: "Startup",
+    pf_tag_software: "Software",
+    pf_tag_wellness: "Bienestar",
+    pf_tag_tech: "Tecnología",
+    pf_tag_agro: "Agro",
+
+    pf_brief_label: "Brief / Restricción",
+    pf_what_label: "Qué hice",
+    pf_took_label: "Qué me llevé",
+    pf_idea_label: "La idea",
+    pf_mechanic_label: "El mecanismo",
+    pf_built_label: "Qué construí",
+    pf_results_label: "Resultados",
+    pf_why_matters_label: "Por qué importó",
+    pf_principle_label: "El principio que me llevé",
+    pf_strategy_lives_label: "Dónde vive la estrategia",
+    pf_why_format_label: "Por qué este formato",
+
+    pf_case1_brand: "L'Oréal Paris · Elvive",
+    pf_case1_title: "Reparación Total | producción local con Luisana Lopilato",
+    pf_case1_summary: "Reparación Total es el producto más vendido de Elvive. L'Oréal suele usar contenido global, pero para este lanzamiento usamos nuestra ambassador local para conectar con la cultura argentina. Trabajé en pre-producción, coordinación en set y el efecto post-lanzamiento en e-commerce.",
+    pf_case1_brief: "Una plataforma global de Elvive que necesita su propio corte, su momento de talento, y su sell-in por mercado. Traducir los códigos globales a algo argentino sin perder consistencia de marca.",
+    pf_case1_what: "Trabajé con nuestros partners de agencia McCann y Publicis en la producción. Más allá del film, armamos activaciones con influencers y un evento de lanzamiento con más de 200 invitados, además del rollout post-lanzamiento en e-commerce.",
+    pf_case1_took: "El aprendizaje más útil: la diferencia entre un spot lindo y uno comercialmente útil es el calendario de activaciones que viene después.",
+
+    pf_case2_brand: "L'Oréal Paris · Elvive",
+    pf_case2_title: "Óleo Extraordinario | traduciendo el film global a vertical, social-first",
+    pf_case2_summary: "Óleo Extraordinario era el producto de mayor margen de Elvive. Cuando recién lanzaron YouTube Shorts y Reels, teníamos contenido global pensado para formatos tradicionales de 30 segundos, y había que hacerlo sentir nativo al vertical de formato corto, y después traducir eso a e-commerce.",
+    pf_case2_brief: "Llevar un producto hero ya establecido a formatos que funcionaran sin sonido, en vertical y pensados para scroll, sin perder los códigos que la franquicia había construido durante años.",
+    pf_case2_what: "Trabajé en el rollout creativo social-first, coordinando con el equipo de marca y los partners digitales para producir contenido nativo de vertical que mantuviera los códigos premium de L'Oréal pero captara atención en el primer segundo. Después espejamos el mismo contenido en las superficies de e-commerce.",
+
+    pf_case3_brand: "AB InBev · Multi-marca · Programa GMT",
+    pf_case3_title: "Construyendo 6 equipos de marketing regionales en Argentina",
+    pf_case3_summary: "Argentina es un país enorme con tradiciones, cultura y niveles de ingreso muy distintos según la región, pero todo el negocio de cerveza se concentraba en Buenos Aires. Abrimos 6 equipos de marketing regionales, reasignando presupuesto según el market share local de cada marca, para que pudieran activar localmente en vez de competir por los mismos eventos de Buenos Aires.",
+    pf_case3_brief: "En seis meses, levantar el market share de nuestras marcas de valor. Quilmes y Brahma son las vacas lecheras de la compañía, y venían perdiendo share por cinco años contra CCU. La apuesta era que activaciones con raíz local podían lograr lo que las campañas nacionales no.",
+    pf_case3_what: "Diseñé todo el proyecto, lo presenté, armé el equipo, y manejé las activaciones y la conexión entre la ejecución regional y el marketing central. Siete marcas corriendo activaciones regionales ad-hoc en paralelo.",
+    pf_case3_r1n: "+2%", pf_case3_r1l: "Share de Brahma, desde una sola región",
+    pf_case3_r2n: "7", pf_case3_r2l: "Marcas activando localmente, ad-hoc por región",
+    pf_case3_r3n: "1ra", pf_case3_r3l: "Vez que las regiones tuvieron sus propios equipos de marketing",
+
+    pf_case4_brand: "AB InBev · Brahma · draftLine",
+    pf_case4_title: "\"Una idea para cuidarnos\" | una etiqueta de cerveza como gesto de salud pública",
+    pf_case4_summary: "En 2020, compartir una botella, un ritual social normal, se volvió de golpe un vector. La respuesta de Brahma: stickers en la etiqueta, para que cada persona marcara su propia botella. Un gesto pequeño de producto, escalado a campaña nacional.",
+    pf_case4_brief: "¿Cómo se presenta una marca de cerveza en una pandemia sin sonar indiferente o sermoneadora? La categoría estaba paralizada; nadie había encontrado todavía el tono correcto.",
+    pf_case4_what: "Gestioné el proyecto de la campaña a través del equipo creativo de draftLine y el equipo de marca de Brahma: briefing, producción, entrega. El gesto de producto era simple, pero la alineación entre marketing, packaging y operaciones para distribuir stickers a nivel nacional fue donde vivió la mayor parte del trabajo.",
+    pf_case4_pull: "El producto se convirtió en el mensaje. Brahma no le dijo a la gente que tuviera cuidado, le dio una forma de tener cuidado que encajaba dentro de un momento social ya existente.",
+
+    pf_case5_brand: "AB InBev · Coronita · draftLine",
+    pf_case5_title: "Coronita | una botella más chica para un bolsillo más chico",
+    pf_case5_summary: "El mercado argentino estaba golpeado. La gente no podía pagar más, así que hicimos la cerveza más chica. Coronita, un formato de botella más pequeño que bajaba el costo de bolsillo sin bajar la marca. Como no podíamos filmar el producto nuevo (no se permitían equipos de filmación en set), construimos todo el lanzamiento en ilustración.",
+    pf_case5_brief: "Lanzar un SKU nuevo en un mercado en cuarentena. Sin equipos de filmación permitidos en set, sin talento en vivo, y una categoría que se ve toda igual en la góndola. Dos restricciones apiladas sobre un lanzamiento.",
+    pf_case5_what: "Lideré el equipo creativo de punta a punta (briefing, coordinación de producción, entrega) y giramos hacia un sistema visual completamente ilustrado, convirtiendo la restricción en la puerta de entrada de la marca.",
+    pf_case5_took: "Este es el ejemplo más limpio de la mentalidad que quiero en cada equipo en el que estoy: cuando la restricción es real, dejá de intentar resolver alrededor de ella, resolvé a través de ella.",
+
+    pf_case6_brand: "AB InBev · Corona · draftLine",
+    pf_case6_title: "Viajes con Conexión | cuando \"salí afuera\" no está permitido, buscá una causa",
+    pf_case6_summary: "¿Cómo mantenés viva una marca de celebración al aire libre cuando el país no te deja salir de tu casa? Lo convertimos de un problema de marca a una causa: ayudar a la gente de la industria turística que estaba peor que nosotros.",
+    pf_case6_brief: "El turismo, territorio cultural natural de Corona, estaba en el piso. La marca tenía que participar, pero participar en 2020 significaba algo distinto a un spot de playa brilloso. El trabajo tenía que ser útil, no decorativo.",
+    pf_case6_what: "Coordiné con los hoteles partners el brief, los términos del acuerdo, y la mecánica de redención (six-pack con código QR, sorteo de uno de 100 paquetes de cuatro personas y tres noches). Después armé la estructura de producción y manejé los equipos que filmaron en 8 regiones del país: Patagonia, Costa Atlántica, NOA, NEA, Litoral, Córdoba y Cuyo.",
+    pf_case6_r1n: "1.200", pf_case6_r1l: "Noches de hotel compradas y redistribuidas",
+    pf_case6_r2n: "8", pf_case6_r2l: "Regiones argentinas documentadas",
+    pf_case6_r3n: "2", pf_case6_r3l: "Meses al aire durante el pico de cierre",
+    pf_case6_extra: "El propósito no es un tagline, es un compromiso. Cuando la identidad central de una marca es \"el aire libre\" y el mundo está forzado a quedarse adentro, la autenticidad se prueba en cómo te presentás para la industria que hace posible tu marca. Convertimos un desafío de marketing en una causa que conectó nuestros valores con la supervivencia del turismo local.",
+
+    pf_case7_brand: "AB InBev · Corona · draftLine",
+    pf_case7_title: "Corona Sunsets | el primer evento post-pandemia",
+    pf_case7_summary: "Corona Sunsets es la franquicia insignia de eventos de música y atardeceres de Corona. Lideré la primera edición de regreso después de la pandemia, de punta a punta.",
+    pf_case7_brief: "Reintroducir la plataforma experiencial más grande de la marca en un país que está saliendo de la cuarentena, para una marca cuyo territorio es \"el aire libre\". Acertar el formato al primer intento, la audiencia nos lo iba a decir de inmediato si se sentía forzado.",
+    pf_case7_what: "Manejé el evento de punta a punta: curaduría de invitados, mecánica de registro, experiencia de entrada y flujo de llegada, diseño de servicio de comida y bebida, integración visual de marca en cada escenario, señalética y momentos de foto, y el calendario de comunicaciones que generó expectativa en las semanas previas.",
+    pf_case7_why: "Una prueba de precisión operativa. Diseñé la experiencia del invitado de punta a punta, desde la primera invitación digital hasta el flujo de llegada física, asegurando que cada punto de contacto se sintiera seguro, fluido y auténticamente Corona.",
+
+    pf_case8_brand: "AB InBev · Budweiser · draftLine",
+    pf_case8_title: "Budweiser 710 | reconstruyendo una marca que la competencia había bastardeado",
+    pf_case8_summary: "Budweiser había quedado dañada en Argentina bajo el distribuidor anterior. El brief era reconstruirla como marca premium. Los lanzamientos de nuevo formato fueron parte de ese reposicionamiento, apoyándose en las comunicaciones globales que ya tenían fuerza real detrás.",
+    pf_case8_brief: "Los lanzamientos de formato suelen ser una historia de trade, un cambio de packaging comunicado en términos planos y transaccionales. Budweiser quería que este se sintiera como un momento de marca, parte del reposicionamiento premium más amplio.",
+    pf_case8_what: "Gestioné la campaña de lanzamiento a través de creatividad, packaging y activación de trade. La idea simple de naming, convertir un número de volumen en un cántico de fútbol (710 = OLE al revés), le dio al rollout un ancla narrativa única y filosa que funcionó en film, punto de venta y digital.",
+
+    pf_case9_brand: "PepsiCo · Paso de los Toros · draftLine",
+    pf_case9_title: "\"Cortá con tanta dulzura\" | un atributo de marca como comentario de pandemia",
+    pf_case9_summary: "Paso de los Toros es dueña del territorio amargo y ácido en las bebidas sin alcohol argentinas. Durante la cuarentena, la marca giró ese atributo exacto hacia afuera como comentario social, la acidez que la gente necesitaba para sobrevivir estar encerrada junta.",
+    pf_case9_brief: "La mayoría de las marcas de bebidas durante el inicio de la cuarentena se congelaron o giraron a mensajes genéricos de \"estamos con vos\". Paso de los Toros quería mantener su voz (filosa, sarcástica, opinada) sin ser insensible en un momento real de salud pública.",
+    pf_case9_idea: "Usar el atributo propio de la marca como marco para las pequeñas fricciones diarias de la cuarentena. <em>\"Andaba faltando ventilación social.\" \"Hoy arrancan las vacaciones de la pareja.\"</em> Cada posteo llevaba <em>#CortaConTantaDulzura</em> o <em>#LaAcidezQueHaceFalta</em>, convirtiendo la pandemia en un caso de uso del punto de vista de la marca.",
+    pf_case9_extra: "Conectamos la acidez de la marca con un momento cultural muy real, y conseguimos más reposteos y pickup viral que cualquier otra marca de nuestro portfolio en ese período. La voz de marca como caso de uso, no como decoración.",
+
+    pf_case10_brand: "PepsiCo · 7Up · draftLine",
+    pf_case10_title: "Trayendo de vuelta a Fido Dido | renegociando el IP, y después convirtiendo la ciudad en un canal de 7Up",
+    pf_case10_summary: "Fido Dido era el activo más icónico de 7Up, pero la marca había dejado vencer los derechos de diseño y había desaparecido del canal. Renegociamos la licencia, lo traemos de vuelta, y lo reconstruimos como protagonista de la marca otra vez.",
+    pf_case10_brief: "7Up necesitaba un activo de marca que viajara, algo que pudiera llevar la marca a través de film, social, vía pública y trade sin necesitar una idea creativa nueva cada trimestre. Fido Dido tenía equity de nostalgia. El desafío era hacerlo sentir como 2021, no 1995, y primero recuperar los derechos.",
+    pf_case10_mechanic: "Fido se convirtió en el anfitrión de la marca. <em>Chill Up</em> era la línea de plataforma, <em>Chill Spot</em> el motor de UGC. Cuando la gente volvió a salir post-cuarentena, 7Up le pidió que compartiera lugares de su barrio. Fido era ilustrado dentro de cada locación, convirtiendo fotos de usuarios en contenido de marca.",
+    pf_case10_took: "Reactivamos un IP que la marca ya tenía y construimos un motor de contenido donde la audiencia hacía la producción. Escaló sin escalar el presupuesto.",
+
+    pf_case11_brand: "AB InBev · Marketing Capabilities",
+    pf_case11_title: "Marketing Capabilities | un flywheel de talento para atraer mejor trabajo",
+    pf_case11_summary: "La idea estratégica era cerrar un círculo completo: tener gente buena, haciendo trabajo bueno, que nos gane premios, que atraiga más gente buena. Para hacerlo real, capacitamos a toda la organización de marketing con programas estructurados, cursos, charlas y eventos.",
+    pf_case11_what: "Diseñé y manejé el programa completo de Capabilities. Tuve a cargo el curriculum, el calendario, las alianzas con expertos globales de creatividad, y los eventos. Trackeé la finalización en cada etapa (98%) y me asegure de que el trabajo upstream del programa se conectara con el trabajo downstream.",
+    pf_case11_why: "Los programas de capacitación genéricos fallan porque no se conectan con los briefs reales en los que la gente está trabajando. Cada módulo de nuestro programa estaba diseñado alrededor de una campaña viva o un problema vivo que el equipo estaba enfrentando, así que la capacitación y el resultado eran el mismo loop.",
+    pf_case11_r1n: "7", pf_case11_r1l: "Cannes Lions durante mi gestión",
+    pf_case11_r2n: "40+", pf_case11_r2l: "Premios locales (+40% YoY)",
+    pf_case11_r3n: "90+ / 98%", pf_case11_r3l: "Marketers · tasa de finalización",
+
+    pf_case12_brand: "AB InBev · Creative Effectiveness",
+    pf_case12_title: "Creative Excellence | frameworks, agile y pressure-testing externo",
+    pf_case12_summary: "AB InBev funciona con frameworks (Brand Trust, Creative X). El trabajo de mi equipo era llevar esas estructuras a los brand managers y convertirlas en mejores campañas. Trabajamos agile, pusimos a prueba cada brief con voces creativas externas, y redujimos el riesgo de lanzamiento antes de que saliera un peso.",
+    pf_case12_what: "Traje líderes creativos de primer nivel de otros mercados, otras marcas y top agencias para criticar nuestro trabajo en sesiones estructuradas de revisión. Puntuamos briefs contra Creative X y Brand Trust. Trabajamos agile en más de 9 marcas.",
+    pf_case12_principle: "Invitar voces externas, pares, líderes de industria, audiencia objetivo, antes de lanzamientos de alta exposición. Mitigación de riesgo y amplificación orgánica al mismo tiempo, más un flywheel que atrae talento creativo top. Llevo el mismo hábito a cada equipo, incluso con presupuesto de startup.",
+
+    pf_case13_brand: "Amalgama · Software B2B de Bienestar",
+    pf_case13_title: "Amalgama | software de bienestar en una categoría de alta confianza y bajo presupuesto",
+    pf_case13_summary: "Amalgama vende software de bienestar caro. El ciclo de compra es largo. Todo el pitch descansa en que los compradores crean que somos los mejores en lo que hacemos. La relación es de largo plazo y se construye sobre confianza.",
+    pf_case13_brief: "Construir demanda sin presupuesto de marketing, en una categoría donde el punto de entrada es educación, no publicidad, y donde cada prospecto está haciendo chequeo de referencias antes de firmar nada.",
+    pf_case13_what: "Diseñé una estrategia de crecimiento liderada por eventos, produciendo más de 10 webinars de alta retención y más de 5 eventos estratégicos de industria por año para cerrar la brecha de confianza. Me asocié con Sales para mapear el journey, convirtiendo las grabaciones de webinars en contenido de cola larga. Aproveché co-marketing estratégico invitando a invitados con relaciones ya establecidas en cuentas objetivo para co-presentar, acelerando la confianza en la sala. Además, manejé la presencia en LinkedIn de los expertos internos y diseñé campañas de nurturing post-evento para mantener tibios a los leads.",
+    pf_case13_r1n: "65%", pf_case13_r1l: "Asistencia promedio a webinars",
+    pf_case13_r2n: "+15", pf_case13_r2l: "Eventos estratégicos anuales para generar leads orgánicos",
+    pf_case13_r3n: "+14%", pf_case13_r3l: "Crecimiento orgánico de base de datos con costo de adquisición cero (CAC)",
+    pf_case13_link: "Ver la biblioteca de webinars de Amalgama →",
+
+    pf_case14_brand: "UpTerra · AgTech",
+    pf_case14_title: "UpTerra | fundé un motor de marketing de alto rendimiento desde cero",
+    pf_case14_summary: "Mi trabajo aquí fue sobre arquitectura. En una categoría B2B profundamente especializada sin demanda existente para aprovechar, diseñé y escalé una función de marketing full-funnel desde cero hasta una operación cross-border.",
+    pf_case14_built_p: "<strong>Infraestructura:</strong> implementación full-stack (HubSpot, GA4) y rediseño de sitio optimizado para un ciclo de venta B2B de alta fricción. <strong>Go-To-Market:</strong> diseñé y ejecuté la estrategia de entrada al mercado mexicano, incluyendo contenido localizado y habilitación de ventas. <strong>Demand Stack:</strong> manejé un motor multicanal (SEO, pago, PR, TikTok, eventos) y lideré un equipo multidisciplinario de 5 personas, más partners de agencia. <strong>Alineación Sales-Marketing:</strong> desarrollé lead scoring y material de ventas que achicó el loop de feedback entre marketing y revenue.",
+    pf_case14_r1n: "2.000+", pf_case14_r1l: "Contactos B2B en menos de 8 meses",
+    pf_case14_r2n: "259%", pf_case14_r2l: "Tráfico web YoY",
+    pf_case14_r3n: "500+", pf_case14_r3l: "Leads calificados · 25.7% sales-ready",
+    pf_case14_r4n: "29/13", pf_case14_r4l: "% open / CTR de email sostenido",
+    pf_case14_r5n: "+224%", pf_case14_r5l: "Orgánico en LinkedIn",
+    pf_case14_strategy_p: "Las decisiones que impulsaron los números están upstream: qué mercado entrar primero, qué agencias contratar y cuáles internalizar, en qué canal sobre-invertir según el perfil de comprador, cómo diseñar el lead scoring para que Sales realmente confíe en el handoff, qué contenido compone en SEO versus qué quema presupuesto en una campaña.",
+    pf_case14_link: "Ver la página de resultados en vivo →",
+
+    pf_final_heading_1: "Construyamos el próximo ",
+    pf_final_heading_em: "capítulo",
+    pf_final_sub: "Si estás contratando liderazgo de marketing, o solo querés comparar ideas, me encantaría hablar.",
+    pf_final_btn_note: "Enviar un mensaje",
+    pf_final_btn_resume: "Descargar Currículum",
+
+    pf_footer_copy: "© Francisca Celestino · 2026 · San Francisco",
   },
 
   en: {
-    // Meta
     page_title: "Francisca Celestino — Fractional CMO · Marketing for B2B Startups",
     page_description: "Fractional CMO and marketing consultant for B2B startups. Strategy, team, processes, and measurable results.",
     lang: "en",
 
-    // Nav
-    nav_servicios: "Services",
-    nav_frame: "Framework",
-    nav_sobre: "About me",
-    nav_cta: "Tell me your case",
+    nav_servicios: "How I work",
+    nav_portfolio: "Portfolio",
+    nav_cta: "Contact",
 
-    // Hero
     hero_tag: "MARKETING STRATEGY · EARLY STAGE · SCALE UP",
     hero_title_1: "Marketing that ",
     hero_title_em: "works",
-    hero_title_2: " With systems, not improvisation.",
+    hero_title_2: ". With systems, not improvisation.",
     hero_sub: "For startups and companies that need to build or restructure their marketing. Strategy, team, processes, and measurable results.",
     hero_btn_ghost: "How does it work?",
     hero_btn_primary: "Tell me your case",
@@ -124,7 +341,6 @@ const i18n = {
     hero_k3: "WHAT YOU GET", hero_v3: "Strategy + Team + Processes",
     hero_k4: "DURATION",   hero_v4: "10 weeks",
 
-    // Servicios
     svc_label_num: "01 / 03",
     svc_label_role: "WHERE WE START",
     svc_heading: "Three ways\nto work together.",
@@ -153,7 +369,6 @@ const i18n = {
     svc3_li4: "Full visibility for leadership",
     svc3_ideal: "Ideal for: Startups that need marketing leadership without the cost of a full-time CMO.",
 
-    // Frame
     frame_label_num: "02 / 03",
     frame_label_role: "THE FRAMEWORK",
     frame_heading: "How we build\nthe system together.",
@@ -177,7 +392,6 @@ const i18n = {
     area9_title: "Rules of the game",
     area9_desc: "Clear roles, purposeful meetings, and informative reports. The structure that holds everything else together.",
 
-    // Why / About
     why_label_num: "03 / 03",
     why_label_role: "ABOUT ME",
     why_heading: "8+ years building marketing departments that actually work.",
@@ -188,15 +402,235 @@ const i18n = {
     why3: "<strong>Obsessive about order and timelines.</strong> A direct inheritance from project management.",
     why4: "<strong>AI &amp; automation.</strong> I do more with less. Strategy is human; execution is assisted.",
 
-    // Final CTA
+    portfolio_label: "REAL CASES",
+    portfolio_btn: "View portfolio",
+
     final_heading_1: "Does your marketing need ",
     final_heading_em: "structure",
     final_heading_2: "?",
     final_sub: "A 30-minute call. I'll tell you if I can help — and if not, I'll tell you who can.",
     final_btn: "Tell me more",
 
-    // Footer
     footer_copy: "© Francisca Celestino · 2026",
+
+    // ===== PORTFOLIO =====
+    pf_page_title: "Francisca Celestino, Marketing Portfolio",
+    pf_page_description: "Marketing portfolio of Francisca Celestino. From AB InBev draftLine and L'Oreal Paris to founding marketing functions at B2B and AgTech startups.",
+
+    pf_nav_sitio: "How I work",
+    pf_nav_portfolio: "Portfolio",
+    pf_nav_contacto: "Contact",
+    pf_nav_resume: "Resume",
+
+    pf_hero_tag: "PORTFOLIO · MARKETING STRATEGIST · 2026",
+    pf_hero_sub: "Strategic marketing leader. I bridge the gap between CPG craft and high-growth startup agility, building high-performing marketing functions from the ground up.",
+    pf_hero_k1: "Based in", pf_hero_v1: "San Francisco, CA",
+    pf_hero_k2: "Email",    pf_hero_v2: "franciscacelestino@hotmail.com",
+    pf_hero_k3: "Phone",    pf_hero_v3: "(415) 465-0887",
+    pf_hero_k4: "Network",  pf_hero_v4: "LinkedIn ↗",
+
+    pf_numbers_num: "01 / 04",
+    pf_numbers_role: "RESULTS",
+    pf_numbers_heading: "Some numbers I'm proud of.",
+    pf_stat1_where: "AB InBev",
+    pf_stat1_label: "Cannes Lions awarded to portfolio brands during my time leading Creative Effectiveness.",
+    pf_stat2_where: "Brahma",
+    pf_stat2_label: "Market share growth, breaking a 6-year losing streak through a specialized regional marketing engine.",
+    pf_stat3_where: "AB InBev · Capabilities",
+    pf_stat3_label: "Marketers scaled through a flywheel program (Talent → Work → Awards), 2x standard CPG results.",
+    pf_stat4_where: "Amalgama",
+    pf_stat4_label: "Organic growth of the B2B customer database with zero acquisition cost, driven by industry partnerships.",
+    pf_stat5_where: "UpTerra",
+    pf_stat5_label: "B2B contacts generated in under 8 months in a specialized AgTech market.",
+    pf_stat6_where: "UpTerra",
+    pf_stat6_label: "YoY website traffic growth, sustained through organic and paid channels.",
+
+    pf_approach_num: "02 / 04",
+    pf_approach_role: "HOW I WORK",
+    pf_approach_heading: "How I think about the work.",
+    pf_approach_aside: "Three habits I take into every team.",
+    pf_p1_title: "Strategy as a disciplined craft",
+    pf_p1_desc: "Trained under top-tier creative leadership, I believe a strategy is only as powerful as its execution. I bring a disciplined eye to every project, ensuring even the scrappiest initiative is built on a rock-solid foundation.",
+    pf_p2_title: "Build the engine, then fuel it",
+    pf_p2_desc: "At a startup, brand and demand engine are the same project. CRM, analytics, and content cadence come before paid spend, and every channel I run gets tested, measured, and decided by the data, not the gut.",
+    pf_p3_title: "External voices before launch",
+    pf_p3_desc: "A habit from AB InBev: pressure-test work with peers and audience before going public. The process de-risks the launch and turns the audience into early amplification.",
+
+    pf_career_num: "03 / 04",
+    pf_career_role: "CAREER",
+    pf_career_heading: "Nine years across CPG and startups.",
+    pf_career_aside: "Beauty and beer across Latin American markets, then B2B software and AgTech in San Francisco.",
+    pf_tl1_co: "L'Oréal Paris",
+    pf_tl1_desc: "Elvive shampoo",
+    pf_tl1_role: "Brand Analyst, innovation, launches, e-commerce.",
+    pf_tl2_co: "AB InBev / draftLine",
+    pf_tl2_desc: "Corona, Budweiser, Stella Artois",
+    pf_tl2_role: "Creative Effectiveness, Project Manager, Regional Marketing Lead.",
+    pf_tl3_co: "Amalgama",
+    pf_tl3_desc: "B2B wellness software",
+    pf_tl3_role: "Marketing & Comms Manager.",
+    pf_tl4_co: "UpTerra",
+    pf_tl4_desc: "Quantum-frequency water tech",
+    pf_tl4_role: "Head of Marketing, founded the marketing function.",
+
+    pf_cases_num: "04 / 04",
+    pf_cases_role: "SELECTED WORK",
+    pf_cases_heading: "Case studies.",
+    pf_cases_aside: "14 selected projects in chronological order. Click any title to expand. Filter by brand or by type, one filter at a time.",
+    pf_filter_brand_label: "Brand",
+    pf_filter_all: "All",
+    pf_filter_loreal: "L'Oréal",
+    pf_filter_abinbev: "AB InBev / draftLine",
+    pf_filter_amalgama: "Amalgama",
+    pf_filter_upterra: "UpTerra",
+    pf_filter_type_label: "Type",
+    pf_filter_creativity: "Brand & Creative",
+    pf_filter_strategy: "Growth & Strategy",
+    pf_filter_ops: "Mkt Operations",
+    pf_toggle_expand: "Expand all ↓",
+    pf_toggle_collapse: "Collapse all ↑",
+
+    pf_tag_creative: "Brand & Creative",
+    pf_tag_strategy: "Growth & Strategy",
+    pf_tag_ops: "Mkt Operations",
+    pf_tag_cpg: "CPG",
+    pf_tag_beauty: "Beauty",
+    pf_tag_fb: "Food & Beverage",
+    pf_tag_startup: "Startup",
+    pf_tag_software: "Software",
+    pf_tag_wellness: "Wellness",
+    pf_tag_tech: "Tech",
+    pf_tag_agro: "Agro",
+
+    pf_brief_label: "Brief / Constraint",
+    pf_what_label: "What I did",
+    pf_took_label: "What I took with me",
+    pf_idea_label: "The idea",
+    pf_mechanic_label: "The mechanic",
+    pf_built_label: "What I built",
+    pf_results_label: "Results",
+    pf_why_matters_label: "Why it mattered",
+    pf_principle_label: "The principle I took with me",
+    pf_strategy_lives_label: "Where the strategy lives",
+    pf_why_format_label: "Why this format",
+
+    pf_case1_brand: "L'Oréal Paris · Elvive",
+    pf_case1_title: "Reparación Total | local production with Luisana Lopilato",
+    pf_case1_summary: "Reparación Total is Elvive's top-selling product. L'Oréal usually relies on global content, but for this launch we used our local ambassador to connect with Argentine culture. I worked across pre-production, on-set coordination, and the post-launch e-commerce ripple.",
+    pf_case1_brief: "A global Elvive platform that needs its own cut, talent moment, and sell-in by market. Translate the global codes into something Argentine without compromising brand consistency.",
+    pf_case1_what: "Worked with our agency partners McCann and Publicis on the production. Beyond the film, we built influencer activations and a launch event with 200+ guests, plus the post-launch e-commerce rollout.",
+    pf_case1_took: "The single most useful lesson: the difference between a beautiful spot and a commercially useful one is the activation calendar that follows it.",
+
+    pf_case2_brand: "L'Oréal Paris · Elvive",
+    pf_case2_title: "Óleo Extraordinario | translating global film for vertical, social-first",
+    pf_case2_summary: "Óleo Extraordinario was Elvive's highest-margin product. When YouTube Shorts and Reels first launched, we had global content built for traditional 30s formats and had to make it feel native to vertical short-form, then translate that into e-commerce.",
+    pf_case2_brief: "Get an established hero product into formats that worked muted, vertical, and scroll-driven, without losing the codes the franchise had spent years building.",
+    pf_case2_what: "Worked on the social-first creative rollout, coordinating with the brand team and digital partners to produce vertical-native content that retained L'Oréal's premium codes but earned attention in the first second. Then mirrored the same content across e-commerce surfaces.",
+
+    pf_case3_brand: "AB InBev · Multi-brand · GMT Program",
+    pf_case3_title: "Building 6 regional marketing teams across Argentina",
+    pf_case3_summary: "Argentina is a huge country with very different traditions, culture, and income levels by region, but everything in the beer business gets concentrated in Buenos Aires. We opened 6 regional marketing teams, reallocating budget by each brand's local market share, so they could activate locally instead of competing for the same Buenos Aires events.",
+    pf_case3_brief: "Within six months, lift the market share of our value-tier brands. Quilmes and Brahma are the company's cash cows, and they had been losing share for five years against CCU. The bet was that locally-rooted activations would do what national campaigns couldn't.",
+    pf_case3_what: "Designed the entire project, pitched it, hired the team, and managed the activations and the connection between regional execution and central marketing. Seven brands running ad-hoc regional activations in parallel.",
+    pf_case3_r1n: "+2%", pf_case3_r1l: "Brahma share, from one single region",
+    pf_case3_r2n: "7", pf_case3_r2l: "Brands activating locally, ad-hoc by region",
+    pf_case3_r3n: "1st", pf_case3_r3l: "Time the regions had their own marketing teams",
+
+    pf_case4_brand: "AB InBev · Brahma · draftLine",
+    pf_case4_title: "\"Una idea para cuidarnos\" | a beer label as public-health gesture",
+    pf_case4_summary: "In 2020, sharing a bottle, a normal social ritual, was suddenly a vector. Brahma's response: stickers on the label, so each person could mark their own bottle. A small product gesture, scaled into a national campaign.",
+    pf_case4_brief: "How does a beer brand show up in a pandemic without being either tone-deaf or sanctimonious? The category was paralyzed; nobody had figured out the tone yet.",
+    pf_case4_what: "Project-managed the campaign across the creative team at draftLine and the brand team at Brahma: briefing, production, delivery. The product gesture was simple, but the alignment between marketing, packaging, and ops to ship stickers nationally was where most of the work lived.",
+    pf_case4_pull: "The product became the message. Brahma didn't tell people to be careful, it gave them a way to be careful that fit inside an existing social moment.",
+
+    pf_case5_brand: "AB InBev · Coronita · draftLine",
+    pf_case5_title: "Coronita | a smaller bottle for a smaller wallet",
+    pf_case5_summary: "The Argentine market was beaten down. People couldn't afford to pay more, so we made the beer smaller. Coronita, a smaller-format bottle that lowered out-of-pocket cost without lowering the brand. Since we couldn't shoot the new product (no production crews on set), we built the entire launch in illustration.",
+    pf_case5_brief: "Launch a new SKU into a market in lockdown. No production crews allowed on set, no live talent, and a category that all looks the same on shelf. Two constraints stacked on top of a launch.",
+    pf_case5_what: "Led the creative team end-to-end (briefing, production coordination, delivery) and pivoted to a fully illustrated visual system, turning the constraint into the brand's entry point.",
+    pf_case5_took: "This is the cleanest example of the mindset I want on every team I'm in: when the constraint is real, stop trying to solve around it, solve through it.",
+
+    pf_case6_brand: "AB InBev · Corona · draftLine",
+    pf_case6_title: "Viajes con Conexión | when \"go outside\" isn't allowed, find a cause",
+    pf_case6_summary: "How do you keep an outdoor-celebration brand alive when the country won't let you leave home? We turned it from a brand problem into a cause: helping the people in the tourism industry who were worse off than us.",
+    pf_case6_brief: "Tourism, Corona's natural cultural territory, was on the floor. The brand had to participate, but participation in 2020 meant something different than a glossy beach spot. The work had to be useful, not decorative.",
+    pf_case6_what: "Coordinated with the partner hotels on the brief, the deal terms, and the redemption mechanic (six-pack with QR code, raffle for one of 100 four-person, three-night packages). Then built the production structure and managed the crews who filmed across 8 regions of the country: Patagonia, Atlantic Coast, NOA, NEA, Litoral, Córdoba, and Cuyo.",
+    pf_case6_r1n: "1,200", pf_case6_r1l: "Hotel nights bought and redistributed",
+    pf_case6_r2n: "8", pf_case6_r2l: "Argentine regions documented",
+    pf_case6_r3n: "2", pf_case6_r3l: "Months on air during peak shutdown",
+    pf_case6_extra: "Purpose isn't a tagline, it's a commitment. When a brand's core identity is \"the outdoors\" and the world is forced to stay inside, authenticity is proven by how you show up for the industry that makes your brand possible. We turned a marketing challenge into a cause that connected our values with the survival of local tourism.",
+
+    pf_case7_brand: "AB InBev · Corona · draftLine",
+    pf_case7_title: "Corona Sunsets | the first post-pandemic event",
+    pf_case7_summary: "Corona Sunsets is Corona's flagship music-and-sunset event franchise. I led the first edition back after the pandemic, end-to-end.",
+    pf_case7_brief: "Re-introduce the brand's biggest experiential platform in a country emerging from lockdown, for a brand whose territory is \"outdoors.\" Get the format right on the first try, the audience would tell us immediately if it felt forced.",
+    pf_case7_what: "Owned the event end-to-end: guest list curation, registration mechanic, entry experience and arrival flow, F&B pour design, brand visual integration across stages, signage and photo moments, and the communications calendar that built anticipation in the weeks before.",
+    pf_case7_why: "A test in operational precision. I designed the end-to-end guest experience, from the first digital invite to the physical arrival flow, ensuring every touchpoint felt safe, seamless, and authentically Corona.",
+
+    pf_case8_brand: "AB InBev · Budweiser · draftLine",
+    pf_case8_title: "Budweiser 710 | rebuilding a brand the competition had bastardized",
+    pf_case8_summary: "Budweiser had been damaged in Argentina under the previous distributor. The brief was to rebuild it as a premium brand. New format launches were part of that repositioning, leaning on the global communications that already had real strength behind them.",
+    pf_case8_brief: "Format launches are usually a trade story, a packaging change communicated in flat, transactional terms. Budweiser wanted this one to feel like a brand moment, part of the broader premium repositioning.",
+    pf_case8_what: "Project-managed the launch campaign across creative, packaging, and trade activation. The simple naming idea, turning a volume number into a football chant (710 = OLE upside down), gave the rollout a single, sharp narrative anchor that worked across film, point-of-sale, and digital.",
+
+    pf_case9_brand: "PepsiCo · Paso de los Toros · draftLine",
+    pf_case9_title: "\"Cortá con tanta dulzura\" | brand attribute as pandemic commentary",
+    pf_case9_summary: "Paso de los Toros owns the bitter and acidic territory in Argentine soft drinks. During lockdown, the brand turned that exact attribute outward as social commentary, the acidity people needed to make it through being stuck together.",
+    pf_case9_brief: "Most beverage brands during early lockdown either froze or pivoted to \"we're with you\" generic messaging. Paso de los Toros wanted to keep its voice (sharp, sarcastic, opinionated) without being insensitive about a real public-health moment.",
+    pf_case9_idea: "Use the brand's own attribute as a frame for the small daily frictions of lockdown. <em>\"Andaba faltando ventilación social.\" \"Hoy arrancan las vacaciones de la pareja.\"</em> Each post carried <em>#CortaConTantaDulzura</em> or <em>#LaAcidezQueHaceFalta</em>, turning the pandemic into a use-case for the brand's POV.",
+    pf_case9_extra: "We connected the brand's acidity to a very real cultural moment, and earned more reposts and viral pickup than any other brand in our portfolio that period. Brand voice as use-case, not as decoration.",
+
+    pf_case10_brand: "PepsiCo · 7Up · draftLine",
+    pf_case10_title: "Bringing Fido Dido back | renegotiating IP, then turning the city into a 7Up channel",
+    pf_case10_summary: "Fido Dido was 7Up's most iconic asset, but the brand had let the design rights lapse and he had disappeared from the channel. We renegotiated the licensing, brought him back, and built him into the brand's protagonist again.",
+    pf_case10_brief: "7Up needed a brand asset that travelled, something that could carry the brand across film, social, OOH, and trade without needing a new creative idea every quarter. Fido Dido had nostalgia equity. The challenge was making him feel like 2021, not 1995, and getting the rights back first.",
+    pf_case10_mechanic: "Fido became the brand's host. <em>Chill Up</em> was the platform line, <em>Chill Spot</em> the UGC engine. As people went out again post-lockdown, 7Up asked them to share neighborhood spots. Fido was illustrated into each location, turning user photography into branded content.",
+    pf_case10_took: "We reactivated an IP the brand already owned and built a content engine where the audience did the production. It scaled without scaling the budget.",
+
+    pf_case11_brand: "AB InBev · Marketing Capabilities",
+    pf_case11_title: "Marketing Capabilities | a talent flywheel to attract better work",
+    pf_case11_summary: "The strategic idea was to close a full circle: have great people, doing great work, that wins us awards, that attracts more great people. To make it real, we upskilled the entire marketing org with structured programs, courses, talks, and events.",
+    pf_case11_what: "Designed and ran the full Capabilities program. Owned the curriculum, the calendar, the partnerships with global creativity experts, and the events. Tracked completion across every step (98%) and made sure the work upstream of the program connected with the work downstream of it.",
+    pf_case11_why: "Generic training programs fail because they don't connect to the real briefs people are working on. Every module in our program was designed around a live campaign or live problem the team was facing, so the upskilling and the output were the same loop.",
+    pf_case11_r1n: "7", pf_case11_r1l: "Cannes Lions during my tenure",
+    pf_case11_r2n: "40+", pf_case11_r2l: "Local awards (40%+ YoY)",
+    pf_case11_r3n: "90+ / 98%", pf_case11_r3l: "Marketers · completion rate",
+
+    pf_case12_brand: "AB InBev · Creative Effectiveness",
+    pf_case12_title: "Creative Excellence | frameworks, agile, and external pressure-testing",
+    pf_case12_summary: "AB InBev runs on frameworks (Brand Trust, Creative X). My team's job was to bring those structures to brand managers and turn them into better campaigns. We worked agile, pressure-tested every brief with external creative voices, and reduced launch risk before a peso went out.",
+    pf_case12_what: "Brought in great creative leaders from other markets, other brands, and top agencies to critique our work in structured review sessions. Scored briefs against Creative X and Brand Trust. Worked agile across 9+ brands.",
+    pf_case12_principle: "Inviting external voices, peers, industry leaders, target audience, before high-exposure launches. Risk mitigation and organic amplification at once, plus a flywheel that attracts top creative talent. I bring the same habit into every team, even on a startup budget.",
+
+    pf_case13_brand: "Amalgama · B2B Wellness Software",
+    pf_case13_title: "Amalgama | wellness software in a high-trust, low-budget category",
+    pf_case13_summary: "Amalgama sells expensive wellness software. The buying cycle is long. The whole pitch rests on buyers believing we're the best at what we do. The relationship is long-term and built on trust.",
+    pf_case13_brief: "Build demand without a marketing budget, in a category where the entry point is education, not ads, and where every prospect is doing reference checks before they sign anything.",
+    pf_case13_what: "Architected an event-led growth strategy, producing 10+ high-retention webinars and 5+ strategic industry events per year to bridge the trust gap. Partnered with Sales to map the journey, turning webinar recordings into long-tail content. I leveraged strategic co-marketing by inviting guests with established relationships in target accounts to co-host, accelerating trust in the room. Additionally, I managed internal subject-matter experts' LinkedIn presence and designed post-event nurture campaigns to keep leads warm.",
+    pf_case13_r1n: "65%", pf_case13_r1l: "Avg. webinar attendance",
+    pf_case13_r2n: "+15", pf_case13_r2l: "Annual strategic events to drive organic lead generation",
+    pf_case13_r3n: "+14%", pf_case13_r3l: "Organic database growth with zero acquisition cost (CAC)",
+    pf_case13_link: "View the Amalgama webinar library →",
+
+    pf_case14_brand: "UpTerra · AgTech",
+    pf_case14_title: "UpTerra | founded a high-performance marketing engine from the ground up",
+    pf_case14_summary: "My work here was about architecture. In a deeply specialized B2B category with no existing demand to leverage, I designed and scaled a full-funnel marketing function from zero to a cross-border operation.",
+    pf_case14_built_p: "<strong>Infrastructure:</strong> full-stack deployment (HubSpot, GA4) and website redesign optimized for a high-friction B2B sales cycle. <strong>Go-To-Market:</strong> designed and executed the entry strategy for the Mexican market, including localized content and sales enablement. <strong>Demand Stack:</strong> managed a multi-channel engine (SEO, paid, PR, TikTok, events) and led a multidisciplinary team of 5, plus agency partners. <strong>Sales-Marketing Alignment:</strong> developed lead scoring and sales collateral that shortened the feedback loop between marketing and revenue.",
+    pf_case14_r1n: "2,000+", pf_case14_r1l: "B2B contacts in <8 months",
+    pf_case14_r2n: "259%", pf_case14_r2l: "YoY website traffic",
+    pf_case14_r3n: "500+", pf_case14_r3l: "Qualified leads · 25.7% sales-ready",
+    pf_case14_r4n: "29/13", pf_case14_r4l: "% email open / CTR sustained",
+    pf_case14_r5n: "+224%", pf_case14_r5l: "LinkedIn organic",
+    pf_case14_strategy_p: "The decisions that drove the numbers are upstream: which market to enter first, which agencies to hire and which to insource, which channel to over-invest in given the buyer profile, how to design lead scoring so Sales actually trusts the handoff, what content compounds in SEO vs. what burns budget on a campaign.",
+    pf_case14_link: "See the live results page →",
+
+    pf_final_heading_1: "Let's build the next ",
+    pf_final_heading_em: "chapter",
+    pf_final_sub: "If you're hiring marketing leadership, or just want to compare notes, I'd love to talk.",
+    pf_final_btn_note: "Send a note",
+    pf_final_btn_resume: "Download Resume",
+
+    pf_footer_copy: "© Francisca Celestino · 2026 · San Francisco",
   }
 };
 
@@ -204,12 +638,11 @@ function applyTranslation(lang) {
   const t = i18n[lang];
   if (!t) return;
 
-  // Meta
   document.documentElement.lang = lang;
-  document.title = t.page_title;
-  document.querySelector('meta[name="description"]').setAttribute('content', t.page_description);
+  if (t.page_title) document.title = t.page_title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && t.page_description) metaDesc.setAttribute('content', t.page_description);
 
-  // Helper: set text or innerHTML by data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) {
@@ -221,12 +654,10 @@ function applyTranslation(lang) {
     }
   });
 
-  // Lang switcher active state
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
 
-  // Save preference
   localStorage.setItem('preferred-lang', lang);
 }
 
