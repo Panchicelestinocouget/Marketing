@@ -407,7 +407,7 @@
     <div class="inner">
       <a href="#top" class="brand"><span class="dot"></span>Francisca Celestino</a>
       <div class="nav-links">
-        <a href="index.html#servicios" data-i18n="pf_nav_sitio">How I work</a>
+        <a href="index.html#servicios" data-i18n="pf_nav_sitio" id="pf-nav-sitio">How I work</a>
         <a href="Portfolio_Francisca_Celestino.html" data-i18n="pf_nav_portfolio">Portfolio</a>
         <a class="cta" href="mailto:franciscacelestino@hotmail.com" data-i18n="pf_nav_contacto">Contact</a>
         <div class="lang-switcher">
@@ -417,6 +417,17 @@
       </div>
     </div>
   </nav>
+  <script>
+    // Si el link incluye ?modo=cv, esta vista se manda a reclutadores,
+    // se oculta el link al sitio de consultoría para mantener el foco solo en el portfolio.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('modo') === 'cv') {
+        var sitioLink = document.getElementById('pf-nav-sitio');
+        if (sitioLink) sitioLink.style.display = 'none';
+      }
+    })();
+  </script>
 
   <a id="top"></a>
 
