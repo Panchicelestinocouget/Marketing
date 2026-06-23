@@ -21,7 +21,7 @@ const i18n = {
     hero_k1: "RESULTADOS",    hero_v1: "Medibles desde el dia 1",
     hero_k2: "MODALIDAD",     hero_v2: "Acompañamiento activo",
     hero_k3: "QUE TE LLEVAS", hero_v3: "Estrategia + Equipo + Procesos",
-    hero_k4: "DURACIÓN",      hero_v4: "10 semanas",
+    hero_k4: "SIN RIESGO",      hero_v4: "Estrategia primero, equipo después",
 
     // Servicios
     svc_label_num: "01 / 03",
@@ -339,7 +339,7 @@ const i18n = {
     hero_k1: "RESULTS",    hero_v1: "Measurable from day 1",
     hero_k2: "FORMAT",     hero_v2: "Active accompaniment",
     hero_k3: "WHAT YOU GET", hero_v3: "Strategy + Team + Processes",
-    hero_k4: "DURATION",   hero_v4: "10 weeks",
+    hero_k4: "NO RISK",   hero_v4: "Strategy first, team second",
 
     svc_label_num: "01 / 03",
     svc_label_role: "WHERE WE START",
