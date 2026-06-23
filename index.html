@@ -9,11 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* =====================================================
-     PALETTE — "MORE" series · worn paper + cut-paper shapes
-     ===================================================== */
   :root {
-    /* the 12 MORE swatches */
     --growth:   #CFCEB1;
     --sun:      #C89730;
     --peace:    #C7D2D8;
@@ -27,19 +23,16 @@
     --rest:     #BD5F2F;
     --art:      #C4A8A0;
 
-    /* base canvas */
-    --paper:        #E0DFB9;       /* aged cream-sage page */
+    --paper:        #E0DFB9;
     --paper-soft:   #E6E4C0;
     --paper-deep:   #C8C69A;
-    --cream:        #F0EDC9;       /* light type-on-dark */
+    --cream:        #F0EDC9;
 
-    /* text */
-    --ink:          var(--calm);   /* warm deep brown */
+    --ink:          var(--calm);
     --ink-soft:     rgba(75,62,32,0.82);
     --ink-mute:     rgba(75,62,32,0.58);
     --ink-faint:    rgba(75,62,32,0.30);
 
-    /* fonts */
     --font-display: "Bricolage Grotesque","Helvetica Neue",system-ui,sans-serif;
     --font-text:    "DM Sans","Helvetica Neue",system-ui,sans-serif;
     --font-mono:    "JetBrains Mono",ui-monospace,Menlo,monospace;
@@ -66,9 +59,6 @@
   img, svg { display: block; max-width: 100%; }
   button { font: inherit; cursor: pointer; }
 
-  /* ============ WORN PAPER TEXTURE ============
-     Three layers: large faded patches + medium age spots + fine grain.
-     Multiply over every section. */
   body::after {
     content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
     opacity: 0.78;
@@ -79,16 +69,12 @@
       url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0 0.07  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>");
     background-size: 1600px 1600px, 600px 600px, 220px 220px;
   }
-  /* subtle vignette */
   body::before {
     content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 99;
     background:
       radial-gradient(ellipse 90% 70% at 50% 50%, transparent 60%, rgba(75,62,32,0.18) 100%);
   }
 
-  /* =====================================================
-     TYPE
-     ===================================================== */
   .display, h1, h2 {
     font-family: var(--font-display);
     font-weight: 700;
@@ -126,22 +112,15 @@
     content: ""; width: 20px; height: 1px; background: currentColor; opacity: 0.7;
   }
 
-  /* =====================================================
-     LAYOUT
-     ===================================================== */
   .container { max-width: var(--container); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
   section { padding: clamp(80px, 12vw, 140px) 0; position: relative; isolation: isolate; overflow: hidden; }
   @media (max-width: 720px) { .container { padding: 0 22px; } }
 
-  /* section color blocks */
   .sec-dancing { background: var(--dancing); color: var(--cream); }
   .sec-love    { background: var(--love);    color: var(--joy); }
   .sec-rest    { background: var(--rest);    color: var(--cream); }
   .sec-peace   { background: var(--peace);   color: var(--ink); }
 
-  /* =====================================================
-     NAV
-     ===================================================== */
   nav.top {
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(14px) saturate(140%);
@@ -187,9 +166,6 @@
     .nav-links a:not(.cta) { display: none; }
   }
 
-  /* =====================================================
-     BUTTONS
-     ===================================================== */
   .btn {
     font-family: var(--font-display);
     font-weight: 600;
@@ -217,9 +193,6 @@
     border-color: var(--cream); background: rgba(240,237,201,0.10);
   }
 
-  /* =====================================================
-     PORTFOLIO CTA BUTTON (llamativo, dentro de sec-love)
-     ===================================================== */
   .btn-portfolio {
     font-family: var(--font-display);
     font-weight: 700;
@@ -268,16 +241,9 @@
     .btn-portfolio { justify-content: center; }
   }
 
-  /* =====================================================
-     CUT-PAPER ILLUSTRATIONS
-     Solid shapes with slight imperfections, like collage cutouts
-     ===================================================== */
   .ill { position: absolute; pointer-events: none; z-index: 0; }
   .ill svg { width: 100%; height: 100%; display: block; }
 
-  /* =====================================================
-     HERO
-     ===================================================== */
   .hero { padding-top: clamp(80px, 14vw, 160px); padding-bottom: clamp(48px, 7vw, 80px); }
   .hero .inner { position: relative; z-index: 2; }
 
@@ -355,9 +321,6 @@
     color: var(--ink);
   }
 
-  /* =====================================================
-     SECTION HEAD
-     ===================================================== */
   .section-head {
     display: grid;
     grid-template-columns: 140px 1fr;
@@ -378,9 +341,6 @@
     .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }
   }
 
-  /* =====================================================
-     PROBLEMA  (olive · dancing · cream text)
-     ===================================================== */
   .problema .ill-a, .servicios.sec-dancing .ill-a { top: 6%; right: 4%; width: clamp(140px, 16vw, 240px); aspect-ratio: 1/1; color: var(--sun); transform: rotate(14deg); }
   .problema .ill-b, .servicios.sec-dancing .ill-b { bottom: 6%; left: -3%; width: clamp(160px, 22vw, 320px); aspect-ratio: 1.2/1; color: var(--joy); opacity: 0.95; transform: rotate(-8deg); }
   .problema .ill-c, .servicios.sec-dancing .ill-c { top: 30%; right: 18%; width: 80px; aspect-ratio: 1/1.2; color: var(--rest); transform: rotate(8deg); }
@@ -430,7 +390,6 @@
   .service.s-sun { background: var(--sun); color: var(--calm); }
   .service:hover { transform: translateY(-3px); }
 
-  /* Third card: spans full width, half height */
   .service.span-full { grid-column: 1 / -1; padding: 32px 40px; }
   .service-inline {
     display: grid;
@@ -501,9 +460,6 @@
   }
   .service .ideal strong { font-weight: 600; opacity: 1; }
 
-  /* =====================================================
-     FRAME (9 áreas) — each its MORE color
-     ===================================================== */
   .frame-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -528,7 +484,6 @@
   .area > *:not(.ill) { position: relative; z-index: 1; }
   .area .ill { z-index: 0; opacity: 0.85; }
 
-  /* Each area: bg, text, corner-illustration color */
   .area.a1 { background: var(--sun);      color: var(--calm); }   .area.a1 .ill-corner { color: var(--cozy); }
   .area.a2 { background: var(--cozy);     color: var(--healthy); }.area.a2 .ill-corner { color: var(--joy); }
   .area.a3 { background: var(--joy);      color: var(--love); }   .area.a3 .ill-corner { color: var(--rest); }
@@ -570,9 +525,6 @@
 
   .area .ill-corner { bottom: -28px; right: -22px; width: 130px; aspect-ratio: 1/1; }
 
-  /* =====================================================
-     POR QUÉ  (love · aubergine · joy text)
-     ===================================================== */
   .why .ill-w1 { top: -8%; left: -6%; width: 360px; aspect-ratio: 1/1; color: var(--cozy); opacity: 0.6; transform: rotate(-18deg); }
   .why .ill-w2 { bottom: -8%; right: -6%; width: 280px; aspect-ratio: 1/1; color: var(--dancing); opacity: 0.55; transform: rotate(22deg); }
   .why .ill-w3 { top: 30%; right: 12%; width: 50px; aspect-ratio: 1/1; color: var(--sun); }
@@ -666,9 +618,6 @@
     font-size: 19px;
   }
 
-  /* =====================================================
-     FINAL CTA  (rest · terracota · with big burst)
-     ===================================================== */
   .final .ill-f1 { left: 50%; top: 56%; transform: translate(-50%,-50%) rotate(8deg); width: 90vw; max-width: 800px; aspect-ratio: 1/1; color: var(--sun); opacity: 0.55; }
   .final .ill-f2 { top: 14%; left: 8%; width: 120px; aspect-ratio: 1/1; color: var(--love); transform: rotate(-12deg); }
   .final .ill-f3 { top: 18%; right: 10%; width: 84px; aspect-ratio: 1/1.2; color: var(--joy); transform: rotate(16deg); }
@@ -699,9 +648,6 @@
   .final .btn-primary { background: var(--love); color: var(--joy); }
   .final .btn-primary:hover { background: var(--calm); }
 
-  /* =====================================================
-     FOOTER
-     ===================================================== */
   footer {
     padding: 56px 0 64px;
     color: var(--ink-mute);
@@ -727,9 +673,6 @@
   }
   footer .channels a:hover { color: var(--rest); border-color: var(--rest); }
 
-  /* =====================================================
-     REVEAL
-     ===================================================== */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 720ms var(--ease), transform 720ms var(--ease); }
   .reveal.in { opacity: 1; transform: none; }
   .reveal[data-delay="1"] { transition-delay: 80ms; }
@@ -741,9 +684,6 @@
     .reveal, h1.hero-title em::after, .hero-tag::before { animation: none; transition: none; transform: none; opacity: 1; }
   }
 
-  /* =====================================================
-     LANG SWITCHER
-     ===================================================== */
   .lang-switcher {
     display: flex;
     align-items: center;
@@ -778,61 +718,49 @@
 
 <body>
 
-<!-- ============ CUT-PAPER ILLUSTRATIONS LIBRARY ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- ARCH (n shape — hollow inside) -->
     <symbol id="i-arch" viewBox="0 0 200 200">
       <path fill="currentColor" d="M22,196 L24,82 C28,38 60,8 100,8 C142,8 174,38 178,82 L180,196 L142,196 L140,86 C138,66 122,52 100,52 C78,52 62,66 60,86 L58,196 Z"/>
     </symbol>
-    <!-- CRESCENT (chunky moon) -->
     <symbol id="i-crescent" viewBox="0 0 200 160">
       <path fill="currentColor" d="M28,40 C72,8 154,4 184,68 C198,108 174,150 116,154 C72,156 30,140 16,108 C44,116 76,118 100,108 C124,98 138,80 134,60 C130,42 102,30 70,32 C50,34 38,36 28,40 Z"/>
     </symbol>
-    <!-- BURST (chunky starburst with 12 spikes) -->
     <symbol id="i-burst" viewBox="0 0 200 200">
       <path fill="currentColor" d="M100,4 L116,46 L150,16 L142,58 L188,46 L160,80 L196,98 L160,116 L188,150 L142,138 L150,180 L116,150 L100,196 L84,150 L50,180 L58,138 L12,150 L40,116 L4,98 L40,80 L12,46 L58,58 L50,16 L84,46 Z"/>
     </symbol>
-    <!-- MOUNTAIN (peaked dome) -->
     <symbol id="i-mountain" viewBox="0 0 200 200">
       <path fill="currentColor" d="M100,4 C144,4 178,80 192,196 L8,196 C22,80 56,4 100,4 Z"/>
     </symbol>
-    <!-- DONUT (O with hole) -->
     <symbol id="i-donut" viewBox="0 0 200 200">
       <path fill="currentColor" fill-rule="evenodd" d="M100,8 C148,8 192,52 192,100 C192,148 148,192 100,192 C52,192 8,148 8,100 C8,52 52,8 100,8 Z M100,72 C84,72 72,84 72,100 C72,116 84,128 100,128 C116,128 128,116 128,100 C128,84 116,72 100,72 Z"/>
     </symbol>
-    <!-- TEARDROP (chunky drop) -->
     <symbol id="i-teardrop" viewBox="0 0 160 200">
       <path fill="currentColor" d="M80,4 C130,40 152,82 152,134 C152,170 122,196 80,196 C38,196 8,170 8,134 C8,82 30,40 80,4 Z"/>
     </symbol>
-    <!-- BLOB (irregular peanut) -->
     <symbol id="i-blob" viewBox="0 0 220 180">
       <path fill="currentColor" d="M52,16 C100,4 130,28 158,32 C200,38 218,72 210,108 C202,148 170,172 124,170 C82,168 48,160 28,138 C4,110 8,76 18,52 C26,32 38,20 52,16 Z"/>
     </symbol>
-    <!-- WAVE (chunky S squiggle) -->
     <symbol id="i-wave" viewBox="0 0 220 120">
       <path fill="currentColor" d="M10,52 C40,12 70,12 100,40 C124,62 144,72 168,58 C188,46 200,40 214,46 L214,76 C198,78 184,82 168,90 C140,104 116,98 90,80 C68,64 50,68 30,86 C20,96 14,98 8,96 Z"/>
     </symbol>
-    <!-- M-SHAPE (chunky orchid M) -->
     <symbol id="i-em" viewBox="0 0 240 180">
       <path fill="currentColor" d="M10,178 L10,52 C10,28 28,8 54,8 C76,8 90,22 100,46 L120,98 L140,46 C150,22 164,8 186,8 C212,8 230,28 230,52 L230,178 L188,178 L188,76 L158,150 L122,150 L82,76 L82,178 Z"/>
     </symbol>
-    <!-- SPARK (small 4-point star) -->
     <symbol id="i-spark" viewBox="0 0 60 60">
       <path fill="currentColor" d="M30,2 C32,18 34,26 46,28 C58,30 56,30 46,32 C34,34 32,42 30,58 C28,42 26,34 14,32 C2,30 4,30 14,28 C26,26 28,18 30,2 Z"/>
     </symbol>
   </defs>
 </svg>
 
-<!-- ============ NAV ============ -->
+<!-- ============ NAV (unificado: Formas de trabajar / Portfolio / Contacto) ============ -->
 <nav class="top">
   <div class="inner">
     <a href="#top" class="brand"><span class="dot"></span>Francisca Celestino</a>
     <div class="nav-links">
-      <a href="#servicios" data-i18n="nav_servicios">Servicios</a>
-      <a href="#frame" data-i18n="nav_frame">Frame</a>
-      <a href="#francisca" data-i18n="nav_sobre">Sobre mí</a>
-      <a class="cta" href="mailto:franciscacelestino@hotmail.com" data-i18n="nav_cta">Cuentame tu caso</a>
+      <a href="index.html#servicios" data-i18n="nav_servicios">Formas de trabajar</a>
+      <a href="Portfolio_Francisca_Celestino.html" data-i18n="nav_portfolio">Portfolio</a>
+      <a class="cta" href="mailto:franciscacelestino@hotmail.com" data-i18n="nav_cta">Contacto</a>
       <div class="lang-switcher">
         <button class="lang-btn active" data-lang="es">ES</button>
         <button class="lang-btn" data-lang="en">EN</button>
@@ -861,7 +789,7 @@
     </p>
     <div class="hero-actions reveal" data-delay="3">
       <a class="btn btn-ghost" href="#servicios" data-i18n="hero_btn_ghost">¿Cómo funciona?</a>
-      <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com">
+      <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com" data-i18n="hero_btn_primary">
         Cuentame tu caso
         <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
@@ -871,12 +799,12 @@
       <div class="item"><div class="k" data-i18n="hero_k1">RESULTADOS</div><div class="v" data-i18n="hero_v1">Medibles desde el dia 1</div></div>
       <div class="item"><div class="k" data-i18n="hero_k2">MODALIDAD</div><div class="v" data-i18n="hero_v2">Acompañamiento activo</div></div>
       <div class="item"><div class="k" data-i18n="hero_k3">QUE TE LLEVAS</div><div class="v" data-i18n="hero_v3">Estrategia + Equipo + Procesos</div></div>
-      <div class="item"><div class="k">DURACIÓN </div><div class="v">10 semanas</div></div>
+      <div class="item"><div class="k" data-i18n="hero_k4">DURACIÓN</div><div class="v" data-i18n="hero_v4">10 semanas</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ SERVICIOS (con fondo olive — antes la sección problema) ============ -->
+<!-- ============ SERVICIOS ============ -->
 <section id="servicios" class="servicios sec-dancing">
   <div class="ill ill-a"><svg><use href="#i-burst"/></svg></div>
   <div class="ill ill-b"><svg><use href="#i-blob"/></svg></div>
@@ -898,14 +826,14 @@ de trabajar juntos.</h2>
         <div class="ill ill-sy"><svg><use href="#i-spark"/></svg></div>
         <div class="tag" data-i18n="svc1_tag">Servicio · 01</div>
         <h3 data-i18n="svc1_title">Tu primer área de marketing</h3>
-        <p>Construyo el área desde cero: estrategia, procesos, equipo y herramientas. Cuando termina el proceso, te ayudo a elegir al perfil ideal para ejecutarlo.</p>
+        <p data-i18n="svc1_desc">Construyo el área desde cero: estrategia, procesos, equipo y herramientas. Cuando termina el proceso, te ayudo a elegir al perfil ideal para ejecutarlo.</p>
         <ul>
           <li data-i18n="svc1_li1">Diagnóstico del punto de partida</li>
-          <li>Estrategia y goals para los primeros 12 meses </li>
+          <li data-i18n="svc1_li2">Estrategia y goals para los primeros 12 meses</li>
           <li data-i18n="svc1_li3">Procesos y herramientas documentados</li>
           <li data-i18n="svc1_li4">Definición y búsqueda del perfil ideal para ejecutar</li>
         </ul>
-        <div class="ideal">Ideal para: Empresas que no están listas para contratar un equipo de marketing senior pero quieren arrancar con estructura profesional. </div>
+        <div class="ideal" data-i18n="svc1_ideal">Ideal para: Empresas que no están listas para contratar un equipo de marketing senior pero quieren arrancar con estructura profesional.</div>
       </div>
 
       <div class="service s-peace reveal" data-delay="2">
@@ -913,15 +841,14 @@ de trabajar juntos.</h2>
         <div class="ill ill-sy"><svg><use href="#i-teardrop"/></svg></div>
         <div class="tag" data-i18n="svc2_tag">Servicio · 02</div>
         <h3 data-i18n="svc2_title">Consultoría + acompañamiento</h3>
-        <p>Auditoría completa, plan de 12 meses y acompañamiento 
-activo durante el proceso. Estructura y dirección  para el equipo que ya tenés.</p>
+        <p data-i18n="svc2_desc">Auditoría completa, plan de 12 meses y acompañamiento activo durante el proceso. Estructura y dirección para el equipo que ya tenés.</p>
         <ul>
           <li data-i18n="svc2_li1">Diagnóstico estratégico (Marketing Frame)</li>
           <li data-i18n="svc2_li2">Plan anual + KPIs operacionales</li>
           <li data-i18n="svc2_li3">Presencia activa en cada etapa</li>
           <li data-i18n="svc2_li4">Modelo de reporte para Liderazgo</li>
         </ul>
-        <div class="ideal">Ideal para: Empresas con equipo de marketing  que no están viendo los resultados que esperan.</div>
+        <div class="ideal" data-i18n="svc2_ideal">Ideal para: Empresas con equipo de marketing que no están viendo los resultados que esperan.</div>
       </div>
 
       <div class="service s-sun span-full reveal" data-delay="3">
@@ -955,7 +882,7 @@ activo durante el proceso. Estructura y dirección  para el equipo que ya tenés
       <div>
         <h2 class="h-section" data-i18n="frame_heading">Cómo construimos
 el sistema juntos.</h2>
-        <p class="lede" style="margin-top:24px">Cuando tienes una base sólida, puedes anticipar, ajustar y crecer.</p>
+        <p class="lede" style="margin-top:24px" data-i18n="frame_lede">Cuando tienes una base sólida, puedes anticipar, ajustar y crecer.</p>
       </div>
     </div>
 
@@ -972,28 +899,28 @@ el sistema juntos.</h2>
         <div class="ill ill-corner"><svg><use href="#i-em"/></svg></div>
         <div class="area-head"><span class="area-num">02</span><span class="area-emoji">👥</span></div>
         <h4 data-i18n="area2_title">Roles definidos</h4>
-        <p>El plan más sólido necesita a las personas correctas  ejecutándolo. Antes de arrancar, entendemos  con quién contamos y cómo potenciarlo.</p>
+        <p data-i18n="area2_desc">El plan más sólido necesita a las personas correctas ejecutándolo. Antes de arrancar, entendemos con quién contamos y cómo potenciarlo.</p>
       </div>
 
       <div class="area a3">
         <div class="ill ill-corner"><svg><use href="#i-spark"/></svg></div>
         <div class="area-head"><span class="area-num">03</span><span class="area-emoji">🎯</span></div>
         <h4 data-i18n="area3_title">Los objetivos</h4>
-        <p>Con objetivos claros, cada acción tiene un propósito. Definimos a dónde vamos antes de movernos.</p>
+        <p data-i18n="area3_desc">Con objetivos claros, cada acción tiene un propósito. Definimos a dónde vamos antes de movernos.</p>
       </div>
 
       <div class="area a4">
         <div class="ill ill-corner"><svg><use href="#i-mountain"/></svg></div>
         <div class="area-head"><span class="area-num">04</span><span class="area-emoji">📈</span></div>
         <h4 data-i18n="area4_title">El mercado</h4>
-        <p>Entender dónde están las oportunidades y cómo se posiciona la competencia es lo que define dónde conviene jugar.</p>
+        <p data-i18n="area4_desc">Entender dónde están las oportunidades y cómo se posiciona la competencia es lo que define dónde conviene jugar.</p>
       </div>
 
       <div class="area a5">
         <div class="ill ill-corner"><svg><use href="#i-wave"/></svg></div>
         <div class="area-head"><span class="area-num">05</span><span class="area-emoji">🏓</span></div>
         <h4 data-i18n="area5_title">Los procesos</h4>
-        <p>Un proceso claro asegura que ningún lead se pierda en el camino. Mapeamos cada punto de contacto para que nada quede al azar.</p>
+        <p data-i18n="area5_desc">Un proceso claro asegura que ningún lead se pierda en el camino. Mapeamos cada punto de contacto para que nada quede al azar.</p>
       </div>
 
       <div class="area a6">
@@ -1007,24 +934,21 @@ el sistema juntos.</h2>
         <div class="ill ill-corner"><svg><use href="#i-teardrop"/></svg></div>
         <div class="area-head"><span class="area-num">07</span><span class="area-emoji">🪁</span></div>
         <h4 data-i18n="area7_title">Plan Anual</h4>
-        <p>Un roadmap con lógica de cuándo y por qué activar cada cosa. No una lista de deseos,  sino un plan que se puede ejecutar.</p>
+        <p data-i18n="area7_desc">Un roadmap con lógica de cuándo y por qué activar cada cosa. No una lista de deseos, sino un plan que se puede ejecutar.</p>
       </div>
 
       <div class="area a8">
         <div class="ill ill-corner"><svg><use href="#i-donut"/></svg></div>
         <div class="area-head"><span class="area-num">08</span><span class="area-emoji">💸</span></div>
         <h4 data-i18n="area8_title">El presupuesto</h4>
-        <p>Cada inversión tiene una justificación. 
-Definimos cuánto, en qué y qué retorno esperar antes de gastar.</p>
+        <p data-i18n="area8_desc">Cada inversión tiene una justificación. Definimos cuánto, en qué y qué retorno esperar antes de gastar.</p>
       </div>
 
       <div class="area a9">
         <div class="ill ill-corner"><svg><use href="#i-arch"/></svg></div>
         <div class="area-head"><span class="area-num">09</span><span class="area-emoji">💼</span></div>
         <h4 data-i18n="area9_title">Las reglas del juego</h4>
-        <p>Roles claros, reuniones con propósito 
-y reportes que informan. La estructura 
-que hace que todo lo anterior se sostenga.</p>
+        <p data-i18n="area9_desc">Roles claros, reuniones con propósito y reportes que informan. La estructura que hace que todo lo anterior se sostenga.</p>
       </div>
 
     </div>
@@ -1061,7 +985,7 @@ que hace que todo lo anterior se sostenga.</p>
       <div class="why-list reveal" data-delay="1">
         <div class="why-row"><div class="why-num">01</div><div class="why-text" data-i18n="why1" data-i18n-html="true"><strong>CPG global &amp; B2B startups.</strong> Pasé por ABInBev y L'Oreal antes de saltar a startups. Sé cómo se ve marketing serio, y cómo construirlo cuando todavía no existe.</div></div>
         <div class="why-row"><div class="why-num">02</div><div class="why-text" data-i18n="why2" data-i18n-html="true"><strong>Construí MKT desde cero.</strong> <span class="stat">2.000+</span> contactos en 8 meses · <span class="stat">+259%</span> crecimiento de tráfico YoY.</div></div>
-        <div class="why-row"><div class="why-num">05</div><div class="why-text"><strong> Bilingüe español / inglés.</strong>  Me adapto al idioma del negocio.</div></div>
+        <div class="why-row"><div class="why-num">05</div><div class="why-text" data-i18n="why5" data-i18n-html="true"><strong>Bilingüe español / inglés.</strong> Me adapto al idioma del negocio.</div></div>
         <div class="why-row"><div class="why-num">03</div><div class="why-text" data-i18n="why3" data-i18n-html="true"><strong>Obsesiva con el orden y los tiempos.</strong> Herencia directa del project management.</div></div>
         <div class="why-row"><div class="why-num">04</div><div class="why-text" data-i18n="why4" data-i18n-html="true"><strong>AI &amp; automatización.</strong> Hago más con menos. La estrategia es humana; la ejecución es asistida.</div></div>
       </div>
