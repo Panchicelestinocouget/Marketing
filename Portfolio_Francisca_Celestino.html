@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="translations.js"></script>
 <style>
 :root {
       --growth:#CFCEB1; --sun:#C89730; --peace:#C7D2D8; --cozy:#B5662A; --joy:#D2A4BD;
@@ -366,6 +367,20 @@
     @media (prefers-reduced-motion: reduce) {
       #pf .reveal, #pf h1.hero-title .heavy em::after, #pf .hero-tag::before { animation: none; transition: none; transform: none; opacity: 1; }
     }
+
+    /* LANG SWITCHER */
+    #pf .lang-switcher {
+      display: flex; align-items: center; gap: 2px;
+      background: rgba(75,62,32,0.10); border-radius: 999px; padding: 3px;
+    }
+    #pf .lang-btn {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 5px 11px; border-radius: 999px;
+      border: none; background: transparent; color: var(--ink-mute);
+      cursor: pointer; transition: all 160ms var(--ease);
+    }
+    #pf .lang-btn.active { background: var(--paper); color: var(--ink); box-shadow: 0 1px 4px rgba(75,62,32,0.15); }
+    #pf .lang-btn:hover:not(.active) { color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -392,14 +407,13 @@
     <div class="inner">
       <a href="#top" class="brand"><span class="dot"></span>Francisca Celestino</a>
       <div class="nav-links">
-        <a href="#numbers">Numbers</a>
-        <a href="#approach">Approach</a>
-        <a href="#career">Career</a>
-        <a href="#cases">Case studies</a>
-        <a class="cta" href="Francisca-Celestino-CV.pdf" download>
-          <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.5a.5.5 0 0 1 .5.5v8.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.793V2a.5.5 0 0 1 .5-.5zM3 13.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/></svg>
-          Resume
-        </a>
+        <a href="index.html#servicios" data-i18n="pf_nav_sitio">How I work</a>
+        <a href="Portfolio_Francisca_Celestino.html" data-i18n="pf_nav_portfolio">Portfolio</a>
+        <a class="cta" href="mailto:franciscacelestino@hotmail.com" data-i18n="pf_nav_contacto">Contact</a>
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="es">ES</button>
+          <button class="lang-btn active" data-lang="en">EN</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -415,20 +429,20 @@
     <div class="ill ill-5"><svg><use href="#i-spark"/></svg></div>
 
     <div class="container inner">
-      <div class="hero-tag reveal">PORTFOLIO &middot; MARKETING STRATEGIST &middot; 2026</div>
+      <div class="hero-tag reveal" data-i18n="pf_hero_tag">PORTFOLIO &middot; MARKETING STRATEGIST &middot; 2026</div>
       <h1 class="hero-title display reveal" data-delay="1">
         <span class="light">Francisca</span>
         <span class="heavy"><em>Celestino</em></span>
       </h1>
-      <p class="lede hero-sub reveal" data-delay="2">
+      <p class="lede hero-sub reveal" data-delay="2" data-i18n="pf_hero_sub">
         Strategic marketing leader. I bridge the gap between CPG craft and high-growth startup agility, building high-performing marketing functions from the ground up.
       </p>
 
       <div class="hero-meta reveal" data-delay="3">
-        <div class="item"><div class="k">Based in</div><div class="v">San Francisco, CA</div></div>
-        <div class="item"><div class="k">Email</div><div class="v"><a href="mailto:franciscacelestino@hotmail.com">franciscacelestino@hotmail.com</a></div></div>
-        <div class="item"><div class="k">Phone</div><div class="v"><a href="tel:+14154650887">(415) 465-0887</a></div></div>
-        <div class="item"><div class="k">Network</div><div class="v"><a href="https://www.linkedin.com/in/franciscacelestino" target="_blank" rel="noopener">LinkedIn &#8599;</a></div></div>
+        <div class="item"><div class="k" data-i18n="pf_hero_k1">Based in</div><div class="v" data-i18n="pf_hero_v1">San Francisco, CA</div></div>
+        <div class="item"><div class="k" data-i18n="pf_hero_k2">Email</div><div class="v"><a href="mailto:franciscacelestino@hotmail.com">franciscacelestino@hotmail.com</a></div></div>
+        <div class="item"><div class="k" data-i18n="pf_hero_k3">Phone</div><div class="v"><a href="tel:+14154650887">(415) 465-0887</a></div></div>
+        <div class="item"><div class="k" data-i18n="pf_hero_k4">Network</div><div class="v"><a href="https://www.linkedin.com/in/franciscacelestino" target="_blank" rel="noopener">LinkedIn &#8599;</a></div></div>
       </div>
     </div>
   </section>
@@ -438,44 +452,44 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="label">
-          <div class="num">01 / 04</div>
-          <div class="role">RESULTS</div>
+          <div class="num" data-i18n="pf_numbers_num">01 / 04</div>
+          <div class="role" data-i18n="pf_numbers_role">RESULTS</div>
         </div>
         <div>
-          <h2 class="h-section">Some numbers I'm proud of.</h2>
+          <h2 class="h-section" data-i18n="pf_numbers_heading">Some numbers I'm proud of.</h2>
         </div>
       </div>
 
       <div class="stats-grid reveal" data-delay="1">
         <div class="stat">
           <div class="num"><em>7</em></div>
-          <span class="where">AB InBev</span>
-          <div class="label">Cannes Lions awarded to portfolio brands during my time leading Creative Effectiveness.</div>
+          <span class="where" data-i18n="pf_stat1_where">AB InBev</span>
+          <div class="label" data-i18n="pf_stat1_label">Cannes Lions awarded to portfolio brands during my time leading Creative Effectiveness.</div>
         </div>
         <div class="stat">
           <div class="num"><em>+2</em>%</div>
-          <span class="where">Brahma</span>
-          <div class="label">Market share growth, breaking a 6-year losing streak through a specialized regional marketing engine.</div>
+          <span class="where" data-i18n="pf_stat2_where">Brahma</span>
+          <div class="label" data-i18n="pf_stat2_label">Market share growth, breaking a 6-year losing streak through a specialized regional marketing engine.</div>
         </div>
         <div class="stat">
           <div class="num"><em>90</em>+</div>
-          <span class="where">AB InBev &middot; Capabilities</span>
-          <div class="label">Marketers scaled through a flywheel program (Talent &rarr; Work &rarr; Awards), 2x standard CPG results.</div>
+          <span class="where" data-i18n="pf_stat3_where">AB InBev &middot; Capabilities</span>
+          <div class="label" data-i18n="pf_stat3_label">Marketers scaled through a flywheel program (Talent &rarr; Work &rarr; Awards), 2x standard CPG results.</div>
         </div>
         <div class="stat">
           <div class="num"><em>+14</em>%</div>
-          <span class="where">Amalgama</span>
-          <div class="label">Organic growth of the B2B customer database with zero acquisition cost, driven by industry partnerships.</div>
+          <span class="where" data-i18n="pf_stat4_where">Amalgama</span>
+          <div class="label" data-i18n="pf_stat4_label">Organic growth of the B2B customer database with zero acquisition cost, driven by industry partnerships.</div>
         </div>
         <div class="stat">
           <div class="num"><em>2K</em>+</div>
-          <span class="where">UpTerra</span>
-          <div class="label">B2B contacts generated in under 8 months in a specialized AgTech market.</div>
+          <span class="where" data-i18n="pf_stat5_where">UpTerra</span>
+          <div class="label" data-i18n="pf_stat5_label">B2B contacts generated in under 8 months in a specialized AgTech market.</div>
         </div>
         <div class="stat">
           <div class="num"><em>259</em>%</div>
-          <span class="where">UpTerra</span>
-          <div class="label">YoY website traffic growth, sustained through organic and paid channels.</div>
+          <span class="where" data-i18n="pf_stat6_where">UpTerra</span>
+          <div class="label" data-i18n="pf_stat6_label">YoY website traffic growth, sustained through organic and paid channels.</div>
         </div>
       </div>
     </div>
@@ -489,12 +503,12 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="label">
-          <div class="num">02 / 04</div>
-          <div class="role">HOW I WORK</div>
+          <div class="num" data-i18n="pf_approach_num">02 / 04</div>
+          <div class="role" data-i18n="pf_approach_role">HOW I WORK</div>
         </div>
         <div>
-          <h2 class="h-section">How I think about the work.</h2>
-          <p class="aside">Three habits I take into every team.</p>
+          <h2 class="h-section" data-i18n="pf_approach_heading">How I think about the work.</h2>
+          <p class="aside" data-i18n="pf_approach_aside">Three habits I take into every team.</p>
         </div>
       </div>
 
@@ -502,20 +516,20 @@
         <div class="principle p1 reveal" data-delay="1">
           <div class="ill ill-corner"><svg><use href="#i-burst"/></svg></div>
           <div class="num">01</div>
-          <h3>Strategy as a disciplined craft</h3>
-          <p>Trained under top-tier creative leadership, I believe a strategy is only as powerful as its execution. I bring a disciplined eye to every project, ensuring even the scrappiest initiative is built on a rock-solid foundation.</p>
+          <h3 data-i18n="pf_p1_title">Strategy as a disciplined craft</h3>
+          <p data-i18n="pf_p1_desc">Trained under top-tier creative leadership, I believe a strategy is only as powerful as its execution. I bring a disciplined eye to every project, ensuring even the scrappiest initiative is built on a rock-solid foundation.</p>
         </div>
         <div class="principle p2 reveal" data-delay="2">
           <div class="ill ill-corner"><svg><use href="#i-arch"/></svg></div>
           <div class="num">02</div>
-          <h3>Build the engine, then fuel it</h3>
-          <p>At a startup, brand and demand engine are the same project. CRM, analytics, and content cadence come before paid spend, and every channel I run gets tested, measured, and decided by the data, not the gut.</p>
+          <h3 data-i18n="pf_p2_title">Build the engine, then fuel it</h3>
+          <p data-i18n="pf_p2_desc">At a startup, brand and demand engine are the same project. CRM, analytics, and content cadence come before paid spend, and every channel I run gets tested, measured, and decided by the data, not the gut.</p>
         </div>
         <div class="principle p3 reveal" data-delay="3">
           <div class="ill ill-corner"><svg><use href="#i-crescent"/></svg></div>
           <div class="num">03</div>
-          <h3>External voices before launch</h3>
-          <p>A habit from AB InBev: pressure-test work with peers and audience before going public. The process de-risks the launch and turns the audience into early amplification.</p>
+          <h3 data-i18n="pf_p3_title">External voices before launch</h3>
+          <p data-i18n="pf_p3_desc">A habit from AB InBev: pressure-test work with peers and audience before going public. The process de-risks the launch and turns the audience into early amplification.</p>
         </div>
       </div>
     </div>
@@ -530,39 +544,39 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="label">
-          <div class="num">03 / 04</div>
-          <div class="role">CAREER</div>
+          <div class="num" data-i18n="pf_career_num">03 / 04</div>
+          <div class="role" data-i18n="pf_career_role">CAREER</div>
         </div>
         <div>
-          <h2 class="h-section">Nine years across CPG and startups.</h2>
-          <p class="aside">Beauty and beer across Latin American markets, then B2B software and AgTech in San Francisco.</p>
+          <h2 class="h-section" data-i18n="pf_career_heading">Nine years across CPG and startups.</h2>
+          <p class="aside" data-i18n="pf_career_aside">Beauty and beer across Latin American markets, then B2B software and AgTech in San Francisco.</p>
         </div>
       </div>
 
       <div class="timeline reveal" data-delay="1">
         <a class="tl-item" href="https://www.loreal.com/en/" target="_blank" rel="noopener">
           <div class="yr">2017–2019</div>
-          <div class="co">L'Oréal Paris<span class="arrow">&#8599;</span></div>
-          <div class="desc">Elvive shampoo</div>
-          <div class="role">Brand Analyst, innovation, launches, e-commerce.</div>
+          <div class="co" data-i18n="pf_tl1_co">L'Oréal Paris<span class="arrow">&#8599;</span></div>
+          <div class="desc" data-i18n="pf_tl1_desc">Elvive shampoo</div>
+          <div class="role" data-i18n="pf_tl1_role">Brand Analyst, innovation, launches, e-commerce.</div>
         </a>
         <a class="tl-item" href="https://www.ab-inbev.com/" target="_blank" rel="noopener">
           <div class="yr">2019–2022</div>
-          <div class="co">AB InBev / draftLine<span class="arrow">&#8599;</span></div>
-          <div class="desc">Corona, Budweiser, Stella Artois</div>
-          <div class="role">Creative Effectiveness, Project Manager, Regional Marketing Lead.</div>
+          <div class="co" data-i18n="pf_tl2_co">AB InBev / draftLine<span class="arrow">&#8599;</span></div>
+          <div class="desc" data-i18n="pf_tl2_desc">Corona, Budweiser, Stella Artois</div>
+          <div class="role" data-i18n="pf_tl2_role">Creative Effectiveness, Project Manager, Regional Marketing Lead.</div>
         </a>
         <a class="tl-item" href="https://amalgama.co/" target="_blank" rel="noopener">
           <div class="yr">2022–Jul 2024</div>
-          <div class="co">Amalgama<span class="arrow">&#8599;</span></div>
-          <div class="desc">B2B wellness software</div>
-          <div class="role">Marketing &amp; Comms Manager.</div>
+          <div class="co" data-i18n="pf_tl3_co">Amalgama<span class="arrow">&#8599;</span></div>
+          <div class="desc" data-i18n="pf_tl3_desc">B2B wellness software</div>
+          <div class="role" data-i18n="pf_tl3_role">Marketing &amp; Comms Manager.</div>
         </a>
         <a class="tl-item" href="https://upterra.co/" target="_blank" rel="noopener">
           <div class="yr">2024–Now</div>
-          <div class="co">UpTerra<span class="arrow">&#8599;</span></div>
-          <div class="desc">Quantum-frequency water tech</div>
-          <div class="role">Head of Marketing, founded the marketing function.</div>
+          <div class="co" data-i18n="pf_tl4_co">UpTerra<span class="arrow">&#8599;</span></div>
+          <div class="desc" data-i18n="pf_tl4_desc">Quantum-frequency water tech</div>
+          <div class="role" data-i18n="pf_tl4_role">Head of Marketing, founded the marketing function.</div>
         </a>
       </div>
     </div>
@@ -576,30 +590,30 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="label">
-          <div class="num">04 / 04</div>
-          <div class="role">SELECTED WORK</div>
+          <div class="num" data-i18n="pf_cases_num">04 / 04</div>
+          <div class="role" data-i18n="pf_cases_role">SELECTED WORK</div>
         </div>
         <div>
-          <h2 class="h-section">Case studies.</h2>
-          <p class="aside">14 selected projects in chronological order. Click any title to expand. Filter by brand or by type, one filter at a time.</p>
+          <h2 class="h-section" data-i18n="pf_cases_heading">Case studies.</h2>
+          <p class="aside" data-i18n="pf_cases_aside">14 selected projects in chronological order. Click any title to expand. Filter by brand or by type, one filter at a time.</p>
         </div>
       </div>
 
       <div class="filter-bar reveal" data-delay="1">
         <div class="chips" id="brand-chips">
-          <span class="filter-label">Brand</span>
-          <button class="chip active" data-filter-key="all" data-filter-value="all">All</button>
-          <button class="chip" data-filter-key="brand" data-filter-value="loreal">L'Oréal</button>
-          <button class="chip" data-filter-key="brand" data-filter-value="abinbev">AB InBev / draftLine</button>
-          <button class="chip" data-filter-key="brand" data-filter-value="amalgama">Amalgama</button>
-          <button class="chip" data-filter-key="brand" data-filter-value="upterra">UpTerra</button>
+          <span class="filter-label" data-i18n="pf_filter_brand_label">Brand</span>
+          <button class="chip active" data-filter-key="all" data-filter-value="all" data-i18n="pf_filter_all">All</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="loreal" data-i18n="pf_filter_loreal">L'Oréal</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="abinbev" data-i18n="pf_filter_abinbev">AB InBev / draftLine</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="amalgama" data-i18n="pf_filter_amalgama">Amalgama</button>
+          <button class="chip" data-filter-key="brand" data-filter-value="upterra" data-i18n="pf_filter_upterra">UpTerra</button>
         </div>
         <div class="chips" id="type-chips">
-          <span class="filter-label">Type</span>
-          <button class="chip" data-filter-key="type" data-filter-value="creativity">Brand &amp; Creative</button>
-          <button class="chip" data-filter-key="type" data-filter-value="strategy">Growth &amp; Strategy</button>
-          <button class="chip" data-filter-key="type" data-filter-value="ops">Mkt Operations</button>
-          <button class="expand-all" id="toggle-all">Expand all &darr;</button>
+          <span class="filter-label" data-i18n="pf_filter_type_label">Type</span>
+          <button class="chip" data-filter-key="type" data-filter-value="creativity" data-i18n="pf_filter_creativity">Brand &amp; Creative</button>
+          <button class="chip" data-filter-key="type" data-filter-value="strategy" data-i18n="pf_filter_strategy">Growth &amp; Strategy</button>
+          <button class="chip" data-filter-key="type" data-filter-value="ops" data-i18n="pf_filter_ops">Mkt Operations</button>
+          <button class="expand-all" id="toggle-all" data-i18n="pf_toggle_expand">Expand all &darr;</button>
         </div>
       </div>
 
@@ -609,33 +623,33 @@
           <summary>
             <span class="case-yr">2017</span>
             <div class="case-meta">
-              <span class="case-brand">L'Oréal Paris · Elvive</span>
-              <span class="case-title">Reparación Total | local production with Luisana Lopilato</span>
+              <span class="case-brand" data-i18n="pf_case1_brand">L'Oréal Paris · Elvive</span>
+              <span class="case-title" data-i18n="pf_case1_title">Reparación Total | local production with Luisana Lopilato</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag cpg">CPG</span>
-              <span class="stag beauty">Beauty</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag cpg" data-i18n="pf_tag_cpg">CPG</span>
+              <span class="stag beauty" data-i18n="pf_tag_beauty">Beauty</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Reparación Total is Elvive's top-selling product. L'Oréal usually relies on global content, but for this launch we used our local ambassador to connect with Argentine culture. I worked across pre-production, on-set coordination, and the post-launch e-commerce ripple.</p>
+            <p class="summary-line" data-i18n="pf_case1_summary">Reparación Total is Elvive's top-selling product. L'Oréal usually relies on global content, but for this launch we used our local ambassador to connect with Argentine culture. I worked across pre-production, on-set coordination, and the post-launch e-commerce ripple.</p>
             <div class="video local horizontal">
               <video src="Reparacion_total_Elvive.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>A global Elvive platform that needs its own cut, talent moment, and sell-in by market. Translate the global codes into something Argentine without compromising brand consistency.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case1_brief">A global Elvive platform that needs its own cut, talent moment, and sell-in by market. Translate the global codes into something Argentine without compromising brand consistency.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Worked with our agency partners McCann and Publicis on the production. Beyond the film, we built influencer activations and a launch event with 200+ guests, plus the post-launch e-commerce rollout.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case1_what">Worked with our agency partners McCann and Publicis on the production. Beyond the film, we built influencer activations and a launch event with 200+ guests, plus the post-launch e-commerce rollout.</p>
               </div>
               <div class="full">
-                <h4>What I took with me</h4>
-                <p>The single most useful lesson: the difference between a beautiful spot and a commercially useful one is the activation calendar that follows it.</p>
+                <h4 data-i18n="pf_took_label">What I took with me</h4>
+                <p data-i18n="pf_case1_took">The single most useful lesson: the difference between a beautiful spot and a commercially useful one is the activation calendar that follows it.</p>
               </div>
             </div>
           </div>
@@ -645,29 +659,29 @@
           <summary>
             <span class="case-yr">2018</span>
             <div class="case-meta">
-              <span class="case-brand">L'Oréal Paris · Elvive</span>
-              <span class="case-title">Óleo Extraordinario | translating global film for vertical, social-first</span>
+              <span class="case-brand" data-i18n="pf_case2_brand">L'Oréal Paris · Elvive</span>
+              <span class="case-title" data-i18n="pf_case2_title">Óleo Extraordinario | translating global film for vertical, social-first</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag cpg">CPG</span>
-              <span class="stag beauty">Beauty</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag cpg" data-i18n="pf_tag_cpg">CPG</span>
+              <span class="stag beauty" data-i18n="pf_tag_beauty">Beauty</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Óleo Extraordinario was Elvive's highest-margin product. When YouTube Shorts and Reels first launched, we had global content built for traditional 30s formats and had to make it feel native to vertical short-form, then translate that into e-commerce.</p>
+            <p class="summary-line" data-i18n="pf_case2_summary">Óleo Extraordinario was Elvive's highest-margin product. When YouTube Shorts and Reels first launched, we had global content built for traditional 30s formats and had to make it feel native to vertical short-form, then translate that into e-commerce.</p>
             <div class="video local">
               <video src="Oleo_Extraordinario.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Get an established hero product into formats that worked muted, vertical, and scroll-driven, without losing the codes the franchise had spent years building.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case2_brief">Get an established hero product into formats that worked muted, vertical, and scroll-driven, without losing the codes the franchise had spent years building.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Worked on the social-first creative rollout, coordinating with the brand team and digital partners to produce vertical-native content that retained L'Oréal's premium codes but earned attention in the first second. Then mirrored the same content across e-commerce surfaces.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case2_what">Worked on the social-first creative rollout, coordinating with the brand team and digital partners to produce vertical-native content that retained L'Oréal's premium codes but earned attention in the first second. Then mirrored the same content across e-commerce surfaces.</p>
               </div>
             </div>
           </div>
@@ -677,32 +691,32 @@
           <summary>
             <span class="case-yr">2019–2020</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Multi-brand · GMT Program</span>
-              <span class="case-title">Building 6 regional marketing teams across Argentina</span>
+              <span class="case-brand" data-i18n="pf_case3_brand">AB InBev · Multi-brand · GMT Program</span>
+              <span class="case-title" data-i18n="pf_case3_title">Building 6 regional marketing teams across Argentina</span>
             </div>
             <div class="case-tags">
-              <span class="stag strategy">Growth &amp; Strategy</span>
-              <span class="stag ops">Mkt Operations</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag strategy" data-i18n="pf_tag_strategy">Growth &amp; Strategy</span>
+              <span class="stag ops" data-i18n="pf_tag_ops">Mkt Operations</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Argentina is a huge country with very different traditions, culture, and income levels by region, but everything in the beer business gets concentrated in Buenos Aires. We opened 6 regional marketing teams, reallocating budget by each brand's local market share, so they could activate locally instead of competing for the same Buenos Aires events.</p>
+            <p class="summary-line" data-i18n="pf_case3_summary">Argentina is a huge country with very different traditions, culture, and income levels by region, but everything in the beer business gets concentrated in Buenos Aires. We opened 6 regional marketing teams, reallocating budget by each brand's local market share, so they could activate locally instead of competing for the same Buenos Aires events.</p>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Within six months, lift the market share of our value-tier brands. Quilmes and Brahma are the company's cash cows, and they had been losing share for five years against CCU. The bet was that locally-rooted activations would do what national campaigns couldn't.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case3_brief">Within six months, lift the market share of our value-tier brands. Quilmes and Brahma are the company's cash cows, and they had been losing share for five years against CCU. The bet was that locally-rooted activations would do what national campaigns couldn't.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Designed the entire project, pitched it, hired the team, and managed the activations and the connection between regional execution and central marketing. Seven brands running ad-hoc regional activations in parallel.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case3_what">Designed the entire project, pitched it, hired the team, and managed the activations and the connection between regional execution and central marketing. Seven brands running ad-hoc regional activations in parallel.</p>
               </div>
               <div class="full">
                 <div class="results">
-                  <div><div class="num">+2%</div><div class="lab">Brahma share, from one single region</div></div>
-                  <div><div class="num">7</div><div class="lab">Brands activating locally, ad-hoc by region</div></div>
-                  <div><div class="num">1st</div><div class="lab">Time the regions had their own marketing teams</div></div>
+                  <div><div class="num" data-i18n="pf_case3_r1n">+2%</div><div class="lab" data-i18n="pf_case3_r1l">Brahma share, from one single region</div></div>
+                  <div><div class="num" data-i18n="pf_case3_r2n">7</div><div class="lab" data-i18n="pf_case3_r2l">Brands activating locally, ad-hoc by region</div></div>
+                  <div><div class="num" data-i18n="pf_case3_r3n">1st</div><div class="lab" data-i18n="pf_case3_r3l">Time the regions had their own marketing teams</div></div>
                 </div>
               </div>
             </div>
@@ -713,31 +727,31 @@
           <summary>
             <span class="case-yr">2020</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Brahma · draftLine</span>
-              <span class="case-title">"Una idea para cuidarnos" | a beer label as public-health gesture</span>
+              <span class="case-brand" data-i18n="pf_case4_brand">AB InBev · Brahma · draftLine</span>
+              <span class="case-title" data-i18n="pf_case4_title">"Una idea para cuidarnos" | a beer label as public-health gesture</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">In 2020, sharing a bottle, a normal social ritual, was suddenly a vector. Brahma's response: stickers on the label, so each person could mark their own bottle. A small product gesture, scaled into a national campaign.</p>
+            <p class="summary-line" data-i18n="pf_case4_summary">In 2020, sharing a bottle, a normal social ritual, was suddenly a vector. Brahma's response: stickers on the label, so each person could mark their own bottle. A small product gesture, scaled into a national campaign.</p>
             <div class="video local horizontal">
               <video src="Una_idea_para_cuidarnos.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>How does a beer brand show up in a pandemic without being either tone-deaf or sanctimonious? The category was paralyzed; nobody had figured out the tone yet.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case4_brief">How does a beer brand show up in a pandemic without being either tone-deaf or sanctimonious? The category was paralyzed; nobody had figured out the tone yet.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Project-managed the campaign across the creative team at draftLine and the brand team at Brahma: briefing, production, delivery. The product gesture was simple, but the alignment between marketing, packaging, and ops to ship stickers nationally was where most of the work lived.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case4_what">Project-managed the campaign across the creative team at draftLine and the brand team at Brahma: briefing, production, delivery. The product gesture was simple, but the alignment between marketing, packaging, and ops to ship stickers nationally was where most of the work lived.</p>
               </div>
               <div class="full">
-                <div class="pull">The product became the message. Brahma didn't tell people to be careful, it gave them a way to be careful that fit inside an existing social moment.</div>
+                <div class="pull" data-i18n="pf_case4_pull">The product became the message. Brahma didn't tell people to be careful, it gave them a way to be careful that fit inside an existing social moment.</div>
               </div>
             </div>
           </div>
@@ -747,32 +761,32 @@
           <summary>
             <span class="case-yr">2020</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Coronita · draftLine</span>
-              <span class="case-title">Coronita | a smaller bottle for a smaller wallet</span>
+              <span class="case-brand" data-i18n="pf_case5_brand">AB InBev · Coronita · draftLine</span>
+              <span class="case-title" data-i18n="pf_case5_title">Coronita | a smaller bottle for a smaller wallet</span>
             </div>
             <div class="case-tags">
-              <span class="stag strategy">Growth &amp; Strategy</span>
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag strategy" data-i18n="pf_tag_strategy">Growth &amp; Strategy</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">The Argentine market was beaten down. People couldn't afford to pay more, so we made the beer smaller. Coronita, a smaller-format bottle that lowered out-of-pocket cost without lowering the brand. Since we couldn't shoot the new product (no production crews on set), we built the entire launch in illustration.</p>
+            <p class="summary-line" data-i18n="pf_case5_summary">The Argentine market was beaten down. People couldn't afford to pay more, so we made the beer smaller. Coronita, a smaller-format bottle that lowered out-of-pocket cost without lowering the brand. Since we couldn't shoot the new product (no production crews on set), we built the entire launch in illustration.</p>
             <div class="video local">
               <video src="coronita-relax-a-little.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Launch a new SKU into a market in lockdown. No production crews allowed on set, no live talent, and a category that all looks the same on shelf. Two constraints stacked on top of a launch.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case5_brief">Launch a new SKU into a market in lockdown. No production crews allowed on set, no live talent, and a category that all looks the same on shelf. Two constraints stacked on top of a launch.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Led the creative team end-to-end (briefing, production coordination, delivery) and pivoted to a fully illustrated visual system, turning the constraint into the brand's entry point.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case5_what">Led the creative team end-to-end (briefing, production coordination, delivery) and pivoted to a fully illustrated visual system, turning the constraint into the brand's entry point.</p>
               </div>
               <div class="full">
-                <p>This is the cleanest example of the mindset I want on every team I'm in: when the constraint is real, stop trying to solve around it, solve through it.</p>
+                <p data-i18n="pf_case5_took">This is the cleanest example of the mindset I want on every team I'm in: when the constraint is real, stop trying to solve around it, solve through it.</p>
               </div>
             </div>
           </div>
@@ -782,36 +796,36 @@
           <summary>
             <span class="case-yr">2020</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Corona · draftLine</span>
-              <span class="case-title">Viajes con Conexión | when "go outside" isn't allowed, find a cause</span>
+              <span class="case-brand" data-i18n="pf_case6_brand">AB InBev · Corona · draftLine</span>
+              <span class="case-title" data-i18n="pf_case6_title">Viajes con Conexión | when "go outside" isn't allowed, find a cause</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">How do you keep an outdoor-celebration brand alive when the country won't let you leave home? We turned it from a brand problem into a cause: helping the people in the tourism industry who were worse off than us.</p>
+            <p class="summary-line" data-i18n="pf_case6_summary">How do you keep an outdoor-celebration brand alive when the country won't let you leave home? We turned it from a brand problem into a cause: helping the people in the tourism industry who were worse off than us.</p>
             <div class="video local horizontal">
               <video src="Viajes_con_conexion.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Tourism, Corona's natural cultural territory, was on the floor. The brand had to participate, but participation in 2020 meant something different than a glossy beach spot. The work had to be useful, not decorative.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case6_brief">Tourism, Corona's natural cultural territory, was on the floor. The brand had to participate, but participation in 2020 meant something different than a glossy beach spot. The work had to be useful, not decorative.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Coordinated with the partner hotels on the brief, the deal terms, and the redemption mechanic (six-pack with QR code, raffle for one of 100 four-person, three-night packages). Then built the production structure and managed the crews who filmed across 8 regions of the country: Patagonia, Atlantic Coast, NOA, NEA, Litoral, Córdoba, and Cuyo.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case6_what">Coordinated with the partner hotels on the brief, the deal terms, and the redemption mechanic (six-pack with QR code, raffle for one of 100 four-person, three-night packages). Then built the production structure and managed the crews who filmed across 8 regions of the country: Patagonia, Atlantic Coast, NOA, NEA, Litoral, Córdoba, and Cuyo.</p>
               </div>
               <div class="full">
                 <div class="results">
-                  <div><div class="num">1,200</div><div class="lab">Hotel nights bought and redistributed</div></div>
-                  <div><div class="num">8</div><div class="lab">Argentine regions documented</div></div>
-                  <div><div class="num">2</div><div class="lab">Months on air during peak shutdown</div></div>
+                  <div><div class="num" data-i18n="pf_case6_r1n">1,200</div><div class="lab" data-i18n="pf_case6_r1l">Hotel nights bought and redistributed</div></div>
+                  <div><div class="num" data-i18n="pf_case6_r2n">8</div><div class="lab" data-i18n="pf_case6_r2l">Argentine regions documented</div></div>
+                  <div><div class="num" data-i18n="pf_case6_r3n">2</div><div class="lab" data-i18n="pf_case6_r3l">Months on air during peak shutdown</div></div>
                 </div>
-                <p style="margin-top: 20px;">Purpose isn't a tagline, it's a commitment. When a brand's core identity is "the outdoors" and the world is forced to stay inside, authenticity is proven by how you show up for the industry that makes your brand possible. We turned a marketing challenge into a cause that connected our values with the survival of local tourism.</p>
+                <p style="margin-top: 20px;" data-i18n="pf_case6_extra">Purpose isn't a tagline, it's a commitment. When a brand's core identity is "the outdoors" and the world is forced to stay inside, authenticity is proven by how you show up for the industry that makes your brand possible. We turned a marketing challenge into a cause that connected our values with the survival of local tourism.</p>
               </div>
             </div>
           </div>
@@ -821,33 +835,33 @@
           <summary>
             <span class="case-yr">2021</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Corona · draftLine</span>
-              <span class="case-title">Corona Sunsets | the first post-pandemic event</span>
+              <span class="case-brand" data-i18n="pf_case7_brand">AB InBev · Corona · draftLine</span>
+              <span class="case-title" data-i18n="pf_case7_title">Corona Sunsets | the first post-pandemic event</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag ops">Mkt Operations</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag ops" data-i18n="pf_tag_ops">Mkt Operations</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Corona Sunsets is Corona's flagship music-and-sunset event franchise. I led the first edition back after the pandemic, end-to-end.</p>
+            <p class="summary-line" data-i18n="pf_case7_summary">Corona Sunsets is Corona's flagship music-and-sunset event franchise. I led the first edition back after the pandemic, end-to-end.</p>
             <div class="video local horizontal">
               <video src="Corona_sunsets.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Re-introduce the brand's biggest experiential platform in a country emerging from lockdown, for a brand whose territory is "outdoors." Get the format right on the first try, the audience would tell us immediately if it felt forced.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case7_brief">Re-introduce the brand's biggest experiential platform in a country emerging from lockdown, for a brand whose territory is "outdoors." Get the format right on the first try, the audience would tell us immediately if it felt forced.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Owned the event end-to-end: guest list curation, registration mechanic, entry experience and arrival flow, F&amp;B pour design, brand visual integration across stages, signage and photo moments, and the communications calendar that built anticipation in the weeks before.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case7_what">Owned the event end-to-end: guest list curation, registration mechanic, entry experience and arrival flow, F&amp;B pour design, brand visual integration across stages, signage and photo moments, and the communications calendar that built anticipation in the weeks before.</p>
               </div>
               <div class="full">
-                <h4>Why it mattered</h4>
-                <p>A test in operational precision. I designed the end-to-end guest experience, from the first digital invite to the physical arrival flow, ensuring every touchpoint felt safe, seamless, and authentically Corona.</p>
+                <h4 data-i18n="pf_why_matters_label">Why it mattered</h4>
+                <p data-i18n="pf_case7_why">A test in operational precision. I designed the end-to-end guest experience, from the first digital invite to the physical arrival flow, ensuring every touchpoint felt safe, seamless, and authentically Corona.</p>
               </div>
             </div>
           </div>
@@ -857,28 +871,28 @@
           <summary>
             <span class="case-yr">2021</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Budweiser · draftLine</span>
-              <span class="case-title">Budweiser 710 | rebuilding a brand the competition had bastardized</span>
+              <span class="case-brand" data-i18n="pf_case8_brand">AB InBev · Budweiser · draftLine</span>
+              <span class="case-title" data-i18n="pf_case8_title">Budweiser 710 | rebuilding a brand the competition had bastardized</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Budweiser had been damaged in Argentina under the previous distributor. The brief was to rebuild it as a premium brand. New format launches were part of that repositioning, leaning on the global communications that already had real strength behind them.</p>
+            <p class="summary-line" data-i18n="pf_case8_summary">Budweiser had been damaged in Argentina under the previous distributor. The brief was to rebuild it as a premium brand. New format launches were part of that repositioning, leaning on the global communications that already had real strength behind them.</p>
             <div class="video local horizontal">
               <video src="We_brew_it.mp4" controls preload="metadata" playsinline></video>
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Format launches are usually a trade story, a packaging change communicated in flat, transactional terms. Budweiser wanted this one to feel like a brand moment, part of the broader premium repositioning.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case8_brief">Format launches are usually a trade story, a packaging change communicated in flat, transactional terms. Budweiser wanted this one to feel like a brand moment, part of the broader premium repositioning.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Project-managed the launch campaign across creative, packaging, and trade activation. The simple naming idea, turning a volume number into a football chant (710 = OLE upside down), gave the rollout a single, sharp narrative anchor that worked across film, point-of-sale, and digital.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case8_what">Project-managed the launch campaign across creative, packaging, and trade activation. The simple naming idea, turning a volume number into a football chant (710 = OLE upside down), gave the rollout a single, sharp narrative anchor that worked across film, point-of-sale, and digital.</p>
               </div>
             </div>
           </div>
@@ -888,17 +902,17 @@
           <summary>
             <span class="case-yr">2021</span>
             <div class="case-meta">
-              <span class="case-brand">PepsiCo · Paso de los Toros · draftLine</span>
-              <span class="case-title">"Cortá con tanta dulzura" | brand attribute as pandemic commentary</span>
+              <span class="case-brand" data-i18n="pf_case9_brand">PepsiCo · Paso de los Toros · draftLine</span>
+              <span class="case-title" data-i18n="pf_case9_title">"Cortá con tanta dulzura" | brand attribute as pandemic commentary</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Paso de los Toros owns the bitter and acidic territory in Argentine soft drinks. During lockdown, the brand turned that exact attribute outward as social commentary, the acidity people needed to make it through being stuck together.</p>
+            <p class="summary-line" data-i18n="pf_case9_summary">Paso de los Toros owns the bitter and acidic territory in Argentine soft drinks. During lockdown, the brand turned that exact attribute outward as social commentary, the acidity people needed to make it through being stuck together.</p>
             <div class="mockups">
               <img src="pdt-monogamia.png" alt="Monogamia" loading="lazy" style="aspect-ratio:9/16;width:100%;border-radius:8px;display:block;object-fit:cover;background:var(--paper-deep);">
               <img src="pdt-saludo-beso.png" alt="Saludo Beso" loading="lazy" style="aspect-ratio:9/16;width:100%;border-radius:8px;display:block;object-fit:cover;background:var(--paper-deep);">
@@ -906,15 +920,15 @@
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Most beverage brands during early lockdown either froze or pivoted to "we're with you" generic messaging. Paso de los Toros wanted to keep its voice (sharp, sarcastic, opinionated) without being insensitive about a real public-health moment.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case9_brief">Most beverage brands during early lockdown either froze or pivoted to "we're with you" generic messaging. Paso de los Toros wanted to keep its voice (sharp, sarcastic, opinionated) without being insensitive about a real public-health moment.</p>
               </div>
               <div>
-                <h4>The idea</h4>
-                <p>Use the brand's own attribute as a frame for the small daily frictions of lockdown. <em>"Andaba faltando ventilación social." "Hoy arrancan las vacaciones de la pareja."</em> Each post carried <em>#CortaConTantaDulzura</em> or <em>#LaAcidezQueHaceFalta</em>, turning the pandemic into a use-case for the brand's POV.</p>
+                <h4 data-i18n="pf_idea_label">The idea</h4>
+                <p data-i18n="pf_case9_idea" data-i18n-html="true">Use the brand's own attribute as a frame for the small daily frictions of lockdown. <em>"Andaba faltando ventilación social." "Hoy arrancan las vacaciones de la pareja."</em> Each post carried <em>#CortaConTantaDulzura</em> or <em>#LaAcidezQueHaceFalta</em>, turning the pandemic into a use-case for the brand's POV.</p>
               </div>
               <div class="full">
-                <p>We connected the brand's acidity to a very real cultural moment, and earned more reposts and viral pickup than any other brand in our portfolio that period. Brand voice as use-case, not as decoration.</p>
+                <p data-i18n="pf_case9_extra">We connected the brand's acidity to a very real cultural moment, and earned more reposts and viral pickup than any other brand in our portfolio that period. Brand voice as use-case, not as decoration.</p>
               </div>
             </div>
           </div>
@@ -924,17 +938,17 @@
           <summary>
             <span class="case-yr">2021</span>
             <div class="case-meta">
-              <span class="case-brand">PepsiCo · 7Up · draftLine</span>
-              <span class="case-title">Bringing Fido Dido back | renegotiating IP, then turning the city into a 7Up channel</span>
+              <span class="case-brand" data-i18n="pf_case10_brand">PepsiCo · 7Up · draftLine</span>
+              <span class="case-title" data-i18n="pf_case10_title">Bringing Fido Dido back | renegotiating IP, then turning the city into a 7Up channel</span>
             </div>
             <div class="case-tags">
-              <span class="stag creative">Brand &amp; Creative</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag creative" data-i18n="pf_tag_creative">Brand &amp; Creative</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Fido Dido was 7Up's most iconic asset, but the brand had let the design rights lapse and he had disappeared from the channel. We renegotiated the licensing, brought him back, and built him into the brand's protagonist again.</p>
+            <p class="summary-line" data-i18n="pf_case10_summary">Fido Dido was 7Up's most iconic asset, but the brand had let the design rights lapse and he had disappeared from the channel. We renegotiated the licensing, brought him back, and built him into the brand's protagonist again.</p>
             <div class="mockups">
               <img src="7up-chill-up.png" alt="Chill Up" loading="lazy" style="aspect-ratio:9/16;width:100%;border-radius:8px;display:block;object-fit:cover;background:var(--paper-deep);">
               <img src="7up-fido-paternal.png" alt="Paternal" loading="lazy" style="aspect-ratio:9/16;width:100%;border-radius:8px;display:block;object-fit:cover;background:var(--paper-deep);">
@@ -942,15 +956,15 @@
             </div>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>7Up needed a brand asset that travelled, something that could carry the brand across film, social, OOH, and trade without needing a new creative idea every quarter. Fido Dido had nostalgia equity. The challenge was making him feel like 2021, not 1995, and getting the rights back first.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case10_brief">7Up needed a brand asset that travelled, something that could carry the brand across film, social, OOH, and trade without needing a new creative idea every quarter. Fido Dido had nostalgia equity. The challenge was making him feel like 2021, not 1995, and getting the rights back first.</p>
               </div>
               <div>
-                <h4>The mechanic</h4>
-                <p>Fido became the brand's host. <em>Chill Up</em> was the platform line, <em>Chill Spot</em> the UGC engine. As people went out again post-lockdown, 7Up asked them to share neighborhood spots. Fido was illustrated into each location, turning user photography into branded content.</p>
+                <h4 data-i18n="pf_mechanic_label">The mechanic</h4>
+                <p data-i18n="pf_case10_mechanic" data-i18n-html="true">Fido became the brand's host. <em>Chill Up</em> was the platform line, <em>Chill Spot</em> the UGC engine. As people went out again post-lockdown, 7Up asked them to share neighborhood spots. Fido was illustrated into each location, turning user photography into branded content.</p>
               </div>
               <div class="full">
-                <p>We reactivated an IP the brand already owned and built a content engine where the audience did the production. It scaled without scaling the budget.</p>
+                <p data-i18n="pf_case10_took">We reactivated an IP the brand already owned and built a content engine where the audience did the production. It scaled without scaling the budget.</p>
               </div>
             </div>
           </div>
@@ -960,32 +974,32 @@
           <summary>
             <span class="case-yr">2020–2022</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Marketing Capabilities</span>
-              <span class="case-title">Marketing Capabilities | a talent flywheel to attract better work</span>
+              <span class="case-brand" data-i18n="pf_case11_brand">AB InBev · Marketing Capabilities</span>
+              <span class="case-title" data-i18n="pf_case11_title">Marketing Capabilities | a talent flywheel to attract better work</span>
             </div>
             <div class="case-tags">
-              <span class="stag strategy">Growth &amp; Strategy</span>
-              <span class="stag ops">Mkt Operations</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag strategy" data-i18n="pf_tag_strategy">Growth &amp; Strategy</span>
+              <span class="stag ops" data-i18n="pf_tag_ops">Mkt Operations</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">The strategic idea was to close a full circle: have great people, doing great work, that wins us awards, that attracts more great people. To make it real, we upskilled the entire marketing org with structured programs, courses, talks, and events.</p>
+            <p class="summary-line" data-i18n="pf_case11_summary">The strategic idea was to close a full circle: have great people, doing great work, that wins us awards, that attracts more great people. To make it real, we upskilled the entire marketing org with structured programs, courses, talks, and events.</p>
             <div class="grid">
               <div>
-                <h4>What I did</h4>
-                <p>Designed and ran the full Capabilities program. Owned the curriculum, the calendar, the partnerships with global creativity experts, and the events. Tracked completion across every step (98%) and made sure the work upstream of the program connected with the work downstream of it.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case11_what">Designed and ran the full Capabilities program. Owned the curriculum, the calendar, the partnerships with global creativity experts, and the events. Tracked completion across every step (98%) and made sure the work upstream of the program connected with the work downstream of it.</p>
               </div>
               <div>
-                <h4>Why this format</h4>
-                <p>Generic training programs fail because they don't connect to the real briefs people are working on. Every module in our program was designed around a live campaign or live problem the team was facing, so the upskilling and the output were the same loop.</p>
+                <h4 data-i18n="pf_why_format_label">Why this format</h4>
+                <p data-i18n="pf_case11_why">Generic training programs fail because they don't connect to the real briefs people are working on. Every module in our program was designed around a live campaign or live problem the team was facing, so the upskilling and the output were the same loop.</p>
               </div>
               <div class="full">
                 <div class="results">
-                  <div><div class="num">7</div><div class="lab">Cannes Lions during my tenure</div></div>
-                  <div><div class="num">40+</div><div class="lab">Local awards (40%+ YoY)</div></div>
-                  <div><div class="num">90+ / 98%</div><div class="lab">Marketers · completion rate</div></div>
+                  <div><div class="num" data-i18n="pf_case11_r1n">7</div><div class="lab" data-i18n="pf_case11_r1l">Cannes Lions during my tenure</div></div>
+                  <div><div class="num" data-i18n="pf_case11_r2n">40+</div><div class="lab" data-i18n="pf_case11_r2l">Local awards (40%+ YoY)</div></div>
+                  <div><div class="num" data-i18n="pf_case11_r3n">90+ / 98%</div><div class="lab" data-i18n="pf_case11_r3l">Marketers · completion rate</div></div>
                 </div>
               </div>
             </div>
@@ -996,26 +1010,26 @@
           <summary>
             <span class="case-yr">2020–2022</span>
             <div class="case-meta">
-              <span class="case-brand">AB InBev · Creative Effectiveness</span>
-              <span class="case-title">Creative Excellence | frameworks, agile, and external pressure-testing</span>
+              <span class="case-brand" data-i18n="pf_case12_brand">AB InBev · Creative Effectiveness</span>
+              <span class="case-title" data-i18n="pf_case12_title">Creative Excellence | frameworks, agile, and external pressure-testing</span>
             </div>
             <div class="case-tags">
-              <span class="stag strategy">Growth &amp; Strategy</span>
-              <span class="stag ops">Mkt Operations</span>
-              <span class="stag fb">Food &amp; Beverage</span>
+              <span class="stag strategy" data-i18n="pf_tag_strategy">Growth &amp; Strategy</span>
+              <span class="stag ops" data-i18n="pf_tag_ops">Mkt Operations</span>
+              <span class="stag fb" data-i18n="pf_tag_fb">Food &amp; Beverage</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">AB InBev runs on frameworks (Brand Trust, Creative X). My team's job was to bring those structures to brand managers and turn them into better campaigns. We worked agile, pressure-tested every brief with external creative voices, and reduced launch risk before a peso went out.</p>
+            <p class="summary-line" data-i18n="pf_case12_summary">AB InBev runs on frameworks (Brand Trust, Creative X). My team's job was to bring those structures to brand managers and turn them into better campaigns. We worked agile, pressure-tested every brief with external creative voices, and reduced launch risk before a peso went out.</p>
             <div class="grid">
               <div>
-                <h4>What I did</h4>
-                <p>Brought in great creative leaders from other markets, other brands, and top agencies to critique our work in structured review sessions. Scored briefs against Creative X and Brand Trust. Worked agile across 9+ brands.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case12_what">Brought in great creative leaders from other markets, other brands, and top agencies to critique our work in structured review sessions. Scored briefs against Creative X and Brand Trust. Worked agile across 9+ brands.</p>
               </div>
               <div>
-                <h4>The principle I took with me</h4>
-                <p>Inviting external voices, peers, industry leaders, target audience, before high-exposure launches. Risk mitigation and organic amplification at once, plus a flywheel that attracts top creative talent. I bring the same habit into every team, even on a startup budget.</p>
+                <h4 data-i18n="pf_principle_label">The principle I took with me</h4>
+                <p data-i18n="pf_case12_principle">Inviting external voices, peers, industry leaders, target audience, before high-exposure launches. Risk mitigation and organic amplification at once, plus a flywheel that attracts top creative talent. I bring the same habit into every team, even on a startup budget.</p>
               </div>
             </div>
           </div>
@@ -1025,36 +1039,36 @@
           <summary>
             <span class="case-yr">2022–2024</span>
             <div class="case-meta">
-              <span class="case-brand">Amalgama · B2B Wellness Software</span>
-              <span class="case-title">Amalgama | wellness software in a high-trust, low-budget category</span>
+              <span class="case-brand" data-i18n="pf_case13_brand">Amalgama · B2B Wellness Software</span>
+              <span class="case-title" data-i18n="pf_case13_title">Amalgama | wellness software in a high-trust, low-budget category</span>
             </div>
             <div class="case-tags">
-              <span class="stag strategy">Growth &amp; Strategy</span>
-              <span class="stag ops">Mkt Operations</span>
-              <span class="stag startup">Startup</span>
-              <span class="stag software">Software</span>
-              <span class="stag wellness">Wellness</span>
+              <span class="stag strategy" data-i18n="pf_tag_strategy">Growth &amp; Strategy</span>
+              <span class="stag ops" data-i18n="pf_tag_ops">Mkt Operations</span>
+              <span class="stag startup" data-i18n="pf_tag_startup">Startup</span>
+              <span class="stag software" data-i18n="pf_tag_software">Software</span>
+              <span class="stag wellness" data-i18n="pf_tag_wellness">Wellness</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">Amalgama sells expensive wellness software. The buying cycle is long. The whole pitch rests on buyers believing we're the best at what we do. The relationship is long-term and built on trust.</p>
+            <p class="summary-line" data-i18n="pf_case13_summary">Amalgama sells expensive wellness software. The buying cycle is long. The whole pitch rests on buyers believing we're the best at what we do. The relationship is long-term and built on trust.</p>
             <div class="grid">
               <div>
-                <h4>Brief / Constraint</h4>
-                <p>Build demand without a marketing budget, in a category where the entry point is education, not ads, and where every prospect is doing reference checks before they sign anything.</p>
+                <h4 data-i18n="pf_brief_label">Brief / Constraint</h4>
+                <p data-i18n="pf_case13_brief">Build demand without a marketing budget, in a category where the entry point is education, not ads, and where every prospect is doing reference checks before they sign anything.</p>
               </div>
               <div>
-                <h4>What I did</h4>
-                <p>Architected an event-led growth strategy, producing 10+ high-retention webinars and 5+ strategic industry events per year to bridge the trust gap. Partnered with Sales to map the journey, turning webinar recordings into long-tail content. I leveraged strategic co-marketing by inviting guests with established relationships in target accounts to co-host, accelerating trust in the room. Additionally, I managed internal subject-matter experts' LinkedIn presence and designed post-event nurture campaigns to keep leads warm.</p>
+                <h4 data-i18n="pf_what_label">What I did</h4>
+                <p data-i18n="pf_case13_what">Architected an event-led growth strategy, producing 10+ high-retention webinars and 5+ strategic industry events per year to bridge the trust gap. Partnered with Sales to map the journey, turning webinar recordings into long-tail content. I leveraged strategic co-marketing by inviting guests with established relationships in target accounts to co-host, accelerating trust in the room. Additionally, I managed internal subject-matter experts' LinkedIn presence and designed post-event nurture campaigns to keep leads warm.</p>
               </div>
               <div class="full">
                 <div class="results">
-                  <div><div class="num">65%</div><div class="lab">Avg. webinar attendance</div></div>
-                  <div><div class="num">+15</div><div class="lab">Annual strategic events to drive organic lead generation</div></div>
-                  <div><div class="num">+14%</div><div class="lab">Organic database growth with zero acquisition cost (CAC)</div></div>
+                  <div><div class="num" data-i18n="pf_case13_r1n">65%</div><div class="lab" data-i18n="pf_case13_r1l">Avg. webinar attendance</div></div>
+                  <div><div class="num" data-i18n="pf_case13_r2n">+15</div><div class="lab" data-i18n="pf_case13_r2l">Annual strategic events to drive organic lead generation</div></div>
+                  <div><div class="num" data-i18n="pf_case13_r3n">+14%</div><div class="lab" data-i18n="pf_case13_r3l">Organic database growth with zero acquisition cost (CAC)</div></div>
                 </div>
-                <a class="ext" href="https://amalgama.co/category/webinars/" target="_blank" rel="noopener">View the Amalgama webinar library &rarr;</a>
+                <a class="ext" href="https://amalgama.co/category/webinars/" target="_blank" rel="noopener" data-i18n="pf_case13_link">View the Amalgama webinar library &rarr;</a>
               </div>
             </div>
           </div>
@@ -1064,38 +1078,38 @@
           <summary>
             <span class="case-yr">2024–Now</span>
             <div class="case-meta">
-              <span class="case-brand">UpTerra · AgTech</span>
-              <span class="case-title">UpTerra | founded a high-performance marketing engine from the ground up</span>
+              <span class="case-brand" data-i18n="pf_case14_brand">UpTerra · AgTech</span>
+              <span class="case-title" data-i18n="pf_case14_title">UpTerra | founded a high-performance marketing engine from the ground up</span>
             </div>
             <div class="case-tags">
-              <span class="stag strategy">Growth &amp; Strategy</span>
-              <span class="stag ops">Mkt Operations</span>
-              <span class="stag startup">Startup</span>
-              <span class="stag tech">Tech</span>
-              <span class="stag agro">Agro</span>
+              <span class="stag strategy" data-i18n="pf_tag_strategy">Growth &amp; Strategy</span>
+              <span class="stag ops" data-i18n="pf_tag_ops">Mkt Operations</span>
+              <span class="stag startup" data-i18n="pf_tag_startup">Startup</span>
+              <span class="stag tech" data-i18n="pf_tag_tech">Tech</span>
+              <span class="stag agro" data-i18n="pf_tag_agro">Agro</span>
               <span class="case-arrow">+</span>
             </div>
           </summary>
           <div class="case-body">
-            <p class="summary-line">My work here was about architecture. In a deeply specialized B2B category with no existing demand to leverage, I designed and scaled a full-funnel marketing function from zero to a cross-border operation.</p>
+            <p class="summary-line" data-i18n="pf_case14_summary">My work here was about architecture. In a deeply specialized B2B category with no existing demand to leverage, I designed and scaled a full-funnel marketing function from zero to a cross-border operation.</p>
             <a class="video" href="https://www.youtube.com/watch?v=ETXe4GjSPec" target="_blank" rel="noopener" aria-label="Watch on YouTube">
               <img src="https://i.ytimg.com/vi/ETXe4GjSPec/hqdefault.jpg" alt="Video thumbnail" loading="lazy">
               <span class="play-btn"></span>
               <span class="yt-tag">YouTube &#8599;</span>
             </a>
-            <h4>What I built</h4>
-            <p><strong>Infrastructure:</strong> full-stack deployment (HubSpot, GA4) and website redesign optimized for a high-friction B2B sales cycle. <strong>Go-To-Market:</strong> designed and executed the entry strategy for the Mexican market, including localized content and sales enablement. <strong>Demand Stack:</strong> managed a multi-channel engine (SEO, paid, PR, TikTok, events) and led a multidisciplinary team of 5, plus agency partners. <strong>Sales-Marketing Alignment:</strong> developed lead scoring and sales collateral that shortened the feedback loop between marketing and revenue.</p>
-            <h4 style="margin-top: 28px;">Results</h4>
+            <h4 data-i18n="pf_built_label">What I built</h4>
+            <p data-i18n="pf_case14_built_p" data-i18n-html="true"><strong>Infrastructure:</strong> full-stack deployment (HubSpot, GA4) and website redesign optimized for a high-friction B2B sales cycle. <strong>Go-To-Market:</strong> designed and executed the entry strategy for the Mexican market, including localized content and sales enablement. <strong>Demand Stack:</strong> managed a multi-channel engine (SEO, paid, PR, TikTok, events) and led a multidisciplinary team of 5, plus agency partners. <strong>Sales-Marketing Alignment:</strong> developed lead scoring and sales collateral that shortened the feedback loop between marketing and revenue.</p>
+            <h4 style="margin-top: 28px;" data-i18n="pf_results_label">Results</h4>
             <div class="results" style="grid-template-columns: repeat(5, 1fr);">
-              <div><div class="num">2,000+</div><div class="lab">B2B contacts in &lt;8 months</div></div>
-              <div><div class="num">259%</div><div class="lab">YoY website traffic</div></div>
-              <div><div class="num">500+</div><div class="lab">Qualified leads · 25.7% sales-ready</div></div>
-              <div><div class="num">29/13</div><div class="lab">% email open / CTR sustained</div></div>
-              <div><div class="num">+224%</div><div class="lab">LinkedIn organic</div></div>
+              <div><div class="num" data-i18n="pf_case14_r1n">2,000+</div><div class="lab" data-i18n="pf_case14_r1l">B2B contacts in &lt;8 months</div></div>
+              <div><div class="num" data-i18n="pf_case14_r2n">259%</div><div class="lab" data-i18n="pf_case14_r2l">YoY website traffic</div></div>
+              <div><div class="num" data-i18n="pf_case14_r3n">500+</div><div class="lab" data-i18n="pf_case14_r3l">Qualified leads · 25.7% sales-ready</div></div>
+              <div><div class="num" data-i18n="pf_case14_r4n">29/13</div><div class="lab" data-i18n="pf_case14_r4l">% email open / CTR sustained</div></div>
+              <div><div class="num" data-i18n="pf_case14_r5n">+224%</div><div class="lab" data-i18n="pf_case14_r5l">LinkedIn organic</div></div>
             </div>
-            <h4 style="margin-top: 28px;">Where the strategy lives</h4>
-            <p>The decisions that drove the numbers are upstream: which market to enter first, which agencies to hire and which to insource, which channel to over-invest in given the buyer profile, how to design lead scoring so Sales actually trusts the handoff, what content compounds in SEO vs. what burns budget on a campaign.</p>
-            <a class="ext" href="https://upterra.co/results/" target="_blank" rel="noopener">See the live results page &rarr;</a>
+            <h4 style="margin-top: 28px;" data-i18n="pf_strategy_lives_label">Where the strategy lives</h4>
+            <p data-i18n="pf_case14_strategy_p">The decisions that drove the numbers are upstream: which market to enter first, which agencies to hire and which to insource, which channel to over-invest in given the buyer profile, how to design lead scoring so Sales actually trusts the handoff, what content compounds in SEO vs. what burns budget on a campaign.</p>
+            <a class="ext" href="https://upterra.co/results/" target="_blank" rel="noopener" data-i18n="pf_case14_link">See the live results page &rarr;</a>
           </div>
         </details>
 
@@ -1112,16 +1126,16 @@
     <div class="ill ill-f5"><svg><use href="#i-spark"/></svg></div>
 
     <div class="container inner reveal">
-      <h2>Let's build the next <em>chapter</em>.</h2>
-      <p>If you're hiring marketing leadership, or just want to compare notes, I'd love to talk.</p>
+      <h2><span data-i18n="pf_final_heading_1">Let's build the next </span><em data-i18n="pf_final_heading_em">chapter</em>.</h2>
+      <p data-i18n="pf_final_sub">If you're hiring marketing leadership, or just want to compare notes, I'd love to talk.</p>
       <div class="links">
         <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com">
-          Send a note
+          <span data-i18n="pf_final_btn_note">Send a note</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
         <a class="btn btn-ghost" href="Francisca-Celestino-CV.pdf" download>
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a.5.5 0 0 1 .5.5v8.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.793V2a.5.5 0 0 1 .5-.5zM3 13.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/></svg>
-          Download Resume
+          <span data-i18n="pf_final_btn_resume">Download Resume</span>
         </a>
       </div>
     </div>
@@ -1130,7 +1144,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container inner">
-      <div class="colophon">© Francisca Celestino · 2026 · San Francisco</div>
+      <div class="colophon" data-i18n="pf_footer_copy">© Francisca Celestino · 2026 · San Francisco</div>
       <div class="channels">
         <a href="mailto:franciscacelestino@hotmail.com">franciscacelestino@hotmail.com</a>
         <a href="tel:+14154650887">(415) 465-0887</a>
