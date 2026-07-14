@@ -381,6 +381,71 @@
     }
     #pf .lang-btn.active { background: var(--paper); color: var(--ink); box-shadow: 0 1px 4px rgba(75,62,32,0.15); }
     #pf .lang-btn:hover:not(.active) { color: var(--ink-soft); }
+
+    /* CONTACT MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(75,62,32,0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 220ms var(--ease);
+      padding: 24px;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-card {
+      background: var(--dancing);
+      color: var(--cream);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      transform: translateY(12px);
+      transition: transform 220ms var(--ease);
+      box-shadow: 0 24px 60px rgba(75,62,32,0.35);
+    }
+    .modal-overlay.open .modal-card { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      border-radius: 999px; border: none;
+      background: rgba(240,237,201,0.15);
+      font-size: 20px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cream);
+      transition: background 160ms var(--ease);
+    }
+    .modal-close:hover { background: rgba(240,237,201,0.28); }
+    .modal-eyebrow {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; opacity: 0.6; margin-bottom: 12px;
+    }
+    .modal-title {
+      font-family: var(--font-display); font-weight: 700; font-stretch: 82%;
+      font-size: 26px; letter-spacing: -0.02em; margin: 0 0 12px;
+    }
+    .modal-text { font-size: 15px; line-height: 1.5; opacity: 0.82; margin: 0 0 24px; }
+    .modal-info {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 28px;
+      background: var(--joy);
+      color: var(--love);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .modal-info a { font-size: 15px; font-weight: 500; color: var(--love); border-bottom: 1px solid transparent; }
+    .modal-info a:hover { border-color: var(--love); }
+    .modal-cta { width: 100%; justify-content: center; }
+    .modal-cta-note {
+      margin-top: 10px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      opacity: 0.6;
+    }
 </style>
 </head>
 <body>
@@ -409,7 +474,7 @@
       <div class="nav-links">
         <a href="index.html#servicios" data-i18n="pf_nav_sitio" id="pf-nav-sitio">How I work</a>
         <a href="Portfolio_Francisca_Celestino.html" data-i18n="pf_nav_portfolio">Portfolio</a>
-        <a class="cta" href="mailto:franciscacelestino@hotmail.com" data-i18n="pf_nav_contacto">Contact</a>
+        <a class="cta" href="#" onclick="openContactModal(event)" data-i18n="pf_nav_contacto">Contact</a>
         <div class="lang-switcher">
           <button class="lang-btn" data-lang="es">ES</button>
           <button class="lang-btn active" data-lang="en">EN</button>
@@ -417,6 +482,23 @@
       </div>
     </div>
   </nav>
+
+  <!-- ============ CONTACT MODAL ============ -->
+  <div class="modal-overlay" id="contactModal" onclick="if(event.target===this) closeContactModal()">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Cerrar" onclick="closeContactModal()">&times;</button>
+      <div class="modal-eyebrow" data-i18n="modal_eyebrow">CONTACTO</div>
+      <h3 class="modal-title" data-i18n="modal_title">Hablemos de tu proyecto</h3>
+      <p class="modal-text" data-i18n="modal_text">Escribime, o agendá una llamada de 30 minutos directo en mi calendario.</p>
+      <div class="modal-info">
+        <a href="mailto:hello@franciscacelestino.com">hello@franciscacelestino.com</a>
+        <a href="tel:+14154650887">+1 (415) 465-0887</a>
+        <a href="https://www.linkedin.com/in/FranciscaCelestino" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <a class="btn btn-primary modal-cta" href="https://calendly.com/hello-franciscacelestino/30min" target="_blank" rel="noopener" data-i18n="modal_cta">Agendar en Calendly ↗</a>
+      <div class="modal-cta-note" data-i18n="modal_cta_note">Se abre en una pestaña nueva de Calendly</div>
+    </div>
+  </div>
   <script>
     // Si el link incluye ?modo=cv, esta vista se manda a reclutadores,
     // se oculta el link al sitio de consultoría para mantener el foco solo en el portfolio.
@@ -1140,7 +1222,7 @@
       <h2><span data-i18n="pf_final_heading_1">Let's build the next </span><em data-i18n="pf_final_heading_em">chapter</em>.</h2>
       <p data-i18n="pf_final_sub">If you're hiring marketing leadership, or just want to compare notes, I'd love to talk.</p>
       <div class="links">
-        <a class="btn btn-primary" href="mailto:franciscacelestino@hotmail.com">
+        <a class="btn btn-primary" href="#" onclick="openContactModal(event)">
           <span data-i18n="pf_final_btn_note">Send a note</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
@@ -1163,6 +1245,17 @@
     </div>
   </footer>
   <script>
+    function openContactModal(e) {
+      if (e) e.preventDefault();
+      document.getElementById('contactModal').classList.add('open');
+    }
+    function closeContactModal() {
+      document.getElementById('contactModal').classList.remove('open');
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeContactModal();
+    });
+
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
