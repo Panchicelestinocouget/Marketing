@@ -25,10 +25,10 @@ const i18n = {
     hero_sub: "Para startups y empresas que necesitan construir o reorganizar su marketing. Estrategia, equipo, procesos y resultados medibles.",
     hero_btn_ghost: "¿Cómo funciona?",
     hero_btn_primary: "Hablemos de tu proyecto",
-    hero_k1: "RESULTADOS",       hero_v1: "KPIs medibles desde el día 1",
-    hero_k2: "TIMELINE",         hero_v2: "60-90 días, según la complejidad del proyecto",
+    hero_k1: "RESULTADOS",       hero_v1: "KPIs medibles",
+    hero_k2: "TIMELINE",         hero_v2: "60-90 días, de principio a fin",
     hero_k3: "QUÉ TE LLEVÁS",    hero_v3: "Plan anual, presupuesto, roles, stack y reporting",
-    hero_k4: "INVERSIÓN",        hero_v4: "Costo fijo, cerrado desde el día 1",
+    hero_k4: "INVERSIÓN",        hero_v4: "Costo fijo, proyecto completo",
 
     // Servicios
     svc_label_num: "01 / 03",
@@ -361,10 +361,10 @@ const i18n = {
     hero_sub: "For startups and companies that need to build or restructure their marketing. Strategy, team, processes, and measurable results.",
     hero_btn_ghost: "How does it work?",
     hero_btn_primary: "Let's talk about your project",
-    hero_k1: "RESULTS",       hero_v1: "KPIs measurable from day 1",
-    hero_k2: "TIMELINE",      hero_v2: "60-90 days, depending on project complexity",
+    hero_k1: "RESULTS",       hero_v1: "Measurable KPIs",
+    hero_k2: "TIMELINE",      hero_v2: "60-90 days, start to finish",
     hero_k3: "WHAT YOU GET",  hero_v3: "Annual plan, budget, roles, stack, and reporting",
-    hero_k4: "INVESTMENT",    hero_v4: "Flat fee, locked in from day 1",
+    hero_k4: "INVESTMENT",    hero_v4: "Flat fee, full project",
 
     svc_label_num: "01 / 03",
     svc_label_role: "WHERE WE START",
