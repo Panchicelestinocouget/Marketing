@@ -10,6 +10,13 @@ const i18n = {
     nav_portfolio: "Portfolio",
     nav_cta: "Contacto",
 
+    // Contact modal
+    modal_eyebrow: "CONTACTO",
+    modal_title: "Hablemos de tu proyecto",
+    modal_text: "Escribime, o agendá una llamada de 30 minutos directo en mi calendario.",
+    modal_cta: "Agendar en Calendly ↗",
+    modal_cta_note: "Se abre en una pestaña nueva de Calendly",
+
     // Hero
     hero_tag: "ESTRATEGIAS DE MARKETING · SAN FRANCISCO · EARLY STAGE",
     hero_title_1: "Marketing que ",
@@ -340,6 +347,12 @@ const i18n = {
     nav_servicios: "How I work",
     nav_portfolio: "Portfolio",
     nav_cta: "Contact",
+
+    modal_eyebrow: "CONTACT",
+    modal_title: "Let's talk about your project",
+    modal_text: "Send me a note, or book a 30-minute call directly on my calendar.",
+    modal_cta: "Book a call on Calendly ↗",
+    modal_cta_note: "Opens a new Calendly tab",
 
     hero_tag: "MARKETING STRATEGY · SAN FRANCISCO · EARLY STAGE",
     hero_title_1: "Marketing that ",
