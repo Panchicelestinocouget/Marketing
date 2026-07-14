@@ -349,9 +349,9 @@ const i18n = {
     hero_btn_ghost: "How does it work?",
     hero_btn_primary: "Let's talk about your project",
     hero_k1: "RESULTS",       hero_v1: "KPIs measurable from day 1",
-    hero_k2: "TIMELINE",      hero_v2: "60-90 days proyects",
+    hero_k2: "TIMELINE",      hero_v2: "60-90 days, depending on project complexity",
     hero_k3: "WHAT YOU GET",  hero_v3: "Annual plan, budget, roles, stack, and reporting",
-    hero_k4: "INVESTMENT",    hero_v4: "Fixed scope, flat fee",
+    hero_k4: "INVESTMENT",    hero_v4: "Flat fee, locked in from day 1",
 
     svc_label_num: "01 / 03",
     svc_label_role: "WHERE WE START",
@@ -359,7 +359,7 @@ const i18n = {
     svc1_tag: "Service · 01",
     svc1_title: "Your first marketing department",
     svc1_desc: "I build the department from scratch in 60-90 days, depending on the project's complexity.",
-    svc1_point: "<strong>Closed scope and fixed cost:</strong> strategy, processes, team, and tools. When the process ends, I help you choose the ideal profile to run it.",
+    svc1_point: "<strong>Fixed scope, flat fee:</strong> strategy, processes, team, and tools. When the process ends, I help you choose the ideal profile to run it.",
     svc1_li1: "Starting-point diagnosis",
     svc1_li2: "Strategy and objectives for the first 12 months",
     svc1_li3: "Documented processes and tools",
@@ -368,15 +368,15 @@ const i18n = {
     svc2_tag: "Service · 02",
     svc2_title: "Consulting + ongoing support",
     svc2_desc: "A full audit, a 12-month strategic plan, and active support while your team executes it.",
-    svc2_point: "<strong>A closed 2-3 month project, fixed cost:</strong> by the end, you have an organized department seeing immediate results.",
+    svc2_point: "<strong>Fixed scope, flat fee, 2-3 months:</strong> by the end, you have an organized department seeing immediate results.",
     svc2_li1: "Strategic diagnosis (Marketing Frame)",
     svc2_li2: "Annual plan + operational KPIs",
     svc2_li3: "Active presence at every stage",
     svc2_li4: "Reporting model for leadership",
     svc2_ideal: "Ideal for: Companies with a marketing team in place that isn't delivering the expected results, and need clear structure and direction.",
     svc3_tag: "Service · 03",
-    svc3_title: "Fractional CMO",
-    svc3_desc: "Renewable quarterly cycles at a fixed cost: ongoing marketing leadership without the commitment or cost of hiring a full-time CMO.",
+    svc3_title: "Fractional Marketing Leadership",
+    svc3_desc: "Renewable quarterly cycles at a flat fee: ongoing marketing leadership without the commitment or cost of hiring a full-time CMO.",
     svc3_li1: "Marketing department leadership",
     svc3_li2: "Strategy + quarterly roadmap",
     svc3_li3: "Team and process management",
@@ -687,9 +687,8 @@ function applyTranslation(lang) {
 
 function initI18n() {
   const saved = localStorage.getItem('preferred-lang');
-  const browser = navigator.language?.slice(0,2);
-  const defaultLang = (saved || (browser === 'es' ? 'es' : 'en'));
-  applyTranslation(defaultLang in i18n ? defaultLang : 'es');
+  const defaultLang = saved || 'en';
+  applyTranslation(defaultLang in i18n ? defaultLang : 'en');
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => applyTranslation(btn.getAttribute('data-lang')));
