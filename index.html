@@ -585,6 +585,7 @@
     content: "FC";
     position: absolute;
     inset: 0;
+    z-index: 0;
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-display);
     font-weight: 800;
@@ -597,26 +598,30 @@
   }
   .why-portrait .portrait-photo {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: -32px; right: -32px; bottom: -32px; left: -32px;
+    width: calc(100% + 64px);
+    height: calc(100% + 64px);
     object-fit: cover;
-    object-position: top center;
+    object-position: center 22%;
     z-index: 1;
   }
-  .why-portrait .pi { position: absolute; z-index: 2; }
+  .why-portrait::after {
+    content: "";
+    position: absolute;
+    inset: -32px;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(20,14,6,0.85) 0%, rgba(20,14,6,0.55) 28%, rgba(20,14,6,0) 60%);
+    pointer-events: none;
+  }
+  .why-portrait .pi { position: absolute; z-index: 3; }
   .why-portrait .pi.p1 { top: 14px; right: 14px; width: 76px; aspect-ratio: 1/1; color: var(--love); }
   .why-portrait .pi.p2 { bottom: -30px; left: -20px; width: 150px; aspect-ratio: 1/1; color: var(--dancing); opacity: 0.7; }
   .why-portrait .pi.p3 { top: 40%; left: 20px; width: 30px; aspect-ratio: 1/1; color: var(--joy); }
   .why-portrait .portrait-meta {
-    position: relative; z-index: 2;
-    padding-top: 24px;
-    margin: -24px -32px -32px;
-    padding-left: 32px;
-    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.0) 100%);
+    position: relative; z-index: 4;
     font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 10px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--paper);
   }
@@ -624,10 +629,10 @@
     font-family: var(--font-display);
     font-weight: 700;
     font-stretch: 82%;
-    font-size: 28px;
+    font-size: 22px;
     letter-spacing: -0.02em;
     text-transform: none;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     color: var(--paper);
   }
 
