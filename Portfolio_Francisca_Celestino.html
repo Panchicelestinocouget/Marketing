@@ -108,8 +108,10 @@
     #pf .nav-links .cta:hover { background: var(--cozy); }
     #pf .nav-links .cta svg { width: 12px; height: 12px; }
     @media (max-width: 640px) {
-      #pf nav.top .inner { padding: 14px 22px; }
-      #pf .nav-links a:not(.cta) { display: none; }
+      #pf nav.top .inner { padding: 12px 16px; flex-wrap: wrap; row-gap: 8px; }
+      #pf .nav-links { gap: 14px; font-size: 12px; flex-wrap: wrap; }
+      #pf .nav-links .cta { padding: 7px 14px; }
+      #pf .brand { font-size: 15px; }
     }
 
     /* Cut-paper illustration positioning */
@@ -340,6 +342,16 @@
     #pf .final .ill-f5 { bottom: 8%; right: 14%; width: 60px; aspect-ratio: 1/1; color: var(--cozy); }
     #pf .final { text-align: center; padding: clamp(100px, 14vw, 160px) 0; }
     #pf .final .inner { position: relative; z-index: 2; }
+    #pf .final-photo {
+      width: 96px; height: 96px;
+      border-radius: 999px;
+      object-fit: cover;
+      object-position: top center;
+      margin: 0 auto 28px;
+      display: block;
+      border: 3px solid var(--paper);
+      box-shadow: 0 0 0 1px rgba(75,62,32,0.12), 0 8px 24px rgba(75,62,32,0.18);
+    }
     #pf .final h2 { font-family: var(--font-display); font-weight: 800; font-stretch: 75%; font-size: clamp(48px, 8vw, 112px); line-height: 0.94; letter-spacing: -0.035em; margin: 0 auto 32px; max-width: 16ch; text-wrap: balance; color: var(--cream); }
     #pf .final h2 em { font-style: normal; color: var(--love); position: relative; display: inline-block; }
     #pf .final h2 em::after { content: ""; position: absolute; left: -0.05em; right: -0.05em; bottom: 0.04em; height: 0.16em; background: var(--cream); z-index: -1; }
@@ -531,7 +543,7 @@
         <span class="heavy"><em>Celestino</em></span>
       </h1>
       <p class="lede hero-sub reveal" data-delay="2" data-i18n="pf_hero_sub">
-        Strategic marketing leader. I bridge the gap between CPG craft and high-growth startup agility, building high-performing marketing functions from the ground up.
+        Strategic marketing, with the discipline of big companies and the agility of startups. I build high-performing marketing departments, from scratch.
       </p>
 
       <div class="hero-meta reveal" data-delay="3">
@@ -552,7 +564,7 @@
           <div class="role" data-i18n="pf_numbers_role">RESULTS</div>
         </div>
         <div>
-          <h2 class="h-section" data-i18n="pf_numbers_heading">Some numbers I'm proud of.</h2>
+          <h2 class="h-section" data-i18n="pf_numbers_heading">Some numbers behind the work.</h2>
         </div>
       </div>
 
@@ -613,13 +625,13 @@
           <div class="ill ill-corner"><svg><use href="#i-burst"/></svg></div>
           <div class="num">01</div>
           <h3 data-i18n="pf_p1_title">Strategy as a disciplined craft</h3>
-          <p data-i18n="pf_p1_desc">Trained under top-tier creative leadership, I believe a strategy is only as powerful as its execution. I bring a disciplined eye to every project, ensuring even the scrappiest initiative is built on a rock-solid foundation.</p>
+          <p data-i18n="pf_p1_desc">The discipline of big brands stays with me on every project: a strategy is only as effective as its execution. I bring a rigorous eye to each one, making sure even the scrappiest initiative is built on a solid foundation.</p>
         </div>
         <div class="principle p2 reveal" data-delay="2">
           <div class="ill ill-corner"><svg><use href="#i-arch"/></svg></div>
           <div class="num">02</div>
           <h3 data-i18n="pf_p2_title">Build the engine, then fuel it</h3>
-          <p data-i18n="pf_p2_desc">At a startup, brand and demand engine are the same project. CRM, analytics, and content cadence come before paid spend, and every channel I run gets tested, measured, and decided by the data, not the gut.</p>
+          <p data-i18n="pf_p2_desc">At a startup, brand and demand engine get built together, it's the same job. Before spending on paid, I get the CRM, analytics, and content cadence up and running. Every channel gets tested, measured, and decided by the data, not by gut feel.</p>
         </div>
         <div class="principle p3 reveal" data-delay="3">
           <div class="ill ill-corner"><svg><use href="#i-crescent"/></svg></div>
@@ -644,8 +656,8 @@
           <div class="role" data-i18n="pf_career_role">CAREER</div>
         </div>
         <div>
-          <h2 class="h-section" data-i18n="pf_career_heading">Nine years across CPG and startups.</h2>
-          <p class="aside" data-i18n="pf_career_aside">Beauty and beer across Latin American markets, then B2B software and AgTech in San Francisco.</p>
+          <h2 class="h-section" data-i18n="pf_career_heading">Nine years, from big companies to startups.</h2>
+          <p class="aside" data-i18n="pf_career_aside">Discipline learned at global brands, applied to building marketing departments from scratch at startups.</p>
         </div>
       </div>
 
@@ -1222,8 +1234,9 @@
     <div class="ill ill-f5"><svg><use href="#i-spark"/></svg></div>
 
     <div class="container inner reveal">
+      <img class="final-photo" src="assets/panchi-headshot.jpg" alt="Francisca Celestino" />
       <h2><span data-i18n="pf_final_heading_1">Let's build the next </span><em data-i18n="pf_final_heading_em">chapter</em>.</h2>
-      <p data-i18n="pf_final_sub">If you're hiring marketing leadership, or just want to compare notes, I'd love to talk.</p>
+      <p data-i18n="pf_final_sub">If you're building your marketing team, or just want to compare notes, I'd love to talk.</p>
       <div class="links">
         <a class="btn btn-primary" href="#" onclick="openContactModal(event)">
           <span data-i18n="pf_final_btn_note">Send a note</span>

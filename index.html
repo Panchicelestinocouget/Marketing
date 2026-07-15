@@ -165,8 +165,10 @@
   }
   .nav-links .cta:hover { background: var(--cozy); }
   @media (max-width: 640px) {
-    nav.top .inner { padding: 14px 22px; }
-    .nav-links a:not(.cta) { display: none; }
+    nav.top .inner { padding: 12px 16px; flex-wrap: wrap; row-gap: 8px; }
+    .nav-links { gap: 14px; font-size: 12px; flex-wrap: wrap; }
+    .nav-links .cta { padding: 7px 14px; }
+    .brand { font-size: 15px; }
   }
 
   .btn {
@@ -593,17 +595,30 @@
     opacity: 0.50;
     letter-spacing: -0.06em;
   }
-  .why-portrait .pi { position: absolute; }
+  .why-portrait .portrait-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 1;
+  }
+  .why-portrait .pi { position: absolute; z-index: 2; }
   .why-portrait .pi.p1 { top: 14px; right: 14px; width: 76px; aspect-ratio: 1/1; color: var(--love); }
   .why-portrait .pi.p2 { bottom: -30px; left: -20px; width: 150px; aspect-ratio: 1/1; color: var(--dancing); opacity: 0.7; }
   .why-portrait .pi.p3 { top: 40%; left: 20px; width: 30px; aspect-ratio: 1/1; color: var(--joy); }
   .why-portrait .portrait-meta {
     position: relative; z-index: 2;
+    padding-top: 24px;
+    margin: -24px -32px -32px;
+    padding-left: 32px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.0) 100%);
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--calm);
+    color: var(--paper);
   }
   .why-portrait .portrait-meta .name {
     font-family: var(--font-display);
@@ -613,7 +628,7 @@
     letter-spacing: -0.02em;
     text-transform: none;
     margin-bottom: 6px;
-    color: var(--calm);
+    color: var(--paper);
   }
 
   .why-list { display: flex; flex-direction: column; gap: 0; }
@@ -656,6 +671,16 @@
 
   .final { text-align: center; padding: clamp(100px, 16vw, 180px) 0; }
   .final .inner { position: relative; z-index: 2; }
+  .final-photo {
+    width: 96px; height: 96px;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: top center;
+    margin: 0 auto 28px;
+    display: block;
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 1px rgba(75,62,32,0.12), 0 8px 24px rgba(75,62,32,0.18);
+  }
   .final h2 {
     font-size: clamp(52px, 9vw, 132px);
     line-height: 0.94;
@@ -893,7 +918,7 @@
   <div class="container inner">
     <div class="hero-tag reveal" data-i18n="hero_tag">ESTRATEGIAS DE MARKETING · SAN FRANCISCO · EARLY STAGE</div>
     <h1 class="hero-title display reveal" data-delay="1">
-      <span data-i18n="hero_title_1">Marketing que </span><em data-i18n="hero_title_em">funciona.</em><span data-i18n="hero_title_2"> Con sistema, no con improvisación.</span>
+      <span data-i18n="hero_title_1">Marketing que </span><em data-i18n="hero_title_em">funciona.</em><span data-i18n="hero_title_2"> Un sistema con resultados comprobados.</span>
     </h1>
     <p class="lede hero-sub reveal" data-delay="2">
       <span data-i18n="hero_sub">Para startups y empresas que necesitan construir o reorganizar su marketing. Estrategia, equipo, procesos y resultados medibles.</span>
@@ -1095,6 +1120,7 @@ el sistema juntos.</h2>
 
     <div class="why-grid">
       <div class="why-portrait reveal">
+        <img class="portrait-photo" src="assets/panchi-headshot.jpg" alt="Francisca Celestino" />
         <div class="pi p1"><svg><use href="#i-burst"/></svg></div>
         <div class="pi p2"><svg><use href="#i-arch"/></svg></div>
         <div class="pi p3"><svg><use href="#i-spark"/></svg></div>
@@ -1105,7 +1131,7 @@ el sistema juntos.</h2>
       </div>
 
       <div class="why-list reveal" data-delay="1">
-        <div class="why-row"><div class="why-num">01</div><div class="why-text" data-i18n="why1" data-i18n-html="true"><strong>CPG global &amp; B2B startups.</strong> Pasé por ABInBev y L'Oreal antes de saltar a startups. Sé cómo se ve marketing serio, y cómo construirlo cuando todavía no existe.</div></div>
+        <div class="why-row"><div class="why-num">01</div><div class="why-text" data-i18n="why1" data-i18n-html="true"><strong>De grandes empresas a startups.</strong> Aprendí a construir marketing sólido, y ahora armo áreas de marketing desde cero en cada startup, sin importar el tamaño del equipo.</div></div>
         <div class="why-row"><div class="why-num">02</div><div class="why-text" data-i18n="why2" data-i18n-html="true"><strong>Construí MKT desde cero.</strong> <span class="stat">2.000+</span> contactos en 8 meses · <span class="stat">+259%</span> crecimiento de tráfico YoY.</div></div>
         <div class="why-row"><div class="why-num">05</div><div class="why-text" data-i18n="why5" data-i18n-html="true"><strong>Bilingüe español / inglés.</strong> Me adapto al idioma del negocio.</div></div>
         <div class="why-row"><div class="why-num">03</div><div class="why-text" data-i18n="why3" data-i18n-html="true"><strong>Obsesiva con el orden y los tiempos.</strong> Herencia directa del project management.</div></div>
